@@ -36,7 +36,9 @@
     <genClasses ecoreClass="Configurator.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//Parameter/type"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="Configurator.ecore#//Value"/>
+    <genClasses image="false" ecoreClass="Configurator.ecore#//Value">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//Value/type"/>
+    </genClasses>
     <genClasses ecoreClass="Configurator.ecore#//Set">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Configurator.ecore#//Set/has"/>
     </genClasses>

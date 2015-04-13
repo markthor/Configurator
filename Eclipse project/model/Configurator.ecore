@@ -17,7 +17,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//TypeEnum"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true" interface="true"
-      eSuperTypes="#//Expression"/>
+      eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//TypeEnum"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Set" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="has" upperBound="-1" eType="#//Value"/>
   </eClassifiers>
