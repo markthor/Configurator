@@ -24,7 +24,7 @@ class Main {
 		// load the file 
 		val resourceSet = new ResourceSetImpl
 		// change file name here to try other files
-		val uri = URI::createURI("test-files/test.xmi")
+		val uri = URI::createURI("test-files/test-2.xmi")
 		val resource = resourceSet.getResource(uri, true)					/* true means follow proxies */
 
 		// check constraints

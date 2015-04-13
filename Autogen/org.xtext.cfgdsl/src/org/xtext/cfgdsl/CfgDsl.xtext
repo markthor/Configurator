@@ -33,13 +33,13 @@ enum TypeEnum returns TypeEnum:
 	IntegerType = 'int' | BooleanType = 'boolean' | StringType = 'string';
 
 StringValue returns StringValue:
-	'string' name=EString '=' value=EString;
+	type=TypeEnum name=EString '=' value=EString;
 
 IntegerValue returns IntegerValue:
-	'int' name=EString '=' value=EInt;
+	type=TypeEnum name=EString '=' value=EInt;
 
 BooleanValue returns BooleanValue:
-	'boolean' name=EString '=' value=EBoolean;
+	type=TypeEnum name=EString '=' value=EBoolean;
 
 EInt returns ecore::EInt:
 	'-'? INT;

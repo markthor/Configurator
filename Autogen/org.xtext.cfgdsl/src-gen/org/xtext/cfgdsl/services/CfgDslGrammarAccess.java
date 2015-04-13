@@ -261,7 +261,8 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class StringValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringValue");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cStringKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeTypeEnumEnumRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -269,14 +270,17 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueEStringParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
 		//StringValue:
-		//	"string" name=EString "=" value=EString;
+		//	type=TypeEnum name=EString "=" value=EString;
 		public ParserRule getRule() { return rule; }
 
-		//"string" name=EString "=" value=EString
+		//type=TypeEnum name=EString "=" value=EString
 		public Group getGroup() { return cGroup; }
 
-		//"string"
-		public Keyword getStringKeyword_0() { return cStringKeyword_0; }
+		//type=TypeEnum
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//TypeEnum
+		public RuleCall getTypeTypeEnumEnumRuleCall_0_0() { return cTypeTypeEnumEnumRuleCall_0_0; }
 
 		//name=EString
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -297,7 +301,8 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class IntegerValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntegerValue");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cIntKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeTypeEnumEnumRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -305,14 +310,17 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueEIntParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
 		//IntegerValue:
-		//	"int" name=EString "=" value=EInt;
+		//	type=TypeEnum name=EString "=" value=EInt;
 		public ParserRule getRule() { return rule; }
 
-		//"int" name=EString "=" value=EInt
+		//type=TypeEnum name=EString "=" value=EInt
 		public Group getGroup() { return cGroup; }
 
-		//"int"
-		public Keyword getIntKeyword_0() { return cIntKeyword_0; }
+		//type=TypeEnum
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//TypeEnum
+		public RuleCall getTypeTypeEnumEnumRuleCall_0_0() { return cTypeTypeEnumEnumRuleCall_0_0; }
 
 		//name=EString
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -333,7 +341,8 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class BooleanValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanValue");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cBooleanKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeTypeEnumEnumRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -341,14 +350,17 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueEBooleanParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
 		//BooleanValue:
-		//	"boolean" name=EString "=" value=EBoolean;
+		//	type=TypeEnum name=EString "=" value=EBoolean;
 		public ParserRule getRule() { return rule; }
 
-		//"boolean" name=EString "=" value=EBoolean
+		//type=TypeEnum name=EString "=" value=EBoolean
 		public Group getGroup() { return cGroup; }
 
-		//"boolean"
-		public Keyword getBooleanKeyword_0() { return cBooleanKeyword_0; }
+		//type=TypeEnum
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//TypeEnum
+		public RuleCall getTypeTypeEnumEnumRuleCall_0_0() { return cTypeTypeEnumEnumRuleCall_0_0; }
 
 		//name=EString
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -841,7 +853,7 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringValue:
-	//	"string" name=EString "=" value=EString;
+	//	type=TypeEnum name=EString "=" value=EString;
 	public StringValueElements getStringValueAccess() {
 		return (pStringValue != null) ? pStringValue : (pStringValue = new StringValueElements());
 	}
@@ -851,7 +863,7 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntegerValue:
-	//	"int" name=EString "=" value=EInt;
+	//	type=TypeEnum name=EString "=" value=EInt;
 	public IntegerValueElements getIntegerValueAccess() {
 		return (pIntegerValue != null) ? pIntegerValue : (pIntegerValue = new IntegerValueElements());
 	}
@@ -861,7 +873,7 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BooleanValue:
-	//	"boolean" name=EString "=" value=EBoolean;
+	//	type=TypeEnum name=EString "=" value=EBoolean;
 	public BooleanValueElements getBooleanValueAccess() {
 		return (pBooleanValue != null) ? pBooleanValue : (pBooleanValue = new BooleanValueElements());
 	}

@@ -4,8 +4,12 @@ package ConfiguratorPackage.impl;
 
 import ConfiguratorPackage.ConfiguratorPackagePackage;
 import ConfiguratorPackage.StringValue;
+import ConfiguratorPackage.TypeEnum;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -16,12 +20,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link ConfiguratorPackage.impl.StringValueImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link ConfiguratorPackage.impl.StringValueImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StringValueImpl extends NamedElementImpl implements StringValue {
+public class StringValueImpl extends ValueImpl implements StringValue {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -41,6 +46,16 @@ public class StringValueImpl extends NamedElementImpl implements StringValue {
 	 * @ordered
 	 */
 	protected String value = VALUE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypeEnum type;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,11 +102,34 @@ public class StringValueImpl extends NamedElementImpl implements StringValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TypeEnum getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(TypeEnum newType) {
+		TypeEnum oldType = type;
+		type = newType == null ? null : newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackagePackage.STRING_VALUE__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfiguratorPackagePackage.STRING_VALUE__VALUE:
 				return getValue();
+			case ConfiguratorPackagePackage.STRING_VALUE__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,6 +144,9 @@ public class StringValueImpl extends NamedElementImpl implements StringValue {
 		switch (featureID) {
 			case ConfiguratorPackagePackage.STRING_VALUE__VALUE:
 				setValue((String)newValue);
+				return;
+			case ConfiguratorPackagePackage.STRING_VALUE__TYPE:
+				setType((TypeEnum)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,6 +163,9 @@ public class StringValueImpl extends NamedElementImpl implements StringValue {
 			case ConfiguratorPackagePackage.STRING_VALUE__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
+			case ConfiguratorPackagePackage.STRING_VALUE__TYPE:
+				setType((TypeEnum)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -136,6 +180,8 @@ public class StringValueImpl extends NamedElementImpl implements StringValue {
 		switch (featureID) {
 			case ConfiguratorPackagePackage.STRING_VALUE__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case ConfiguratorPackagePackage.STRING_VALUE__TYPE:
+				return type != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -152,6 +198,8 @@ public class StringValueImpl extends NamedElementImpl implements StringValue {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");
 		result.append(value);
+		result.append(", type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}

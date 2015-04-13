@@ -242,10 +242,10 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	int PARAMETER_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link ConfiguratorPackage.Value <em>Value</em>}' class.
+	 * The meta object id for the '{@link ConfiguratorPackage.impl.ValueImpl <em>Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ConfiguratorPackage.Value
+	 * @see ConfiguratorPackage.impl.ValueImpl
 	 * @see ConfiguratorPackage.impl.ConfiguratorPackagePackageImpl#getValue()
 	 * @generated
 	 */
@@ -353,13 +353,22 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	int STRING_VALUE__VALUE = VALUE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_VALUE__TYPE = VALUE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>String Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int STRING_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>String Value</em>' class.
@@ -399,13 +408,22 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	int INTEGER_VALUE__VALUE = VALUE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VALUE__TYPE = VALUE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Integer Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int INTEGER_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Integer Value</em>' class.
@@ -445,13 +463,22 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	int BOOLEAN_VALUE__VALUE = VALUE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_VALUE__TYPE = VALUE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Boolean Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int BOOLEAN_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Boolean Value</em>' class.
@@ -825,6 +852,17 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	EAttribute getStringValue_Value();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ConfiguratorPackage.StringValue#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see ConfiguratorPackage.StringValue#getType()
+	 * @see #getStringValue()
+	 * @generated
+	 */
+	EAttribute getStringValue_Type();
+
+	/**
 	 * Returns the meta object for class '{@link ConfiguratorPackage.IntegerValue <em>Integer Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -846,6 +884,17 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	EAttribute getIntegerValue_Value();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ConfiguratorPackage.IntegerValue#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see ConfiguratorPackage.IntegerValue#getType()
+	 * @see #getIntegerValue()
+	 * @generated
+	 */
+	EAttribute getIntegerValue_Type();
+
+	/**
 	 * Returns the meta object for class '{@link ConfiguratorPackage.BooleanValue <em>Boolean Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -865,6 +914,17 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBooleanValue_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ConfiguratorPackage.BooleanValue#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see ConfiguratorPackage.BooleanValue#getType()
+	 * @see #getBooleanValue()
+	 * @generated
+	 */
+	EAttribute getBooleanValue_Type();
 
 	/**
 	 * Returns the meta object for class '{@link ConfiguratorPackage.Configuration <em>Configuration</em>}'.
@@ -1117,10 +1177,10 @@ public interface ConfiguratorPackagePackage extends EPackage {
 		EAttribute PARAMETER__TYPE = eINSTANCE.getParameter_Type();
 
 		/**
-		 * The meta object literal for the '{@link ConfiguratorPackage.Value <em>Value</em>}' class.
+		 * The meta object literal for the '{@link ConfiguratorPackage.impl.ValueImpl <em>Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ConfiguratorPackage.Value
+		 * @see ConfiguratorPackage.impl.ValueImpl
 		 * @see ConfiguratorPackage.impl.ConfiguratorPackagePackageImpl#getValue()
 		 * @generated
 		 */
@@ -1163,6 +1223,14 @@ public interface ConfiguratorPackagePackage extends EPackage {
 		EAttribute STRING_VALUE__VALUE = eINSTANCE.getStringValue_Value();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_VALUE__TYPE = eINSTANCE.getStringValue_Type();
+
+		/**
 		 * The meta object literal for the '{@link ConfiguratorPackage.impl.IntegerValueImpl <em>Integer Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1181,6 +1249,14 @@ public interface ConfiguratorPackagePackage extends EPackage {
 		EAttribute INTEGER_VALUE__VALUE = eINSTANCE.getIntegerValue_Value();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTEGER_VALUE__TYPE = eINSTANCE.getIntegerValue_Type();
+
+		/**
 		 * The meta object literal for the '{@link ConfiguratorPackage.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1197,6 +1273,14 @@ public interface ConfiguratorPackagePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BOOLEAN_VALUE__VALUE = eINSTANCE.getBooleanValue_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOLEAN_VALUE__TYPE = eINSTANCE.getBooleanValue_Type();
 
 		/**
 		 * The meta object literal for the '{@link ConfiguratorPackage.impl.ConfigurationImpl <em>Configuration</em>}' class.

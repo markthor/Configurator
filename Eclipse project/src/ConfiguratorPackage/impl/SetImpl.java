@@ -5,9 +5,13 @@ package ConfiguratorPackage.impl;
 import ConfiguratorPackage.ConfiguratorPackagePackage;
 import ConfiguratorPackage.Set;
 import ConfiguratorPackage.Value;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**

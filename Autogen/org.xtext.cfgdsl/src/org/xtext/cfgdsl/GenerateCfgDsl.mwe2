@@ -15,7 +15,7 @@ Workflow {
 		scanClassPath  = true
 		platformUri = "${runtimeProject}/.."
 		registerGeneratedEPackage = "ConfiguratorPackage.ConfiguratorPackagePackage"
-		registerGenModelFile = "platform:/resource/MDDP%20Configurator/model/Configurator.genmodel"
+		registerGenModelFile = "platform:/resource/MDDP%20Configurator/model/configurator.genmodel"
 	}
 
 	component = DirectoryCleaner {

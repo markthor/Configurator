@@ -36,20 +36,21 @@
     <genClasses ecoreClass="Configurator.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//Parameter/type"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="Configurator.ecore#//Value">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//Value/type"/>
-    </genClasses>
+    <genClasses image="false" ecoreClass="Configurator.ecore#//Value"/>
     <genClasses ecoreClass="Configurator.ecore#//Set">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Configurator.ecore#//Set/has"/>
     </genClasses>
     <genClasses ecoreClass="Configurator.ecore#//StringValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//StringValue/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//StringValue/type"/>
     </genClasses>
     <genClasses ecoreClass="Configurator.ecore#//IntegerValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//IntegerValue/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//IntegerValue/type"/>
     </genClasses>
     <genClasses ecoreClass="Configurator.ecore#//BooleanValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//BooleanValue/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//BooleanValue/type"/>
     </genClasses>
     <genClasses ecoreClass="Configurator.ecore#//Configuration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Configurator.ecore#//Configuration/assignments"/>

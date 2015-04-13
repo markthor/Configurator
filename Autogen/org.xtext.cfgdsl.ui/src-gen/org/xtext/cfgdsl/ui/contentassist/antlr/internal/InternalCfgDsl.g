@@ -1262,11 +1262,9 @@ rule__StringValue__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getStringValueAccess().getStringKeyword_0()); }
-
-	'string' 
-
-{ after(grammarAccess.getStringValueAccess().getStringKeyword_0()); }
+{ before(grammarAccess.getStringValueAccess().getTypeAssignment_0()); }
+(rule__StringValue__TypeAssignment_0)
+{ after(grammarAccess.getStringValueAccess().getTypeAssignment_0()); }
 )
 
 ;
@@ -1389,11 +1387,9 @@ rule__IntegerValue__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getIntegerValueAccess().getIntKeyword_0()); }
-
-	'int' 
-
-{ after(grammarAccess.getIntegerValueAccess().getIntKeyword_0()); }
+{ before(grammarAccess.getIntegerValueAccess().getTypeAssignment_0()); }
+(rule__IntegerValue__TypeAssignment_0)
+{ after(grammarAccess.getIntegerValueAccess().getTypeAssignment_0()); }
 )
 
 ;
@@ -1516,11 +1512,9 @@ rule__BooleanValue__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getBooleanValueAccess().getBooleanKeyword_0()); }
-
-	'boolean' 
-
-{ after(grammarAccess.getBooleanValueAccess().getBooleanKeyword_0()); }
+{ before(grammarAccess.getBooleanValueAccess().getTypeAssignment_0()); }
+(rule__BooleanValue__TypeAssignment_0)
+{ after(grammarAccess.getBooleanValueAccess().getTypeAssignment_0()); }
 )
 
 ;
@@ -2382,6 +2376,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__StringValue__TypeAssignment_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getStringValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); }
+	ruleTypeEnum{ after(grammarAccess.getStringValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__StringValue__NameAssignment_1
     @init {
 		int stackSize = keepStackSize();
@@ -2412,6 +2421,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__IntegerValue__TypeAssignment_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIntegerValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); }
+	ruleTypeEnum{ after(grammarAccess.getIntegerValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__IntegerValue__NameAssignment_1
     @init {
 		int stackSize = keepStackSize();
@@ -2435,6 +2459,21 @@ rule__IntegerValue__ValueAssignment_3
 (
 { before(grammarAccess.getIntegerValueAccess().getValueEIntParserRuleCall_3_0()); }
 	ruleEInt{ after(grammarAccess.getIntegerValueAccess().getValueEIntParserRuleCall_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BooleanValue__TypeAssignment_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBooleanValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); }
+	ruleTypeEnum{ after(grammarAccess.getBooleanValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); }
 )
 
 ;

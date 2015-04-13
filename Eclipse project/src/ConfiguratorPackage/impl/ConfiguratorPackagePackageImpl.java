@@ -340,6 +340,15 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStringValue_Type() {
+		return (EAttribute)stringValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIntegerValue() {
 		return integerValueEClass;
 	}
@@ -358,6 +367,15 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getIntegerValue_Type() {
+		return (EAttribute)integerValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBooleanValue() {
 		return booleanValueEClass;
 	}
@@ -369,6 +387,15 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 	 */
 	public EAttribute getBooleanValue_Value() {
 		return (EAttribute)booleanValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBooleanValue_Type() {
+		return (EAttribute)booleanValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -545,12 +572,15 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 
 		stringValueEClass = createEClass(STRING_VALUE);
 		createEAttribute(stringValueEClass, STRING_VALUE__VALUE);
+		createEAttribute(stringValueEClass, STRING_VALUE__TYPE);
 
 		integerValueEClass = createEClass(INTEGER_VALUE);
 		createEAttribute(integerValueEClass, INTEGER_VALUE__VALUE);
+		createEAttribute(integerValueEClass, INTEGER_VALUE__TYPE);
 
 		booleanValueEClass = createEClass(BOOLEAN_VALUE);
 		createEAttribute(booleanValueEClass, BOOLEAN_VALUE__VALUE);
+		createEAttribute(booleanValueEClass, BOOLEAN_VALUE__TYPE);
 
 		configurationEClass = createEClass(CONFIGURATION);
 		createEReference(configurationEClass, CONFIGURATION__ASSIGNMENTS);
@@ -625,19 +655,22 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Type(), this.getTypeEnum(), "type", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(setEClass, Set.class, "Set", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSet_Has(), this.getValue(), null, "has", null, 0, -1, Set.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stringValueEClass, StringValue.class, "StringValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStringValue_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringValue_Type(), this.getTypeEnum(), "type", "StringType", 1, 1, StringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(integerValueEClass, IntegerValue.class, "IntegerValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIntegerValue_Value(), ecorePackage.getEInt(), "value", null, 1, 1, IntegerValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIntegerValue_Type(), this.getTypeEnum(), "type", "IntegerType", 1, 1, IntegerValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanValueEClass, BooleanValue.class, "BooleanValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBooleanValue_Value(), ecorePackage.getEBoolean(), "value", null, 1, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBooleanValue_Type(), this.getTypeEnum(), "type", "BooleanType", 1, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(configurationEClass, Configuration.class, "Configuration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConfiguration_Assignments(), this.getAssignment(), null, "assignments", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

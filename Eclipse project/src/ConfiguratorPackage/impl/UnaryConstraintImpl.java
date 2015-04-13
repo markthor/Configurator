@@ -6,9 +6,12 @@ import ConfiguratorPackage.ConfiguratorPackagePackage;
 import ConfiguratorPackage.Expression;
 import ConfiguratorPackage.UnaryConstraint;
 import ConfiguratorPackage.UnaryOperators;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**

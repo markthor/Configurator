@@ -66,10 +66,13 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAssignmentAccess().getValueAssignment_3(), "rule__Assignment__ValueAssignment_3");
 					put(grammarAccess.getParameterAccess().getTypeAssignment_1(), "rule__Parameter__TypeAssignment_1");
 					put(grammarAccess.getParameterAccess().getNameAssignment_2(), "rule__Parameter__NameAssignment_2");
+					put(grammarAccess.getStringValueAccess().getTypeAssignment_0(), "rule__StringValue__TypeAssignment_0");
 					put(grammarAccess.getStringValueAccess().getNameAssignment_1(), "rule__StringValue__NameAssignment_1");
 					put(grammarAccess.getStringValueAccess().getValueAssignment_3(), "rule__StringValue__ValueAssignment_3");
+					put(grammarAccess.getIntegerValueAccess().getTypeAssignment_0(), "rule__IntegerValue__TypeAssignment_0");
 					put(grammarAccess.getIntegerValueAccess().getNameAssignment_1(), "rule__IntegerValue__NameAssignment_1");
 					put(grammarAccess.getIntegerValueAccess().getValueAssignment_3(), "rule__IntegerValue__ValueAssignment_3");
+					put(grammarAccess.getBooleanValueAccess().getTypeAssignment_0(), "rule__BooleanValue__TypeAssignment_0");
 					put(grammarAccess.getBooleanValueAccess().getNameAssignment_1(), "rule__BooleanValue__NameAssignment_1");
 					put(grammarAccess.getBooleanValueAccess().getValueAssignment_3(), "rule__BooleanValue__ValueAssignment_3");
 					put(grammarAccess.getBinaryConstraintAccess().getNameAssignment_1(), "rule__BinaryConstraint__NameAssignment_1");

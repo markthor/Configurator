@@ -10,7 +10,7 @@ package ConfiguratorPackage;
  *
  *
  * @see ConfiguratorPackage.ConfiguratorPackagePackage#getValue()
- * @model interface="true" abstract="true"
+ * @model abstract="true"
  * @generated
  */
 public interface Value extends Expression {

@@ -460,11 +460,25 @@ ruleStringValue returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='string' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getStringValueAccess().getStringKeyword_0());
-    }
+((
 (
+		{ 
+	        newCompositeNode(grammarAccess.getStringValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); 
+	    }
+		lv_type_0_0=ruleTypeEnum		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStringValueRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_0_0, 
+        		"TypeEnum");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getStringValueAccess().getNameEStringParserRuleCall_1_0()); 
@@ -525,11 +539,25 @@ ruleIntegerValue returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='int' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getIntegerValueAccess().getIntKeyword_0());
-    }
+((
 (
+		{ 
+	        newCompositeNode(grammarAccess.getIntegerValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); 
+	    }
+		lv_type_0_0=ruleTypeEnum		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getIntegerValueRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_0_0, 
+        		"TypeEnum");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getIntegerValueAccess().getNameEStringParserRuleCall_1_0()); 
@@ -590,11 +618,25 @@ ruleBooleanValue returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='boolean' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getBooleanValueAccess().getBooleanKeyword_0());
-    }
+((
 (
+		{ 
+	        newCompositeNode(grammarAccess.getBooleanValueAccess().getTypeTypeEnumEnumRuleCall_0_0()); 
+	    }
+		lv_type_0_0=ruleTypeEnum		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getBooleanValueRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_0_0, 
+        		"TypeEnum");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getBooleanValueAccess().getNameEStringParserRuleCall_1_0()); 
