@@ -3,12 +3,21 @@
  */
 package org.xtext.example.mydsl.validation
 
+import ConfiguratorPackage.BinaryConstraint
+import ConfiguratorPackage.BooleanValue
+import ConfiguratorPackage.Configuration
+import ConfiguratorPackage.Expression
+import ConfiguratorPackage.IntegerValue
 import ConfiguratorPackage.NamedElement
-import ConfiguratorPackage.*
+import ConfiguratorPackage.Parameter
+import ConfiguratorPackage.Root
+import ConfiguratorPackage.Set
+import ConfiguratorPackage.StringValue
+import ConfiguratorPackage.TypeEnum
+import ConfiguratorPackage.UnaryConstraint
+import ConfiguratorPackage.Value
 import java.util.HashMap
 import java.util.HashSet
-import org.eclipse.xtext.parser.packrat.tokens.AssignmentToken.End
-import ConfiguratorPackage.TypeEnum
 
 //import org.eclipse.xtext.validation.Check
 
