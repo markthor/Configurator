@@ -18,8 +18,10 @@ import ConfiguratorPackage.UnaryConstraint
 import ConfiguratorPackage.Value
 import java.util.HashMap
 import java.util.HashSet
-import org.eclipse.xtext.validation.Check
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.validation.Check
+
+import static ConfiguratorPackage.BinaryOperators.*
 
 //import org.eclipse.xtext.validation.Check
 
@@ -99,19 +101,19 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	def static dispatch boolean constraintBinary(BinaryConstraint it) {
 		switch (operator) {
 		case ADDITION:
-			valueResolver(left) instanceof IntegerValue && valueResolver(right) instanceof IntegerValue
+			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
 		case AND:
-			valueResolver(left) instanceof BooleanValue && valueResolver(right) instanceof BooleanValue
+			valueResolver(left).equals(TypeEnum.BOOLEAN_TYPE) && valueResolver(right).equals(TypeEnum.BOOLEAN_TYPE)
 		case EQUAL:
 			valueResolver(left).equals(valueResolver(right))
 		case GREATER:
-			valueResolver(left) instanceof IntegerValue && valueResolver(right) instanceof IntegerValue
+			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
 		case LESS:
-			valueResolver(left) instanceof IntegerValue && valueResolver(right) instanceof IntegerValue
+			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
 		case MULTIPLICATION:
-			valueResolver(left) instanceof IntegerValue && valueResolver(right) instanceof IntegerValue
+			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
 		case OR:
-			valueResolver(left).equals(valueResolver(right))
+			valueResolver(left).equals(TypeEnum.BOOLEAN_TYPE) && valueResolver(right).equals(TypeEnum.BOOLEAN_TYPE)
 		case SUBSET:
 			valueResolver(left).equals(valueResolver(right))
 		default:
@@ -122,28 +124,52 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	/**
 	 * Recursively resolve the type of an Expression
 	 */
-	def static Value valueResolver(Expression it) {
-		if(it instanceof Value)
-			return it as Value
+	def static TypeEnum valueResolver(Expression it) {
+		if(it instanceof StringValue)
+			return TypeEnum.STRING_TYPE
+		if(it instanceof IntegerValue)
+			return TypeEnum.INTEGER_TYPE
+		if(it instanceof BooleanValue)
+			return TypeEnum.BOOLEAN_TYPE
 		if(it instanceof BinaryConstraint) {
-			val leftType = valueResolver(left)
-			val rightType = valueResolver(right)
-			if(!leftType.equals(rightType))
-				throw new Exception()
-			return leftType
+			switch ((it as BinaryConstraint).operator) {
+			case ADDITION:
+				return TypeEnum.INTEGER_TYPE
+			case AND:
+				return TypeEnum.BOOLEAN_TYPE
+			case EQUAL:
+				return TypeEnum.BOOLEAN_TYPE
+			case GREATER:
+				return TypeEnum.BOOLEAN_TYPE
+			case LESS:
+				return TypeEnum.BOOLEAN_TYPE
+			case MULTIPLICATION:
+				return TypeEnum.INTEGER_TYPE
+			case OR:
+				return TypeEnum.BOOLEAN_TYPE
+			case SUBSET:
+				return TypeEnum.BOOLEAN_TYPE
+			}
 		}
-		if(it instanceof Set)
-			(it as Set).has.get(0)
-		//if(it instanceof UnaryConstraint) {
-		//	return new BooleanValue
-		//}
+		if(it instanceof Set) {
+			val element = (it as Set).has.get(0)
+			if(element instanceof StringValue)
+				return TypeEnum.STRING_TYPE
+			if(element instanceof IntegerValue)
+				return TypeEnum.INTEGER_TYPE
+			if(element instanceof BooleanValue)
+				return TypeEnum.BOOLEAN_TYPE
+		}		
+		if(it instanceof UnaryConstraint) {
+			return TypeEnum.BOOLEAN_TYPE
+		}
 	}
 	
 	/**
 	 * Make sure that the expression of a unary constraint is a BooleanValue
 	 */
 	def static dispatch boolean constraintUnary(UnaryConstraint it) {
-		valueResolver(expression) instanceof BooleanValue
+		valueResolver(expression).equals(TypeEnum.BOOLEAN_TYPE)
 	}
 	
 	/**
