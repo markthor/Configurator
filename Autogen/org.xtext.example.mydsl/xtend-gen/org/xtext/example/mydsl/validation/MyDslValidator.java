@@ -19,9 +19,12 @@ import ConfiguratorPackage.TypeEnum;
 import ConfiguratorPackage.UnaryConstraint;
 import ConfiguratorPackage.Value;
 import com.google.common.base.Objects;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
@@ -35,17 +38,33 @@ import org.xtext.example.mydsl.validation.AbstractMyDslValidator;
  */
 @SuppressWarnings("all")
 public class MyDslValidator extends AbstractMyDslValidator {
+  /**
+   * Fall back for all types that are not constrained
+   */
+  protected static boolean _constraint(final EObject it) {
+    return true;
+  }
+  
+  @Check
   protected static boolean _constraint(final NamedElement it) {
     boolean _and = false;
+    boolean _and_1 = false;
     String _name = it.getName();
     boolean _notEquals = (!Objects.equal(_name, null));
     if (!_notEquals) {
-      _and = false;
+      _and_1 = false;
     } else {
       String _name_1 = it.getName();
       boolean _isEmpty = _name_1.isEmpty();
       boolean _not = (!_isEmpty);
-      _and = _not;
+      _and_1 = _not;
+    }
+    if (!_and_1) {
+      _and = false;
+    } else {
+      String _name_2 = it.getName();
+      boolean _equals = _name_2.equals("Thomsen");
+      _and = _equals;
     }
     return _and;
   }
@@ -414,8 +433,15 @@ public class MyDslValidator extends AbstractMyDslValidator {
     return _and;
   }
   
-  public static boolean constraint(final NamedElement it) {
-    return _constraint(it);
+  public static boolean constraint(final EObject it) {
+    if (it instanceof NamedElement) {
+      return _constraint((NamedElement)it);
+    } else if (it != null) {
+      return _constraint(it);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(it).toString());
+    }
   }
   
   public static boolean constraintParams(final Root it) {

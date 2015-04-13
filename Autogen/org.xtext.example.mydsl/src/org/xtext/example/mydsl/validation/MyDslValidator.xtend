@@ -18,6 +18,8 @@ import ConfiguratorPackage.UnaryConstraint
 import ConfiguratorPackage.Value
 import java.util.HashMap
 import java.util.HashSet
+import org.eclipse.xtext.validation.Check
+import org.eclipse.emf.ecore.EObject
 
 //import org.eclipse.xtext.validation.Check
 
@@ -39,8 +41,14 @@ class MyDslValidator extends AbstractMyDslValidator {
 //		}
 //	}
 
+	/* Fall back for all types that are not constrained */
+	def static dispatch boolean constraint(EObject it) {
+		true
+	}
+
+	@Check
 	def static dispatch boolean constraint(NamedElement it) {
-		name != null && !name.isEmpty
+		name != null && !name.isEmpty && name.equals("Thomsen")
 	}
 	
 	/**
