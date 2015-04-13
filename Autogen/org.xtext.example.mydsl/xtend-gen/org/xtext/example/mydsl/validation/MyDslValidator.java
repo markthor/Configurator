@@ -48,23 +48,27 @@ public class MyDslValidator extends AbstractMyDslValidator {
   @Check
   protected static boolean _constraint(final NamedElement it) {
     boolean _and = false;
-    boolean _and_1 = false;
     String _name = it.getName();
     boolean _notEquals = (!Objects.equal(_name, null));
     if (!_notEquals) {
-      _and_1 = false;
+      _and = false;
     } else {
       String _name_1 = it.getName();
       boolean _isEmpty = _name_1.isEmpty();
       boolean _not = (!_isEmpty);
-      _and_1 = _not;
+      _and = _not;
     }
-    if (!_and_1) {
+    return _and;
+  }
+  
+  protected static boolean _constraint(final Root it) {
+    boolean _and = false;
+    boolean _constraintAssignment = MyDslValidator.constraintAssignment(it);
+    if (!_constraintAssignment) {
       _and = false;
     } else {
-      String _name_2 = it.getName();
-      boolean _equals = _name_2.equals("Thomsen");
-      _and = _equals;
+      boolean _constraintParams = MyDslValidator.constraintParams(it);
+      _and = _constraintParams;
     }
     return _and;
   }
@@ -436,6 +440,8 @@ public class MyDslValidator extends AbstractMyDslValidator {
   public static boolean constraint(final EObject it) {
     if (it instanceof NamedElement) {
       return _constraint((NamedElement)it);
+    } else if (it instanceof Root) {
+      return _constraint((Root)it);
     } else if (it != null) {
       return _constraint(it);
     } else {

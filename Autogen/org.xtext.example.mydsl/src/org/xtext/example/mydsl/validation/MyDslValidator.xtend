@@ -48,7 +48,11 @@ class MyDslValidator extends AbstractMyDslValidator {
 
 	@Check
 	def static dispatch boolean constraint(NamedElement it) {
-		name != null && !name.isEmpty && name.equals("Thomsen")
+		name != null && !name.isEmpty
+	}
+	
+	def static dispatch boolean constraint(Root it){
+		constraintAssignment(it) && constraintParams(it)
 	}
 	
 	/**

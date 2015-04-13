@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
+import ConfiguratorPackage.*
 
 class Main {
 	def static void main(String[] args) {
@@ -27,7 +28,9 @@ class Main {
 
 		// check constraints
 		if (EcoreUtil.getAllProperContents(resource, false)
-				.forall [ MyDslValidator.constraint (it)])
+				.forall [ 
+					MyDslValidator.constraint (it)
+				])
 			println ("All constraints are satisfied!")
 		else println ("Some constraint is violated")
 	}
