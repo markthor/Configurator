@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<github.com:Root
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:github.com="https://github.com/markthor/Configurator"
+    xsi:schemaLocation="https://github.com/markthor/Configurator ../../MDDP%20Configurator/model/Configurator.ecore">
+  <configurators>
+    <assignments
+        parameter="//@expressions.0"
+        value="//@expressions.3"/>
+    <assignments
+        parameter="//@expressions.1"
+        value="//@expressions.4"/>
+    <assignments
+        parameter="//@expressions.2"
+        value="//@expressions.5"/>
+  </configurators>
+  <expressions
+      xsi:type="github.com:Parameter"
+      name="IntegerParam"/>
+  <expressions
+      xsi:type="github.com:Parameter"
+      name="StringParam"/>
+  <expressions
+      xsi:type="github.com:Parameter"
+      name="BooleanParam"/>
+  <expressions
+      xsi:type="github.com:IntegerValue"
+      name="IntegerValue"/>
+  <expressions
+      xsi:type="github.com:StringValue"
+      name="StringValue"
+      value="&quot;test&quot;"/>
+  <expressions
+      xsi:type="github.com:BooleanValue"
+      name="BooleanValue"/>
+</github.com:Root>

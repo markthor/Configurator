@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<github.com:Root
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:github.com="https://github.com/markthor/Configurator"
+    xsi:schemaLocation="https://github.com/markthor/Configurator ../../MDDP%20Configurator/model/Configurator.ecore">
+  <expressions
+      xsi:type="github.com:UnaryConstraint"
+      name="root"
+      expression="//@expressions.1"/>
+  <expressions
+      xsi:type="github.com:UnaryConstraint"
+      name="1"
+      expression="//@expressions.2"/>
+  <expressions
+      xsi:type="github.com:UnaryConstraint"
+      name="2"
+      expression="//@expressions.3"/>
+  <expressions
+      xsi:type="github.com:UnaryConstraint"
+      name="3"
+      expression="//@expressions.4"/>
+  <expressions
+      xsi:type="github.com:UnaryConstraint"
+      name="4"
+      expression="//@expressions.5"/>
+  <expressions
+      xsi:type="github.com:BooleanValue"
+      name="BooleanValue"/>
+</github.com:Root>

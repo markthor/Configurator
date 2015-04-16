@@ -7,9 +7,8 @@
     xsi:schemaLocation="https://github.com/markthor/Configurator ../../MDDP%20Configurator/model/Configurator.ecore">
   <expressions
       xsi:type="github.com:Parameter"
-      name="Thomsen"/>
+      name="Name1"/>
   <expressions
       xsi:type="github.com:Parameter"
-      name="Thomsen2"
-      type="BooleanType"/>
+      name="Name2"/>
 </github.com:Root>

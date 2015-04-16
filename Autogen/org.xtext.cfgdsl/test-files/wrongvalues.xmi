@@ -6,10 +6,15 @@
     xmlns:github.com="https://github.com/markthor/Configurator"
     xsi:schemaLocation="https://github.com/markthor/Configurator ../../MDDP%20Configurator/model/Configurator.ecore">
   <expressions
-      xsi:type="github.com:Parameter"
-      name="Thomsen"/>
+      xsi:type="github.com:StringValue"
+      name="StringValue"
+      type="IntegerType"/>
   <expressions
-      xsi:type="github.com:Parameter"
-      name="Thomsen2"
+      xsi:type="github.com:IntegerValue"
+      name="IntegerValue"
       type="BooleanType"/>
+  <expressions
+      xsi:type="github.com:BooleanValue"
+      name="BooleanValue"
+      type="StringType"/>
 </github.com:Root>

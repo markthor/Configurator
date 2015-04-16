@@ -5,11 +5,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:github.com="https://github.com/markthor/Configurator"
     xsi:schemaLocation="https://github.com/markthor/Configurator ../../MDDP%20Configurator/model/Configurator.ecore">
+  <configurators>
+    <assignments/>
+  </configurators>
   <expressions
-      xsi:type="github.com:Parameter"
-      name="Thomsen"/>
+      xsi:type="github.com:BinaryConstraint"
+      name="Name"/>
   <expressions
-      xsi:type="github.com:Parameter"
-      name="Thomsen2"
-      type="BooleanType"/>
+      xsi:type="github.com:StringValue"
+      name="Name"/>
+  <expressions
+      xsi:type="github.com:UnaryConstraint"
+      name="Name"/>
+  <expressions
+      xsi:type="github.com:Set"
+      name="Name"/>
 </github.com:Root>

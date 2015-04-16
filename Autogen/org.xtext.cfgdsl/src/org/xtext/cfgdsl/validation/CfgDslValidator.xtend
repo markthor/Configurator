@@ -159,7 +159,7 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 				return TypeEnum.INTEGER_TYPE
 			if(element instanceof BooleanValue)
 				return TypeEnum.BOOLEAN_TYPE
-		}		
+		}
 		if(it instanceof UnaryConstraint) {
 			return TypeEnum.BOOLEAN_TYPE
 		}
