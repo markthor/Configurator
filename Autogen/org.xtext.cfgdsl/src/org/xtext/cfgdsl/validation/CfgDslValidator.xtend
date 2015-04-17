@@ -48,7 +48,6 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 		true
 	}
 
-	@Check
 	def static dispatch boolean constraint(NamedElement it) {
 		name != null && !name.isEmpty
 	}
@@ -75,6 +74,11 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	
 	def static dispatch boolean constraint(Value it) {
 		constraintValueType(it)
+	}
+	
+	def static dispatch boolean constraint(Parameter it){
+		val ne = it as NamedElement
+		constraint(ne) && type != null
 	}
 	
 	/**
@@ -133,6 +137,13 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	 */
 	def static boolean constraintOneAssignmentPerParameter(Configuration it) {
 		println("Starting constraintOneAssignmentPerParameter")
+		
+		val list = assignments.filter()[a | a.parameter == null || a.value == null]
+		if(list.size != 0)
+			return false;
+		
+		if(!assignments.fold(true)[b, a | val p = a.parameter as Parameter; b && constraint(p)])
+			return false;
 		
 		val uniqueParams = assignments.fold(new HashSet<String>) [ s, a | s.add(a.parameter.name); s ]
 		val b = uniqueParams.size == assignments.size

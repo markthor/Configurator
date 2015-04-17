@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.InputOutput;
@@ -45,7 +44,6 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
     return true;
   }
   
-  @Check
   protected static boolean _constraint(final NamedElement it) {
     boolean _and = false;
     String _name = it.getName();
@@ -91,6 +89,24 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   
   protected static boolean _constraint(final Value it) {
     return CfgDslValidator.constraintValueType(it);
+  }
+  
+  protected static boolean _constraint(final Parameter it) {
+    boolean _xblockexpression = false;
+    {
+      final NamedElement ne = ((NamedElement) it);
+      boolean _and = false;
+      boolean _constraint = CfgDslValidator.constraint(ne);
+      if (!_constraint) {
+        _and = false;
+      } else {
+        TypeEnum _type = it.getType();
+        boolean _notEquals = (!Objects.equal(_type, null));
+        _and = _notEquals;
+      }
+      _xblockexpression = _and;
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -279,8 +295,54 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
     {
       InputOutput.<String>println("Starting constraintOneAssignmentPerParameter");
       EList<Assignment> _assignments = it.getAssignments();
+      final Function1<Assignment, Boolean> _function = new Function1<Assignment, Boolean>() {
+        public Boolean apply(final Assignment a) {
+          boolean _or = false;
+          Parameter _parameter = a.getParameter();
+          boolean _equals = Objects.equal(_parameter, null);
+          if (_equals) {
+            _or = true;
+          } else {
+            Value _value = a.getValue();
+            boolean _equals_1 = Objects.equal(_value, null);
+            _or = _equals_1;
+          }
+          return Boolean.valueOf(_or);
+        }
+      };
+      final Iterable<Assignment> list = IterableExtensions.<Assignment>filter(_assignments, _function);
+      int _size = IterableExtensions.size(list);
+      boolean _notEquals = (_size != 0);
+      if (_notEquals) {
+        return false;
+      }
+      EList<Assignment> _assignments_1 = it.getAssignments();
+      final Function2<Boolean, Assignment, Boolean> _function_1 = new Function2<Boolean, Assignment, Boolean>() {
+        public Boolean apply(final Boolean b, final Assignment a) {
+          boolean _xblockexpression = false;
+          {
+            Parameter _parameter = a.getParameter();
+            final Parameter p = ((Parameter) _parameter);
+            boolean _and = false;
+            if (!(b).booleanValue()) {
+              _and = false;
+            } else {
+              boolean _constraint = CfgDslValidator.constraint(p);
+              _and = _constraint;
+            }
+            _xblockexpression = _and;
+          }
+          return Boolean.valueOf(_xblockexpression);
+        }
+      };
+      Boolean _fold = IterableExtensions.<Assignment, Boolean>fold(_assignments_1, Boolean.valueOf(true), _function_1);
+      boolean _not = (!(_fold).booleanValue());
+      if (_not) {
+        return false;
+      }
+      EList<Assignment> _assignments_2 = it.getAssignments();
       HashSet<String> _hashSet = new HashSet<String>();
-      final Function2<HashSet<String>, Assignment, HashSet<String>> _function = new Function2<HashSet<String>, Assignment, HashSet<String>>() {
+      final Function2<HashSet<String>, Assignment, HashSet<String>> _function_2 = new Function2<HashSet<String>, Assignment, HashSet<String>>() {
         public HashSet<String> apply(final HashSet<String> s, final Assignment a) {
           HashSet<String> _xblockexpression = null;
           {
@@ -292,11 +354,11 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
           return _xblockexpression;
         }
       };
-      final HashSet<String> uniqueParams = IterableExtensions.<Assignment, HashSet<String>>fold(_assignments, _hashSet, _function);
-      int _size = uniqueParams.size();
-      EList<Assignment> _assignments_1 = it.getAssignments();
-      int _size_1 = _assignments_1.size();
-      final boolean b = (_size == _size_1);
+      final HashSet<String> uniqueParams = IterableExtensions.<Assignment, HashSet<String>>fold(_assignments_2, _hashSet, _function_2);
+      int _size_1 = uniqueParams.size();
+      EList<Assignment> _assignments_3 = it.getAssignments();
+      int _size_2 = _assignments_3.size();
+      final boolean b = (_size_1 == _size_2);
       InputOutput.<String>println(("Done with constraintOneAssignmentPerParameter. b=" + Boolean.valueOf(b)));
       _xblockexpression = b;
     }
@@ -562,6 +624,8 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   public static boolean constraint(final EObject it) {
     if (it instanceof BinaryConstraint) {
       return _constraint((BinaryConstraint)it);
+    } else if (it instanceof Parameter) {
+      return _constraint((Parameter)it);
     } else if (it instanceof Set) {
       return _constraint((Set)it);
     } else if (it instanceof UnaryConstraint) {
