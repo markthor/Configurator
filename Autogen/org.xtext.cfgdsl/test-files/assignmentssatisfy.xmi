@@ -18,13 +18,16 @@
   </configurators>
   <expressions
       xsi:type="github.com:Parameter"
-      name="IntegerParam"/>
+      name="IntegerParam"
+      type="IntegerType"/>
   <expressions
       xsi:type="github.com:Parameter"
-      name="StringParam"/>
+      name="StringParam"
+      type="StringType"/>
   <expressions
       xsi:type="github.com:Parameter"
-      name="BooleanParam"/>
+      name="BooleanParam"
+      type="BooleanType"/>
   <expressions
       xsi:type="github.com:IntegerValue"
       name="IntegerValue"/>

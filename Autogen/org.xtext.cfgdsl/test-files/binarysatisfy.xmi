@@ -8,6 +8,7 @@
   <expressions
       xsi:type="github.com:BinaryConstraint"
       name="less"
+      operator="less"
       left="//@expressions.8"
       right="//@expressions.9"/>
   <expressions
@@ -54,17 +55,23 @@
       right="//@expressions.12"/>
   <expressions
       xsi:type="github.com:IntegerValue"
-      name="IntegerValue1"/>
+      name="IntegerValue1"
+	  type="IntegerType"
+	  value="0"/>
   <expressions
       xsi:type="github.com:IntegerValue"
       name="IntegerValue2"
+      type="IntegerType"
       value="1"/>
   <expressions
       xsi:type="github.com:BooleanValue"
-      name="BooleanValue1"/>
+      name="BooleanValue1"
+      type="BooleanType"
+      value="false"/>
   <expressions
       xsi:type="github.com:BooleanValue"
       name="BooleanValue2"
+      type="BooleanType"
       value="true"/>
   <expressions
       xsi:type="github.com:Set"

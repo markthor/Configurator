@@ -7,8 +7,10 @@
     xsi:schemaLocation="https://github.com/markthor/Configurator ../../MDDP%20Configurator/model/Configurator.ecore">
   <expressions
       xsi:type="github.com:Parameter"
-      name="Name1"/>
+      name="Name1"
+      type="IntegerType"/>
   <expressions
       xsi:type="github.com:Parameter"
-      name="Name1"/>
+      name="Name1"
+	  type="IntegerType"/>
 </github.com:Root>

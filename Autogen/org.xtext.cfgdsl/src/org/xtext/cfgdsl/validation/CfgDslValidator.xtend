@@ -15,13 +15,13 @@ import ConfiguratorPackage.Set
 import ConfiguratorPackage.StringValue
 import ConfiguratorPackage.TypeEnum
 import ConfiguratorPackage.UnaryConstraint
-import ConfiguratorPackage.Value
 import java.util.HashMap
 import java.util.HashSet
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.validation.Check
 
 import static ConfiguratorPackage.BinaryOperators.*
+import ConfiguratorPackage.Value
 
 //import org.eclipse.xtext.validation.Check
 
@@ -57,12 +57,32 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 		constraintAssignment(it) && constraintParams(it)
 	}
 	
+	def static dispatch boolean constraint(Configuration it) {
+		constraintOneAssignmentPerParameter(it)
+	}
+	
+	def static dispatch boolean constraint(Set it) {
+		constraintSet(it)
+	}
+	
+	def static dispatch boolean constraint(BinaryConstraint it) {
+		constraintBinary(it)
+	}
+	
+	def static dispatch boolean constraint(UnaryConstraint it) {
+		constraintUnary(it)
+	}
+	
+	def static dispatch boolean constraint(Value it) {
+		constraintValueType(it)
+	}
+	
 	/**
 	 * Check for unique parameters in the root element.
 	 * If the sizes of the params and unique params are not the same
 	 * we have duplicate entries
 	 */
-	def static dispatch boolean constraintParams(Root it){
+	def static boolean constraintParams(Root it){
 		val params = expressions.filter[e | e instanceof Parameter]
 		val uniqueParams = params.fold(new HashSet<String>) [ s, e | s.add(e.name); s ]
 		params.size == uniqueParams.size
@@ -71,26 +91,42 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	/**
 	 * Check that the value of each assignment has the correct type according to the assigned type of the parameter
 	 */
-	def static dispatch boolean constraintAssignment(Root it){
+	def static boolean constraintAssignment(Root it){
 		val params = expressions.filter[e | e instanceof Parameter]
 		val typeMap = params.fold(new HashMap<String, TypeEnum>)[ m, e | val p = e as Parameter; m.put(p.name, p.type); m]
 		configurators.forall [c | 
-			val strings	 = c.assignments.filter [ a | a instanceof StringValue ]
-			val integers = c.assignments.filter [ a | a instanceof IntegerValue ]
-			val booleans = c.assignments.filter [ a | a instanceof BooleanValue ]
+			val strings	 = c.assignments.filter [ a | a.value instanceof StringValue ]
+			val integers = c.assignments.filter [ a | a.value instanceof IntegerValue ]
+			val booleans = c.assignments.filter [ a | a.value instanceof BooleanValue ]
 			
-			val stringsSatisfied  = strings.fold(true)  [ b, a | b && typeMap.get(a.parameter.name).equals(TypeEnum.STRING_TYPE) ]
-			val integersSatisfied = integers.fold(true) [ b, a | b && typeMap.get(a.parameter.name).equals(TypeEnum.INTEGER_TYPE) ]
-			val booleansSatisfied = booleans.fold(true) [ b, a | b && typeMap.get(a.parameter.name).equals(TypeEnum.BOOLEAN_TYPE) ]
+			val stringsSatisfied  = strings.fold(true)  [ b, a | b && TypeEnum.STRING_TYPE.equals(typeMap.get(a.parameter.name)) ]
+			val integersSatisfied = integers.fold(true) [ b, a | b && TypeEnum.INTEGER_TYPE.equals(typeMap.get(a.parameter.name)) ]
+			val booleansSatisfied = booleans.fold(true) [ b, a | b && TypeEnum.BOOLEAN_TYPE.equals(typeMap.get(a.parameter.name)) ]
 			
 			stringsSatisfied && integersSatisfied && booleansSatisfied
 		]
 	}
 	
+	def static boolean constraintValueType(Value it) {
+		if(it instanceof IntegerValue) {
+			val i = it as IntegerValue
+			TypeEnum.INTEGER_TYPE.equals(i.type)
+		}
+		if(it instanceof StringValue) {
+			val i = it as StringValue
+			TypeEnum.STRING_TYPE.equals(i.type)
+		}
+		if(it instanceof BooleanValue) {
+			val i = it as BooleanValue
+			TypeEnum.BOOLEAN_TYPE.equals(i.type)
+		}
+		false
+	}
+	
 	/**
 	 * Check for unique parameters in a given configuration
 	 */
-	def static dispatch boolean constraintOneAssignmentPerParameter(Configuration it) {
+	def static boolean constraintOneAssignmentPerParameter(Configuration it) {
 		val uniqueParams = assignments.fold(new HashSet<String>) [ s, a | s.add(a.parameter.name); s ]
 		uniqueParams.size == assignments.size
 	}
@@ -98,7 +134,7 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	/**
 	 * Check that the types of BinaryConstraints are good
 	 */
-	def static dispatch boolean constraintBinary(BinaryConstraint it) {
+	def static boolean constraintBinary(BinaryConstraint it) {
 		switch (operator) {
 		case ADDITION:
 			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
@@ -168,14 +204,14 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	/**
 	 * Make sure that the expression of a unary constraint is a BooleanValue
 	 */
-	def static dispatch boolean constraintUnary(UnaryConstraint it) {
+	def static boolean constraintUnary(UnaryConstraint it) {
 		valueResolver(expression).equals(TypeEnum.BOOLEAN_TYPE)
 	}
 	
 	/**
 	 * Check that a set is not empty and all values have the same type
 	 */
-	def static dispatch boolean constraintSet(Set it) {
-		it.has.size > 0 && it.has.fold(true) [ b, v | b && v.class == it.has.get(0).class ]
+	def static boolean constraintSet(Set it) {
+		has.size > 0 && has.fold(true) [ b, v | b && v.class == has.get(0).class ]
 	}
 }

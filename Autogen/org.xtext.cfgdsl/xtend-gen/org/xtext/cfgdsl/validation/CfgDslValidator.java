@@ -72,12 +72,32 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
     return _and;
   }
   
+  protected static boolean _constraint(final Configuration it) {
+    return CfgDslValidator.constraintOneAssignmentPerParameter(it);
+  }
+  
+  protected static boolean _constraint(final Set it) {
+    return CfgDslValidator.constraintSet(it);
+  }
+  
+  protected static boolean _constraint(final BinaryConstraint it) {
+    return CfgDslValidator.constraintBinary(it);
+  }
+  
+  protected static boolean _constraint(final UnaryConstraint it) {
+    return CfgDslValidator.constraintUnary(it);
+  }
+  
+  protected static boolean _constraint(final Value it) {
+    return CfgDslValidator.constraintValueType(it);
+  }
+  
   /**
    * Check for unique parameters in the root element.
    * If the sizes of the params and unique params are not the same
    * we have duplicate entries
    */
-  protected static boolean _constraintParams(final Root it) {
+  public static boolean constraintParams(final Root it) {
     boolean _xblockexpression = false;
     {
       EList<Expression> _expressions = it.getExpressions();
@@ -110,7 +130,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   /**
    * Check that the value of each assignment has the correct type according to the assigned type of the parameter
    */
-  protected static boolean _constraintAssignment(final Root it) {
+  public static boolean constraintAssignment(final Root it) {
     boolean _xblockexpression = false;
     {
       EList<Expression> _expressions = it.getExpressions();
@@ -143,21 +163,24 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
             EList<Assignment> _assignments = c.getAssignments();
             final Function1<Assignment, Boolean> _function = new Function1<Assignment, Boolean>() {
               public Boolean apply(final Assignment a) {
-                return Boolean.valueOf((a instanceof StringValue));
+                Value _value = a.getValue();
+                return Boolean.valueOf((_value instanceof StringValue));
               }
             };
             final Iterable<Assignment> strings = IterableExtensions.<Assignment>filter(_assignments, _function);
             EList<Assignment> _assignments_1 = c.getAssignments();
             final Function1<Assignment, Boolean> _function_1 = new Function1<Assignment, Boolean>() {
               public Boolean apply(final Assignment a) {
-                return Boolean.valueOf((a instanceof IntegerValue));
+                Value _value = a.getValue();
+                return Boolean.valueOf((_value instanceof IntegerValue));
               }
             };
             final Iterable<Assignment> integers = IterableExtensions.<Assignment>filter(_assignments_1, _function_1);
             EList<Assignment> _assignments_2 = c.getAssignments();
             final Function1<Assignment, Boolean> _function_2 = new Function1<Assignment, Boolean>() {
               public Boolean apply(final Assignment a) {
-                return Boolean.valueOf((a instanceof BooleanValue));
+                Value _value = a.getValue();
+                return Boolean.valueOf((_value instanceof BooleanValue));
               }
             };
             final Iterable<Assignment> booleans = IterableExtensions.<Assignment>filter(_assignments_2, _function_2);
@@ -170,7 +193,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
                   Parameter _parameter = a.getParameter();
                   String _name = _parameter.getName();
                   TypeEnum _get = typeMap.get(_name);
-                  boolean _equals = _get.equals(TypeEnum.STRING_TYPE);
+                  boolean _equals = TypeEnum.STRING_TYPE.equals(_get);
                   _and = _equals;
                 }
                 return Boolean.valueOf(_and);
@@ -186,7 +209,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
                   Parameter _parameter = a.getParameter();
                   String _name = _parameter.getName();
                   TypeEnum _get = typeMap.get(_name);
-                  boolean _equals = _get.equals(TypeEnum.INTEGER_TYPE);
+                  boolean _equals = TypeEnum.INTEGER_TYPE.equals(_get);
                   _and = _equals;
                 }
                 return Boolean.valueOf(_and);
@@ -202,7 +225,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
                   Parameter _parameter = a.getParameter();
                   String _name = _parameter.getName();
                   TypeEnum _get = typeMap.get(_name);
-                  boolean _equals = _get.equals(TypeEnum.BOOLEAN_TYPE);
+                  boolean _equals = TypeEnum.BOOLEAN_TYPE.equals(_get);
                   _and = _equals;
                 }
                 return Boolean.valueOf(_and);
@@ -225,10 +248,33 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
     return _xblockexpression;
   }
   
+  public static boolean constraintValueType(final Value it) {
+    boolean _xblockexpression = false;
+    {
+      if ((it instanceof IntegerValue)) {
+        final IntegerValue i = ((IntegerValue) it);
+        TypeEnum _type = i.getType();
+        TypeEnum.INTEGER_TYPE.equals(_type);
+      }
+      if ((it instanceof StringValue)) {
+        final StringValue i_1 = ((StringValue) it);
+        TypeEnum _type_1 = i_1.getType();
+        TypeEnum.STRING_TYPE.equals(_type_1);
+      }
+      if ((it instanceof BooleanValue)) {
+        final BooleanValue i_2 = ((BooleanValue) it);
+        TypeEnum _type_2 = i_2.getType();
+        TypeEnum.BOOLEAN_TYPE.equals(_type_2);
+      }
+      _xblockexpression = false;
+    }
+    return _xblockexpression;
+  }
+  
   /**
    * Check for unique parameters in a given configuration
    */
-  protected static boolean _constraintOneAssignmentPerParameter(final Configuration it) {
+  public static boolean constraintOneAssignmentPerParameter(final Configuration it) {
     boolean _xblockexpression = false;
     {
       EList<Assignment> _assignments = it.getAssignments();
@@ -257,7 +303,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   /**
    * Check that the types of BinaryConstraints are good
    */
-  protected static boolean _constraintBinary(final BinaryConstraint it) {
+  public static boolean constraintBinary(final BinaryConstraint it) {
     boolean _switchResult = false;
     BinaryOperators _operator = it.getOperator();
     if (_operator != null) {
@@ -436,7 +482,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   /**
    * Make sure that the expression of a unary constraint is a BooleanValue
    */
-  protected static boolean _constraintUnary(final UnaryConstraint it) {
+  public static boolean constraintUnary(final UnaryConstraint it) {
     Expression _expression = it.getExpression();
     TypeEnum _valueResolver = CfgDslValidator.valueResolver(_expression);
     return _valueResolver.equals(TypeEnum.BOOLEAN_TYPE);
@@ -445,7 +491,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   /**
    * Check that a set is not empty and all values have the same type
    */
-  protected static boolean _constraintSet(final Set it) {
+  public static boolean constraintSet(final Set it) {
     boolean _and = false;
     EList<Value> _has = it.getHas();
     int _size = _has.size();
@@ -477,7 +523,17 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   }
   
   public static boolean constraint(final EObject it) {
-    if (it instanceof NamedElement) {
+    if (it instanceof BinaryConstraint) {
+      return _constraint((BinaryConstraint)it);
+    } else if (it instanceof Set) {
+      return _constraint((Set)it);
+    } else if (it instanceof UnaryConstraint) {
+      return _constraint((UnaryConstraint)it);
+    } else if (it instanceof Value) {
+      return _constraint((Value)it);
+    } else if (it instanceof Configuration) {
+      return _constraint((Configuration)it);
+    } else if (it instanceof NamedElement) {
       return _constraint((NamedElement)it);
     } else if (it instanceof Root) {
       return _constraint((Root)it);
@@ -487,29 +543,5 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(it).toString());
     }
-  }
-  
-  public static boolean constraintParams(final Root it) {
-    return _constraintParams(it);
-  }
-  
-  public static boolean constraintAssignment(final Root it) {
-    return _constraintAssignment(it);
-  }
-  
-  public static boolean constraintOneAssignmentPerParameter(final Configuration it) {
-    return _constraintOneAssignmentPerParameter(it);
-  }
-  
-  public static boolean constraintBinary(final BinaryConstraint it) {
-    return _constraintBinary(it);
-  }
-  
-  public static boolean constraintUnary(final UnaryConstraint it) {
-    return _constraintUnary(it);
-  }
-  
-  public static boolean constraintSet(final Set it) {
-    return _constraintSet(it);
   }
 }

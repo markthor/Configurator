@@ -18,7 +18,8 @@
   </configurators>
   <expressions
       xsi:type="github.com:Parameter"
-      name="IntegerParam"/>
+      name="IntegerParam"
+      type="IntegerType"/>
   <expressions
       xsi:type="github.com:Parameter"
       name="StringParam"

@@ -22,7 +22,7 @@ public class Main {
     _extensionToFactoryMap.put("xmi", _xMIResourceFactoryImpl);
     ConfiguratorPackagePackage.eINSTANCE.eClass();
     final ResourceSetImpl resourceSet = new ResourceSetImpl();
-    final URI uri = URI.createURI("test-files/wrongvalues.xmi");
+    final URI uri = URI.createURI("test-files/binarysatisfy.xmi");
     final Resource resource = resourceSet.getResource(uri, true);
     TreeIterator<EObject> _allProperContents = EcoreUtil.<EObject>getAllProperContents(resource, false);
     final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
