@@ -27,5 +27,6 @@
       expression="//@expressions.5"/>
   <expressions
       xsi:type="github.com:BooleanValue"
+      type="BooleanType"
       name="BooleanValue"/>
 </github.com:Root>

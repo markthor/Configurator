@@ -249,26 +249,22 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   }
   
   public static boolean constraintValueType(final Value it) {
-    boolean _xblockexpression = false;
-    {
-      if ((it instanceof IntegerValue)) {
-        final IntegerValue i = ((IntegerValue) it);
-        TypeEnum _type = i.getType();
-        TypeEnum.INTEGER_TYPE.equals(_type);
-      }
-      if ((it instanceof StringValue)) {
-        final StringValue i_1 = ((StringValue) it);
-        TypeEnum _type_1 = i_1.getType();
-        TypeEnum.STRING_TYPE.equals(_type_1);
-      }
-      if ((it instanceof BooleanValue)) {
-        final BooleanValue i_2 = ((BooleanValue) it);
-        TypeEnum _type_2 = i_2.getType();
-        TypeEnum.BOOLEAN_TYPE.equals(_type_2);
-      }
-      _xblockexpression = false;
+    if ((it instanceof IntegerValue)) {
+      final IntegerValue i = ((IntegerValue) it);
+      TypeEnum _type = i.getType();
+      return TypeEnum.INTEGER_TYPE.equals(_type);
     }
-    return _xblockexpression;
+    if ((it instanceof StringValue)) {
+      final StringValue i_1 = ((StringValue) it);
+      TypeEnum _type_1 = i_1.getType();
+      return TypeEnum.STRING_TYPE.equals(_type_1);
+    }
+    if ((it instanceof BooleanValue)) {
+      final BooleanValue i_2 = ((BooleanValue) it);
+      TypeEnum _type_2 = i_2.getType();
+      return TypeEnum.BOOLEAN_TYPE.equals(_type_2);
+    }
+    return false;
   }
   
   /**

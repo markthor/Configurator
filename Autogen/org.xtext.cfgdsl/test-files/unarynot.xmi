@@ -15,9 +15,11 @@
       expression="//@expressions.3"/>
   <expressions
       xsi:type="github.com:IntegerValue"
+      type="IntegerType"
       name="IntegerValue"/>
   <expressions
       xsi:type="github.com:StringValue"
       name="StringValue"
+      type="StringType"
       value="&quot;test&quot;"/>
 </github.com:Root>

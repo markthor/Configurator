@@ -110,17 +110,17 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	def static boolean constraintValueType(Value it) {
 		if(it instanceof IntegerValue) {
 			val i = it as IntegerValue
-			TypeEnum.INTEGER_TYPE.equals(i.type)
+			return TypeEnum.INTEGER_TYPE.equals(i.type)
 		}
 		if(it instanceof StringValue) {
 			val i = it as StringValue
-			TypeEnum.STRING_TYPE.equals(i.type)
+			return TypeEnum.STRING_TYPE.equals(i.type)
 		}
 		if(it instanceof BooleanValue) {
 			val i = it as BooleanValue
-			TypeEnum.BOOLEAN_TYPE.equals(i.type)
+			return TypeEnum.BOOLEAN_TYPE.equals(i.type)
 		}
-		false
+		return false
 	}
 	
 	/**
