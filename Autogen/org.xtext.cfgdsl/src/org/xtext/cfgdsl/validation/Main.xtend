@@ -25,7 +25,7 @@ class Main {
 		val resourceSet = new ResourceSetImpl
 		// change file name here to try other files
 		
-		//val uri = URI::createURI("test-files/wrongvalues.xmi") //correct
+		val uri = URI::createURI("test-files/wrongvalues.xmi") //correct
 		
 		//val uri = URI::createURI("test-files/parameternamesatisfy.xmi") //correct
 //		val uri = URI::createURI("test-files/parameternamenot.xmi") //correct
@@ -41,7 +41,7 @@ class Main {
 //		  val uri = URI::createURI("test-files/unarynot.xmi")	//error!
 		//val uri = URI::createURI("test-files/recurseunarysatisfy.xmi")	//correct
 		
-		val uri = URI::createURI("test-files/recurseunarybinarysatisfy.xmi")	//correct
+		//val uri = URI::createURI("test-files/recurseunarybinarysatisfy.xmi")	//correct
 		
 //		val uri = URI::createURI("test-files/unsetproperties.xmi") //error
 		

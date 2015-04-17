@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.xtext.cfgdsl.validation.AbstractCfgDslValidator;
 
@@ -100,6 +101,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   public static boolean constraintParams(final Root it) {
     boolean _xblockexpression = false;
     {
+      InputOutput.<String>println("Starting constraintParams");
       EList<Expression> _expressions = it.getExpressions();
       final Function1<Expression, Boolean> _function = new Function1<Expression, Boolean>() {
         public Boolean apply(final Expression e) {
@@ -122,7 +124,9 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
       final HashSet<String> uniqueParams = IterableExtensions.<Expression, HashSet<String>>fold(params, _hashSet, _function_1);
       int _size = IterableExtensions.size(params);
       int _size_1 = uniqueParams.size();
-      _xblockexpression = (_size == _size_1);
+      final boolean b = (_size == _size_1);
+      InputOutput.<String>println(("Done with constraintParams. b=" + Boolean.valueOf(b)));
+      _xblockexpression = b;
     }
     return _xblockexpression;
   }
@@ -273,6 +277,7 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   public static boolean constraintOneAssignmentPerParameter(final Configuration it) {
     boolean _xblockexpression = false;
     {
+      InputOutput.<String>println("Starting constraintOneAssignmentPerParameter");
       EList<Assignment> _assignments = it.getAssignments();
       HashSet<String> _hashSet = new HashSet<String>();
       final Function2<HashSet<String>, Assignment, HashSet<String>> _function = new Function2<HashSet<String>, Assignment, HashSet<String>>() {
@@ -291,7 +296,9 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
       int _size = uniqueParams.size();
       EList<Assignment> _assignments_1 = it.getAssignments();
       int _size_1 = _assignments_1.size();
-      _xblockexpression = (_size == _size_1);
+      final boolean b = (_size == _size_1);
+      InputOutput.<String>println(("Done with constraintOneAssignmentPerParameter. b=" + Boolean.valueOf(b)));
+      _xblockexpression = b;
     }
     return _xblockexpression;
   }
@@ -300,222 +307,256 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
    * Check that the types of BinaryConstraints are good
    */
   public static boolean constraintBinary(final BinaryConstraint it) {
-    boolean _switchResult = false;
-    BinaryOperators _operator = it.getOperator();
-    if (_operator != null) {
-      switch (_operator) {
-        case ADDITION:
-          boolean _and = false;
-          Expression _left = it.getLeft();
-          TypeEnum _valueResolver = CfgDslValidator.valueResolver(_left);
-          boolean _equals = _valueResolver.equals(TypeEnum.INTEGER_TYPE);
-          if (!_equals) {
-            _and = false;
-          } else {
-            Expression _right = it.getRight();
-            TypeEnum _valueResolver_1 = CfgDslValidator.valueResolver(_right);
-            boolean _equals_1 = _valueResolver_1.equals(TypeEnum.INTEGER_TYPE);
-            _and = _equals_1;
-          }
-          _switchResult = _and;
-          break;
-        case AND:
-          boolean _and_1 = false;
-          Expression _left_1 = it.getLeft();
-          TypeEnum _valueResolver_2 = CfgDslValidator.valueResolver(_left_1);
-          boolean _equals_2 = _valueResolver_2.equals(TypeEnum.BOOLEAN_TYPE);
-          if (!_equals_2) {
-            _and_1 = false;
-          } else {
-            Expression _right_1 = it.getRight();
-            TypeEnum _valueResolver_3 = CfgDslValidator.valueResolver(_right_1);
-            boolean _equals_3 = _valueResolver_3.equals(TypeEnum.BOOLEAN_TYPE);
-            _and_1 = _equals_3;
-          }
-          _switchResult = _and_1;
-          break;
-        case EQUAL:
-          Expression _left_2 = it.getLeft();
-          TypeEnum _valueResolver_4 = CfgDslValidator.valueResolver(_left_2);
-          Expression _right_2 = it.getRight();
-          TypeEnum _valueResolver_5 = CfgDslValidator.valueResolver(_right_2);
-          _switchResult = _valueResolver_4.equals(_valueResolver_5);
-          break;
-        case GREATER:
-          boolean _and_2 = false;
-          Expression _left_3 = it.getLeft();
-          TypeEnum _valueResolver_6 = CfgDslValidator.valueResolver(_left_3);
-          boolean _equals_4 = _valueResolver_6.equals(TypeEnum.INTEGER_TYPE);
-          if (!_equals_4) {
-            _and_2 = false;
-          } else {
-            Expression _right_3 = it.getRight();
-            TypeEnum _valueResolver_7 = CfgDslValidator.valueResolver(_right_3);
-            boolean _equals_5 = _valueResolver_7.equals(TypeEnum.INTEGER_TYPE);
-            _and_2 = _equals_5;
-          }
-          _switchResult = _and_2;
-          break;
-        case LESS:
-          boolean _and_3 = false;
-          Expression _left_4 = it.getLeft();
-          TypeEnum _valueResolver_8 = CfgDslValidator.valueResolver(_left_4);
-          boolean _equals_6 = _valueResolver_8.equals(TypeEnum.INTEGER_TYPE);
-          if (!_equals_6) {
-            _and_3 = false;
-          } else {
-            Expression _right_4 = it.getRight();
-            TypeEnum _valueResolver_9 = CfgDslValidator.valueResolver(_right_4);
-            boolean _equals_7 = _valueResolver_9.equals(TypeEnum.INTEGER_TYPE);
-            _and_3 = _equals_7;
-          }
-          _switchResult = _and_3;
-          break;
-        case MULTIPLICATION:
-          boolean _and_4 = false;
-          Expression _left_5 = it.getLeft();
-          TypeEnum _valueResolver_10 = CfgDslValidator.valueResolver(_left_5);
-          boolean _equals_8 = _valueResolver_10.equals(TypeEnum.INTEGER_TYPE);
-          if (!_equals_8) {
-            _and_4 = false;
-          } else {
-            Expression _right_5 = it.getRight();
-            TypeEnum _valueResolver_11 = CfgDslValidator.valueResolver(_right_5);
-            boolean _equals_9 = _valueResolver_11.equals(TypeEnum.INTEGER_TYPE);
-            _and_4 = _equals_9;
-          }
-          _switchResult = _and_4;
-          break;
-        case OR:
-          boolean _and_5 = false;
-          Expression _left_6 = it.getLeft();
-          TypeEnum _valueResolver_12 = CfgDslValidator.valueResolver(_left_6);
-          boolean _equals_10 = _valueResolver_12.equals(TypeEnum.BOOLEAN_TYPE);
-          if (!_equals_10) {
-            _and_5 = false;
-          } else {
-            Expression _right_6 = it.getRight();
-            TypeEnum _valueResolver_13 = CfgDslValidator.valueResolver(_right_6);
-            boolean _equals_11 = _valueResolver_13.equals(TypeEnum.BOOLEAN_TYPE);
-            _and_5 = _equals_11;
-          }
-          _switchResult = _and_5;
-          break;
-        case SUBSET:
-          Expression _left_7 = it.getLeft();
-          TypeEnum _valueResolver_14 = CfgDslValidator.valueResolver(_left_7);
-          Expression _right_7 = it.getRight();
-          TypeEnum _valueResolver_15 = CfgDslValidator.valueResolver(_right_7);
-          _switchResult = _valueResolver_14.equals(_valueResolver_15);
-          break;
-        default:
-          _switchResult = false;
-          break;
+    boolean _xblockexpression = false;
+    {
+      InputOutput.<String>println("Starting constraintBinary");
+      boolean b = false;
+      BinaryOperators _operator = it.getOperator();
+      if (_operator != null) {
+        switch (_operator) {
+          case ADDITION:
+            boolean _and = false;
+            Expression _left = it.getLeft();
+            TypeEnum _valueResolver = CfgDslValidator.valueResolver(_left);
+            boolean _equals = _valueResolver.equals(TypeEnum.INTEGER_TYPE);
+            if (!_equals) {
+              _and = false;
+            } else {
+              Expression _right = it.getRight();
+              TypeEnum _valueResolver_1 = CfgDslValidator.valueResolver(_right);
+              boolean _equals_1 = _valueResolver_1.equals(TypeEnum.INTEGER_TYPE);
+              _and = _equals_1;
+            }
+            b = _and;
+            break;
+          case AND:
+            boolean _and_1 = false;
+            Expression _left_1 = it.getLeft();
+            TypeEnum _valueResolver_2 = CfgDslValidator.valueResolver(_left_1);
+            boolean _equals_2 = _valueResolver_2.equals(TypeEnum.BOOLEAN_TYPE);
+            if (!_equals_2) {
+              _and_1 = false;
+            } else {
+              Expression _right_1 = it.getRight();
+              TypeEnum _valueResolver_3 = CfgDslValidator.valueResolver(_right_1);
+              boolean _equals_3 = _valueResolver_3.equals(TypeEnum.BOOLEAN_TYPE);
+              _and_1 = _equals_3;
+            }
+            b = _and_1;
+            break;
+          case EQUAL:
+            Expression _left_2 = it.getLeft();
+            TypeEnum _valueResolver_4 = CfgDslValidator.valueResolver(_left_2);
+            Expression _right_2 = it.getRight();
+            TypeEnum _valueResolver_5 = CfgDslValidator.valueResolver(_right_2);
+            boolean _equals_4 = _valueResolver_4.equals(_valueResolver_5);
+            b = _equals_4;
+            break;
+          case GREATER:
+            boolean _and_2 = false;
+            Expression _left_3 = it.getLeft();
+            TypeEnum _valueResolver_6 = CfgDslValidator.valueResolver(_left_3);
+            boolean _equals_5 = _valueResolver_6.equals(TypeEnum.INTEGER_TYPE);
+            if (!_equals_5) {
+              _and_2 = false;
+            } else {
+              Expression _right_3 = it.getRight();
+              TypeEnum _valueResolver_7 = CfgDslValidator.valueResolver(_right_3);
+              boolean _equals_6 = _valueResolver_7.equals(TypeEnum.INTEGER_TYPE);
+              _and_2 = _equals_6;
+            }
+            b = _and_2;
+            break;
+          case LESS:
+            boolean _and_3 = false;
+            Expression _left_4 = it.getLeft();
+            TypeEnum _valueResolver_8 = CfgDslValidator.valueResolver(_left_4);
+            boolean _equals_7 = _valueResolver_8.equals(TypeEnum.INTEGER_TYPE);
+            if (!_equals_7) {
+              _and_3 = false;
+            } else {
+              Expression _right_4 = it.getRight();
+              TypeEnum _valueResolver_9 = CfgDslValidator.valueResolver(_right_4);
+              boolean _equals_8 = _valueResolver_9.equals(TypeEnum.INTEGER_TYPE);
+              _and_3 = _equals_8;
+            }
+            b = _and_3;
+            break;
+          case MULTIPLICATION:
+            boolean _and_4 = false;
+            Expression _left_5 = it.getLeft();
+            TypeEnum _valueResolver_10 = CfgDslValidator.valueResolver(_left_5);
+            boolean _equals_9 = _valueResolver_10.equals(TypeEnum.INTEGER_TYPE);
+            if (!_equals_9) {
+              _and_4 = false;
+            } else {
+              Expression _right_5 = it.getRight();
+              TypeEnum _valueResolver_11 = CfgDslValidator.valueResolver(_right_5);
+              boolean _equals_10 = _valueResolver_11.equals(TypeEnum.INTEGER_TYPE);
+              _and_4 = _equals_10;
+            }
+            b = _and_4;
+            break;
+          case OR:
+            boolean _and_5 = false;
+            Expression _left_6 = it.getLeft();
+            TypeEnum _valueResolver_12 = CfgDslValidator.valueResolver(_left_6);
+            boolean _equals_11 = _valueResolver_12.equals(TypeEnum.BOOLEAN_TYPE);
+            if (!_equals_11) {
+              _and_5 = false;
+            } else {
+              Expression _right_6 = it.getRight();
+              TypeEnum _valueResolver_13 = CfgDslValidator.valueResolver(_right_6);
+              boolean _equals_12 = _valueResolver_13.equals(TypeEnum.BOOLEAN_TYPE);
+              _and_5 = _equals_12;
+            }
+            b = _and_5;
+            break;
+          case SUBSET:
+            Expression _left_7 = it.getLeft();
+            TypeEnum _valueResolver_14 = CfgDslValidator.valueResolver(_left_7);
+            Expression _right_7 = it.getRight();
+            TypeEnum _valueResolver_15 = CfgDslValidator.valueResolver(_right_7);
+            boolean _equals_13 = _valueResolver_14.equals(_valueResolver_15);
+            b = _equals_13;
+            break;
+          default:
+            break;
+        }
       }
-    } else {
-      _switchResult = false;
+      InputOutput.<String>println(("Done with constraintBinary. b=" + Boolean.valueOf(b)));
+      _xblockexpression = b;
     }
-    return _switchResult;
+    return _xblockexpression;
   }
   
   /**
    * Recursively resolve the type of an Expression
    */
   public static TypeEnum valueResolver(final Expression it) {
-    if ((it instanceof StringValue)) {
-      return TypeEnum.STRING_TYPE;
-    }
-    if ((it instanceof IntegerValue)) {
-      return TypeEnum.INTEGER_TYPE;
-    }
-    if ((it instanceof BooleanValue)) {
-      return TypeEnum.BOOLEAN_TYPE;
-    }
-    if ((it instanceof BinaryConstraint)) {
-      BinaryOperators _operator = ((BinaryConstraint) it).getOperator();
-      if (_operator != null) {
-        switch (_operator) {
-          case ADDITION:
-            return TypeEnum.INTEGER_TYPE;
-          case AND:
-            return TypeEnum.BOOLEAN_TYPE;
-          case EQUAL:
-            return TypeEnum.BOOLEAN_TYPE;
-          case GREATER:
-            return TypeEnum.BOOLEAN_TYPE;
-          case LESS:
-            return TypeEnum.BOOLEAN_TYPE;
-          case MULTIPLICATION:
-            return TypeEnum.INTEGER_TYPE;
-          case OR:
-            return TypeEnum.BOOLEAN_TYPE;
-          case SUBSET:
-            return TypeEnum.BOOLEAN_TYPE;
-          default:
-            break;
+    TypeEnum _xblockexpression = null;
+    {
+      InputOutput.<String>println("Starting valueResolver");
+      TypeEnum t = TypeEnum.STRING_TYPE;
+      if ((it instanceof StringValue)) {
+        t = TypeEnum.STRING_TYPE;
+      }
+      if ((it instanceof IntegerValue)) {
+        t = TypeEnum.INTEGER_TYPE;
+      }
+      if ((it instanceof BooleanValue)) {
+        t = TypeEnum.BOOLEAN_TYPE;
+      }
+      if ((it instanceof BinaryConstraint)) {
+        BinaryOperators _operator = ((BinaryConstraint) it).getOperator();
+        if (_operator != null) {
+          switch (_operator) {
+            case ADDITION:
+              t = TypeEnum.INTEGER_TYPE;
+              break;
+            case AND:
+              t = TypeEnum.BOOLEAN_TYPE;
+              break;
+            case EQUAL:
+              t = TypeEnum.BOOLEAN_TYPE;
+              break;
+            case GREATER:
+              t = TypeEnum.BOOLEAN_TYPE;
+              break;
+            case LESS:
+              t = TypeEnum.BOOLEAN_TYPE;
+              break;
+            case MULTIPLICATION:
+              t = TypeEnum.INTEGER_TYPE;
+              break;
+            case OR:
+              t = TypeEnum.BOOLEAN_TYPE;
+              break;
+            case SUBSET:
+              t = TypeEnum.BOOLEAN_TYPE;
+              break;
+            default:
+              break;
+          }
         }
       }
-    }
-    if ((it instanceof Set)) {
-      EList<Value> _has = ((Set) it).getHas();
-      final Value element = _has.get(0);
-      if ((element instanceof StringValue)) {
-        return TypeEnum.STRING_TYPE;
+      if ((it instanceof Set)) {
+        EList<Value> _has = ((Set) it).getHas();
+        final Value element = _has.get(0);
+        if ((element instanceof StringValue)) {
+          t = TypeEnum.STRING_TYPE;
+        }
+        if ((element instanceof IntegerValue)) {
+          t = TypeEnum.INTEGER_TYPE;
+        }
+        if ((element instanceof BooleanValue)) {
+          t = TypeEnum.BOOLEAN_TYPE;
+        }
       }
-      if ((element instanceof IntegerValue)) {
-        return TypeEnum.INTEGER_TYPE;
+      if ((it instanceof UnaryConstraint)) {
+        t = TypeEnum.BOOLEAN_TYPE;
       }
-      if ((element instanceof BooleanValue)) {
-        return TypeEnum.BOOLEAN_TYPE;
-      }
+      InputOutput.<String>println(("Done with valueResolver. t=" + t));
+      _xblockexpression = t;
     }
-    if ((it instanceof UnaryConstraint)) {
-      return TypeEnum.BOOLEAN_TYPE;
-    }
-    return null;
+    return _xblockexpression;
   }
   
   /**
    * Make sure that the expression of a unary constraint is a BooleanValue
    */
   public static boolean constraintUnary(final UnaryConstraint it) {
-    Expression _expression = it.getExpression();
-    TypeEnum _valueResolver = CfgDslValidator.valueResolver(_expression);
-    return _valueResolver.equals(TypeEnum.BOOLEAN_TYPE);
+    boolean _xblockexpression = false;
+    {
+      InputOutput.<String>println("Starting constraintUnary");
+      Expression _expression = it.getExpression();
+      TypeEnum _valueResolver = CfgDslValidator.valueResolver(_expression);
+      final boolean b = _valueResolver.equals(TypeEnum.BOOLEAN_TYPE);
+      InputOutput.<String>println(("Done with constraintUnary. b=" + Boolean.valueOf(b)));
+      _xblockexpression = b;
+    }
+    return _xblockexpression;
   }
   
   /**
    * Check that a set is not empty and all values have the same type
    */
   public static boolean constraintSet(final Set it) {
-    boolean _and = false;
-    EList<Value> _has = it.getHas();
-    int _size = _has.size();
-    boolean _greaterThan = (_size > 0);
-    if (!_greaterThan) {
-      _and = false;
-    } else {
-      EList<Value> _has_1 = it.getHas();
-      final Function2<Boolean, Value, Boolean> _function = new Function2<Boolean, Value, Boolean>() {
-        public Boolean apply(final Boolean b, final Value v) {
-          boolean _and = false;
-          if (!(b).booleanValue()) {
-            _and = false;
-          } else {
-            Class<? extends Value> _class = v.getClass();
-            EList<Value> _has = it.getHas();
-            Value _get = _has.get(0);
-            Class<? extends Value> _class_1 = _get.getClass();
-            boolean _equals = Objects.equal(_class, _class_1);
-            _and = _equals;
+    boolean _xblockexpression = false;
+    {
+      InputOutput.<String>println("Starting constraintSet");
+      boolean _and = false;
+      EList<Value> _has = it.getHas();
+      int _size = _has.size();
+      boolean _greaterThan = (_size > 0);
+      if (!_greaterThan) {
+        _and = false;
+      } else {
+        EList<Value> _has_1 = it.getHas();
+        final Function2<Boolean, Value, Boolean> _function = new Function2<Boolean, Value, Boolean>() {
+          public Boolean apply(final Boolean b, final Value v) {
+            boolean _and = false;
+            if (!(b).booleanValue()) {
+              _and = false;
+            } else {
+              Class<? extends Value> _class = v.getClass();
+              EList<Value> _has = it.getHas();
+              Value _get = _has.get(0);
+              Class<? extends Value> _class_1 = _get.getClass();
+              boolean _equals = Objects.equal(_class, _class_1);
+              _and = _equals;
+            }
+            return Boolean.valueOf(_and);
           }
-          return Boolean.valueOf(_and);
-        }
-      };
-      Boolean _fold = IterableExtensions.<Value, Boolean>fold(_has_1, Boolean.valueOf(true), _function);
-      _and = (_fold).booleanValue();
+        };
+        Boolean _fold = IterableExtensions.<Value, Boolean>fold(_has_1, Boolean.valueOf(true), _function);
+        _and = (_fold).booleanValue();
+      }
+      final boolean b = _and;
+      InputOutput.<String>println(("Done with constraintSet. b=" + Boolean.valueOf(b)));
+      _xblockexpression = b;
     }
-    return _and;
+    return _xblockexpression;
   }
   
   public static boolean constraint(final EObject it) {

@@ -15,13 +15,13 @@ import ConfiguratorPackage.Set
 import ConfiguratorPackage.StringValue
 import ConfiguratorPackage.TypeEnum
 import ConfiguratorPackage.UnaryConstraint
+import ConfiguratorPackage.Value
 import java.util.HashMap
 import java.util.HashSet
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.validation.Check
 
 import static ConfiguratorPackage.BinaryOperators.*
-import ConfiguratorPackage.Value
 
 //import org.eclipse.xtext.validation.Check
 
@@ -83,9 +83,14 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	 * we have duplicate entries
 	 */
 	def static boolean constraintParams(Root it){
+		println("Starting constraintParams")
+		
 		val params = expressions.filter[e | e instanceof Parameter]
 		val uniqueParams = params.fold(new HashSet<String>) [ s, e | s.add(e.name); s ]
-		params.size == uniqueParams.size
+		val b = params.size == uniqueParams.size
+		
+		println("Done with constraintParams. b="+b)
+		b
 	}
 	
 	/**
@@ -127,91 +132,110 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	 * Check for unique parameters in a given configuration
 	 */
 	def static boolean constraintOneAssignmentPerParameter(Configuration it) {
+		println("Starting constraintOneAssignmentPerParameter")
+		
 		val uniqueParams = assignments.fold(new HashSet<String>) [ s, a | s.add(a.parameter.name); s ]
-		uniqueParams.size == assignments.size
+		val b = uniqueParams.size == assignments.size
+		
+		println("Done with constraintOneAssignmentPerParameter. b="+b)
+		b
 	}
 	
 	/**
 	 * Check that the types of BinaryConstraints are good
 	 */
 	def static boolean constraintBinary(BinaryConstraint it) {
+		println("Starting constraintBinary")
+		var b = false
 		switch (operator) {
 		case ADDITION:
-			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
+			b = valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
 		case AND:
-			valueResolver(left).equals(TypeEnum.BOOLEAN_TYPE) && valueResolver(right).equals(TypeEnum.BOOLEAN_TYPE)
+			b = valueResolver(left).equals(TypeEnum.BOOLEAN_TYPE) && valueResolver(right).equals(TypeEnum.BOOLEAN_TYPE)
 		case EQUAL:
-			valueResolver(left).equals(valueResolver(right))
+			b = valueResolver(left).equals(valueResolver(right))
 		case GREATER:
-			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
+			b = valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
 		case LESS:
-			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
+			b = valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
 		case MULTIPLICATION:
-			valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
+			b = valueResolver(left).equals(TypeEnum.INTEGER_TYPE) && valueResolver(right).equals(TypeEnum.INTEGER_TYPE)
 		case OR:
-			valueResolver(left).equals(TypeEnum.BOOLEAN_TYPE) && valueResolver(right).equals(TypeEnum.BOOLEAN_TYPE)
+			b = valueResolver(left).equals(TypeEnum.BOOLEAN_TYPE) && valueResolver(right).equals(TypeEnum.BOOLEAN_TYPE)
 		case SUBSET:
-			valueResolver(left).equals(valueResolver(right))
-		default:
-			false
+			b = valueResolver(left).equals(valueResolver(right))
 		}
+		println("Done with constraintBinary. b="+b)
+		b
 	}
 	
 	/**
 	 * Recursively resolve the type of an Expression
 	 */
 	def static TypeEnum valueResolver(Expression it) {
+		println("Starting valueResolver")
+		var t = TypeEnum.STRING_TYPE;
+		
 		if(it instanceof StringValue)
-			return TypeEnum.STRING_TYPE
+			t = TypeEnum.STRING_TYPE
 		if(it instanceof IntegerValue)
-			return TypeEnum.INTEGER_TYPE
+			t = TypeEnum.INTEGER_TYPE
 		if(it instanceof BooleanValue)
-			return TypeEnum.BOOLEAN_TYPE
+			t = TypeEnum.BOOLEAN_TYPE
 		if(it instanceof BinaryConstraint) {
 			switch ((it as BinaryConstraint).operator) {
 			case ADDITION:
-				return TypeEnum.INTEGER_TYPE
+				t = TypeEnum.INTEGER_TYPE
 			case AND:
-				return TypeEnum.BOOLEAN_TYPE
+				t = TypeEnum.BOOLEAN_TYPE
 			case EQUAL:
-				return TypeEnum.BOOLEAN_TYPE
+				t = TypeEnum.BOOLEAN_TYPE
 			case GREATER:
-				return TypeEnum.BOOLEAN_TYPE
+				t = TypeEnum.BOOLEAN_TYPE
 			case LESS:
-				return TypeEnum.BOOLEAN_TYPE
+				t = TypeEnum.BOOLEAN_TYPE
 			case MULTIPLICATION:
-				return TypeEnum.INTEGER_TYPE
+				t = TypeEnum.INTEGER_TYPE
 			case OR:
-				return TypeEnum.BOOLEAN_TYPE
+				t = TypeEnum.BOOLEAN_TYPE
 			case SUBSET:
-				return TypeEnum.BOOLEAN_TYPE
+				t = TypeEnum.BOOLEAN_TYPE
 			}
 		}
 		if(it instanceof Set) {
 			val element = (it as Set).has.get(0)
 			if(element instanceof StringValue)
-				return TypeEnum.STRING_TYPE
+				t = TypeEnum.STRING_TYPE
 			if(element instanceof IntegerValue)
-				return TypeEnum.INTEGER_TYPE
+				t = TypeEnum.INTEGER_TYPE
 			if(element instanceof BooleanValue)
-				return TypeEnum.BOOLEAN_TYPE
+				t = TypeEnum.BOOLEAN_TYPE
 		}
 		if(it instanceof UnaryConstraint) {
-			return TypeEnum.BOOLEAN_TYPE
+			t = TypeEnum.BOOLEAN_TYPE
 		}
+		
+		println("Done with valueResolver. t="+t)
+		t
 	}
 	
 	/**
 	 * Make sure that the expression of a unary constraint is a BooleanValue
 	 */
 	def static boolean constraintUnary(UnaryConstraint it) {
-		valueResolver(expression).equals(TypeEnum.BOOLEAN_TYPE)
+		println("Starting constraintUnary")
+		val b = valueResolver(expression).equals(TypeEnum.BOOLEAN_TYPE)
+		println("Done with constraintUnary. b="+b)
+		b
 	}
 	
 	/**
 	 * Check that a set is not empty and all values have the same type
 	 */
 	def static boolean constraintSet(Set it) {
-		has.size > 0 && has.fold(true) [ b, v | b && v.class == has.get(0).class ]
+		println("Starting constraintSet")
+		val b = has.size > 0 && has.fold(true) [ b, v | b && v.class == has.get(0).class ]
+		println("Done with constraintSet. b="+b)
+		b
 	}
 }
