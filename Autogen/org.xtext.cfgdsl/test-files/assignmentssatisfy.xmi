@@ -30,12 +30,17 @@
       type="BooleanType"/>
   <expressions
       xsi:type="github.com:IntegerValue"
-      name="IntegerValue"/>
+      name="IntegerValue"
+      type="IntegerType"
+      value="0"/>
   <expressions
       xsi:type="github.com:StringValue"
       name="StringValue"
+      type="StringType"
       value="&quot;test&quot;"/>
   <expressions
       xsi:type="github.com:BooleanValue"
-      name="BooleanValue"/>
+      name="BooleanValue"
+      type="BooleanType"
+      value="false"/>
 </github.com:Root>
