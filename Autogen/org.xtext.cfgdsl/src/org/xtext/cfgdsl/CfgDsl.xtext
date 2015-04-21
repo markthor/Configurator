@@ -48,7 +48,8 @@ EBoolean returns ecore::EBoolean:
 	'true' | 'false';
 
 BinaryConstraint returns BinaryConstraint:
-	'bc' name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString];
+	'bc' name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString] | 
+	'bc' root=EBoolean name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString];
 
 Set returns Set:
 	'set' name=EString ('[' has+=[Value|EString] ( "," has+=[Value|EString])* ']' )?;
