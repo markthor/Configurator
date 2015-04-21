@@ -3,7 +3,13 @@
  */
 package org.xtext.cfgdsl.generator;
 
+import ConfiguratorPackage.BinaryConstraint;
+import ConfiguratorPackage.Expression;
+import ConfiguratorPackage.Root;
+import com.google.common.collect.Iterables;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 
@@ -14,6 +20,80 @@ import org.eclipse.xtext.generator.IGenerator;
  */
 @SuppressWarnings("all")
 public class CfgDslGenerator implements IGenerator {
+  public static CharSequence compileToJava(final Root it) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package cfgdsl;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("class Validator {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public boolean validate(List<Assignment> assignments) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("boolean valid = true;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("Map<String, Assignment> map = new HashMap<String, Assignment>();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("// Check the types of the assignments are well typed");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("for(Assignment a : assignments) {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("valid = valid && (a.getParameter().getType().equals(a.getValue().getType()));");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("map.put(a.getParameter().getName(), a);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("for(Expression expr : ");
+    EList<Expression> _expressions = it.getExpressions();
+    Iterable<BinaryConstraint> _filter = Iterables.<BinaryConstraint>filter(_expressions, BinaryConstraint.class);
+    _builder.append(_filter, "\t\t");
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t");
+    _builder.append("BinaryConstraint bc = (BinaryConstraint) expr;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("switch(bc.getOperator()) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("case less:");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public boolean ");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
   }
 }

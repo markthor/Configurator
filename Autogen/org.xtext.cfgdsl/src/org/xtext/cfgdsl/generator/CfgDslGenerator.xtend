@@ -3,9 +3,12 @@
  */
 package org.xtext.cfgdsl.generator
 
+import ConfiguratorPackage.BinaryConstraint
+import ConfiguratorPackage.Root
+import ConfiguratorPackage.UnaryConstraint
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
@@ -13,6 +16,36 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class CfgDslGenerator implements IGenerator {
+	
+	def static compileToJava(Root it) {
+		'''
+			package cfgdsl;
+
+			class Validator {
+				
+				public boolean validate(List<Assignment> assignments) {
+					boolean valid = true;
+					Map<String, Assignment> map = new HashMap<String, Assignment>();
+					
+					// Check the types of the assignments are well typed
+					for(Assignment a : assignments) {
+						valid = valid && (a.getParameter().getType().equals(a.getValue().getType()));
+						map.put(a.getParameter().getName(), a);
+					}
+					
+					for(Expression expr : «it.expressions.filter(typeof(BinaryConstraint))») {
+						BinaryConstraint bc = (BinaryConstraint) expr;
+						switch(bc.getOperator()) {
+							case less:
+								
+						}
+					}
+				}
+				
+				public boolean 
+			}
+  		'''
+	}
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
