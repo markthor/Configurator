@@ -129,26 +129,13 @@ public abstract class AbstractCfgDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString])
+	 *     (
+	 *         (name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString]) | 
+	 *         (root=EBoolean name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString])
+	 *     )
 	 */
 	protected void sequence_BinaryConstraint(EObject context, BinaryConstraint semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackagePackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackagePackage.Literals.NAMED_ELEMENT__NAME));
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackagePackage.Literals.BINARY_CONSTRAINT__OPERATOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackagePackage.Literals.BINARY_CONSTRAINT__OPERATOR));
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackagePackage.Literals.BINARY_CONSTRAINT__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackagePackage.Literals.BINARY_CONSTRAINT__LEFT));
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackagePackage.Literals.BINARY_CONSTRAINT__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackagePackage.Literals.BINARY_CONSTRAINT__RIGHT));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getBinaryConstraintAccess().getLeftExpressionEStringParserRuleCall_2_0_1(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_3_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getBinaryConstraintAccess().getRightExpressionEStringParserRuleCall_4_0_1(), semanticObject.getRight());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

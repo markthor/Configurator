@@ -5,7 +5,6 @@ package org.xtext.cfgdsl.generator
 
 import ConfiguratorPackage.BinaryConstraint
 import ConfiguratorPackage.Root
-import ConfiguratorPackage.UnaryConstraint
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -42,7 +41,25 @@ class CfgDslGenerator implements IGenerator {
 					}
 				}
 				
-				public boolean 
+				public boolean validate(BinaryConstraint bc, Map<String, Assignment> map) {
+					TypeEnum leftType = null, rightType = null;
+					
+					if(bc.getLeft() instanceof BinaryConstraint) {
+						if(validate((BinaryConstraint) bc.getLeft())) {
+							leftType = BooleanType;
+						} else {
+							return false;
+						}
+					} else {
+						leftType = bc.getLeft().getType();
+					}
+					
+					switch(bc.getOperator()) {
+						case less:
+							
+					}
+				}
+				
 			}
   		'''
 	}
