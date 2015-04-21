@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<github.com:Root
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:github.com="https://github.com/markthor/Configurator"
+    xsi:schemaLocation="https://github.com/markthor/Configurator ../../MDDP%20Configurator/model/Configurator.ecore">
+  <expressions
+      xsi:type="github.com:BinaryConstraint"
+      name="RootBC"
+      operator="and"
+      left="//@expressions.1"
+      right="//@expressions.1"
+      root="true"/>
+  <expressions
+      xsi:type="github.com:BinaryConstraint"
+      name="FiveEqualsFive"
+      operator="equal"
+      left="//@expressions.2"
+      right="//@expressions.3"
+      root="true"/>
+  <expressions
+      xsi:type="github.com:IntegerValue"
+      name="five1"
+      type="IntegerType"
+      value="5"/>
+  <expressions
+      xsi:type="github.com:IntegerValue"
+      name="five2"
+      type="IntegerType"
+      value="5"/>
+</github.com:Root>

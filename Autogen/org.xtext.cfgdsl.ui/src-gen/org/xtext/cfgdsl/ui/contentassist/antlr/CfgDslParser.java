@@ -41,6 +41,7 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 					put(grammarAccess.getEBooleanAccess().getAlternatives(), "rule__EBoolean__Alternatives");
+					put(grammarAccess.getBinaryConstraintAccess().getAlternatives(), "rule__BinaryConstraint__Alternatives");
 					put(grammarAccess.getTypeEnumAccess().getAlternatives(), "rule__TypeEnum__Alternatives");
 					put(grammarAccess.getBinaryOperatorsAccess().getAlternatives(), "rule__BinaryOperators__Alternatives");
 					put(grammarAccess.getRootAccess().getGroup(), "rule__Root__Group__0");
@@ -53,7 +54,8 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIntegerValueAccess().getGroup(), "rule__IntegerValue__Group__0");
 					put(grammarAccess.getBooleanValueAccess().getGroup(), "rule__BooleanValue__Group__0");
 					put(grammarAccess.getEIntAccess().getGroup(), "rule__EInt__Group__0");
-					put(grammarAccess.getBinaryConstraintAccess().getGroup(), "rule__BinaryConstraint__Group__0");
+					put(grammarAccess.getBinaryConstraintAccess().getGroup_0(), "rule__BinaryConstraint__Group_0__0");
+					put(grammarAccess.getBinaryConstraintAccess().getGroup_1(), "rule__BinaryConstraint__Group_1__0");
 					put(grammarAccess.getSetAccess().getGroup(), "rule__Set__Group__0");
 					put(grammarAccess.getSetAccess().getGroup_2(), "rule__Set__Group_2__0");
 					put(grammarAccess.getSetAccess().getGroup_2_2(), "rule__Set__Group_2_2__0");
@@ -75,10 +77,15 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBooleanValueAccess().getTypeAssignment_0(), "rule__BooleanValue__TypeAssignment_0");
 					put(grammarAccess.getBooleanValueAccess().getNameAssignment_1(), "rule__BooleanValue__NameAssignment_1");
 					put(grammarAccess.getBooleanValueAccess().getValueAssignment_3(), "rule__BooleanValue__ValueAssignment_3");
-					put(grammarAccess.getBinaryConstraintAccess().getNameAssignment_1(), "rule__BinaryConstraint__NameAssignment_1");
-					put(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_2(), "rule__BinaryConstraint__LeftAssignment_2");
-					put(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_3(), "rule__BinaryConstraint__OperatorAssignment_3");
-					put(grammarAccess.getBinaryConstraintAccess().getRightAssignment_4(), "rule__BinaryConstraint__RightAssignment_4");
+					put(grammarAccess.getBinaryConstraintAccess().getNameAssignment_0_1(), "rule__BinaryConstraint__NameAssignment_0_1");
+					put(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_0_2(), "rule__BinaryConstraint__LeftAssignment_0_2");
+					put(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_0_3(), "rule__BinaryConstraint__OperatorAssignment_0_3");
+					put(grammarAccess.getBinaryConstraintAccess().getRightAssignment_0_4(), "rule__BinaryConstraint__RightAssignment_0_4");
+					put(grammarAccess.getBinaryConstraintAccess().getRootAssignment_1_1(), "rule__BinaryConstraint__RootAssignment_1_1");
+					put(grammarAccess.getBinaryConstraintAccess().getNameAssignment_1_2(), "rule__BinaryConstraint__NameAssignment_1_2");
+					put(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_1_3(), "rule__BinaryConstraint__LeftAssignment_1_3");
+					put(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_1_4(), "rule__BinaryConstraint__OperatorAssignment_1_4");
+					put(grammarAccess.getBinaryConstraintAccess().getRightAssignment_1_5(), "rule__BinaryConstraint__RightAssignment_1_5");
 					put(grammarAccess.getSetAccess().getNameAssignment_1(), "rule__Set__NameAssignment_1");
 					put(grammarAccess.getSetAccess().getHasAssignment_2_1(), "rule__Set__HasAssignment_2_1");
 					put(grammarAccess.getSetAccess().getHasAssignment_2_2_1(), "rule__Set__HasAssignment_2_2_1");

@@ -382,9 +382,9 @@ ruleBinaryConstraint
     }
 	:
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getGroup()); }
-(rule__BinaryConstraint__Group__0)
-{ after(grammarAccess.getBinaryConstraintAccess().getGroup()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getAlternatives()); }
+(rule__BinaryConstraint__Alternatives)
+{ after(grammarAccess.getBinaryConstraintAccess().getAlternatives()); }
 )
 
 ;
@@ -603,6 +603,28 @@ rule__EBoolean__Alternatives
 	'false' 
 
 { after(grammarAccess.getEBooleanAccess().getFalseKeyword_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__Alternatives
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getGroup_0()); }
+(rule__BinaryConstraint__Group_0__0)
+{ after(grammarAccess.getBinaryConstraintAccess().getGroup_0()); }
+)
+
+    |(
+{ before(grammarAccess.getBinaryConstraintAccess().getGroup_1()); }
+(rule__BinaryConstraint__Group_1__0)
+{ after(grammarAccess.getBinaryConstraintAccess().getGroup_1()); }
 )
 
 ;
@@ -1682,29 +1704,29 @@ finally {
 
 
 
-rule__BinaryConstraint__Group__0
+rule__BinaryConstraint__Group_0__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__BinaryConstraint__Group__0__Impl
-	rule__BinaryConstraint__Group__1
+	rule__BinaryConstraint__Group_0__0__Impl
+	rule__BinaryConstraint__Group_0__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__Group__0__Impl
+rule__BinaryConstraint__Group_0__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getBcKeyword_0()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getBcKeyword_0_0()); }
 
 	'bc' 
 
-{ after(grammarAccess.getBinaryConstraintAccess().getBcKeyword_0()); }
+{ after(grammarAccess.getBinaryConstraintAccess().getBcKeyword_0_0()); }
 )
 
 ;
@@ -1713,27 +1735,27 @@ finally {
 }
 
 
-rule__BinaryConstraint__Group__1
+rule__BinaryConstraint__Group_0__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__BinaryConstraint__Group__1__Impl
-	rule__BinaryConstraint__Group__2
+	rule__BinaryConstraint__Group_0__1__Impl
+	rule__BinaryConstraint__Group_0__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__Group__1__Impl
+rule__BinaryConstraint__Group_0__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getNameAssignment_1()); }
-(rule__BinaryConstraint__NameAssignment_1)
-{ after(grammarAccess.getBinaryConstraintAccess().getNameAssignment_1()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getNameAssignment_0_1()); }
+(rule__BinaryConstraint__NameAssignment_0_1)
+{ after(grammarAccess.getBinaryConstraintAccess().getNameAssignment_0_1()); }
 )
 
 ;
@@ -1742,27 +1764,27 @@ finally {
 }
 
 
-rule__BinaryConstraint__Group__2
+rule__BinaryConstraint__Group_0__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__BinaryConstraint__Group__2__Impl
-	rule__BinaryConstraint__Group__3
+	rule__BinaryConstraint__Group_0__2__Impl
+	rule__BinaryConstraint__Group_0__3
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__Group__2__Impl
+rule__BinaryConstraint__Group_0__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_2()); }
-(rule__BinaryConstraint__LeftAssignment_2)
-{ after(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_2()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_0_2()); }
+(rule__BinaryConstraint__LeftAssignment_0_2)
+{ after(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_0_2()); }
 )
 
 ;
@@ -1771,27 +1793,27 @@ finally {
 }
 
 
-rule__BinaryConstraint__Group__3
+rule__BinaryConstraint__Group_0__3
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__BinaryConstraint__Group__3__Impl
-	rule__BinaryConstraint__Group__4
+	rule__BinaryConstraint__Group_0__3__Impl
+	rule__BinaryConstraint__Group_0__4
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__Group__3__Impl
+rule__BinaryConstraint__Group_0__3__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_3()); }
-(rule__BinaryConstraint__OperatorAssignment_3)
-{ after(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_3()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_0_3()); }
+(rule__BinaryConstraint__OperatorAssignment_0_3)
+{ after(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_0_3()); }
 )
 
 ;
@@ -1800,32 +1822,219 @@ finally {
 }
 
 
-rule__BinaryConstraint__Group__4
+rule__BinaryConstraint__Group_0__4
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__BinaryConstraint__Group__4__Impl
+	rule__BinaryConstraint__Group_0__4__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__Group__4__Impl
+rule__BinaryConstraint__Group_0__4__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getRightAssignment_4()); }
-(rule__BinaryConstraint__RightAssignment_4)
-{ after(grammarAccess.getBinaryConstraintAccess().getRightAssignment_4()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getRightAssignment_0_4()); }
+(rule__BinaryConstraint__RightAssignment_0_4)
+{ after(grammarAccess.getBinaryConstraintAccess().getRightAssignment_0_4()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+rule__BinaryConstraint__Group_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__BinaryConstraint__Group_1__0__Impl
+	rule__BinaryConstraint__Group_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__Group_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getBcKeyword_1_0()); }
+
+	'bc' 
+
+{ after(grammarAccess.getBinaryConstraintAccess().getBcKeyword_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__BinaryConstraint__Group_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__BinaryConstraint__Group_1__1__Impl
+	rule__BinaryConstraint__Group_1__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__Group_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getRootAssignment_1_1()); }
+(rule__BinaryConstraint__RootAssignment_1_1)
+{ after(grammarAccess.getBinaryConstraintAccess().getRootAssignment_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__BinaryConstraint__Group_1__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__BinaryConstraint__Group_1__2__Impl
+	rule__BinaryConstraint__Group_1__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__Group_1__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getNameAssignment_1_2()); }
+(rule__BinaryConstraint__NameAssignment_1_2)
+{ after(grammarAccess.getBinaryConstraintAccess().getNameAssignment_1_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__BinaryConstraint__Group_1__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__BinaryConstraint__Group_1__3__Impl
+	rule__BinaryConstraint__Group_1__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__Group_1__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_1_3()); }
+(rule__BinaryConstraint__LeftAssignment_1_3)
+{ after(grammarAccess.getBinaryConstraintAccess().getLeftAssignment_1_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__BinaryConstraint__Group_1__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__BinaryConstraint__Group_1__4__Impl
+	rule__BinaryConstraint__Group_1__5
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__Group_1__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_1_4()); }
+(rule__BinaryConstraint__OperatorAssignment_1_4)
+{ after(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_1_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__BinaryConstraint__Group_1__5
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__BinaryConstraint__Group_1__5__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__Group_1__5__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getRightAssignment_1_5()); }
+(rule__BinaryConstraint__RightAssignment_1_5)
+{ after(grammarAccess.getBinaryConstraintAccess().getRightAssignment_1_5()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -2511,14 +2720,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__NameAssignment_1
+rule__BinaryConstraint__NameAssignment_0_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_0()); }
-	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_0()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_0_1_0()); }
+	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_0_1_0()); }
 )
 
 ;
@@ -2526,18 +2735,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__LeftAssignment_2
+rule__BinaryConstraint__LeftAssignment_0_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_2_0()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_0_2_0()); }
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getLeftExpressionEStringParserRuleCall_2_0_1()); }
-	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getLeftExpressionEStringParserRuleCall_2_0_1()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getLeftExpressionEStringParserRuleCall_0_2_0_1()); }
+	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getLeftExpressionEStringParserRuleCall_0_2_0_1()); }
 )
-{ after(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_2_0()); }
+{ after(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_0_2_0()); }
 )
 
 ;
@@ -2545,14 +2754,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__OperatorAssignment_3
+rule__BinaryConstraint__OperatorAssignment_0_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_3_0()); }
-	ruleBinaryOperators{ after(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_3_0()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_0_3_0()); }
+	ruleBinaryOperators{ after(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_0_3_0()); }
 )
 
 ;
@@ -2560,18 +2769,101 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BinaryConstraint__RightAssignment_4
+rule__BinaryConstraint__RightAssignment_0_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_4_0()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_0_4_0()); }
 (
-{ before(grammarAccess.getBinaryConstraintAccess().getRightExpressionEStringParserRuleCall_4_0_1()); }
-	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getRightExpressionEStringParserRuleCall_4_0_1()); }
+{ before(grammarAccess.getBinaryConstraintAccess().getRightExpressionEStringParserRuleCall_0_4_0_1()); }
+	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getRightExpressionEStringParserRuleCall_0_4_0_1()); }
 )
-{ after(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_4_0()); }
+{ after(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_0_4_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__RootAssignment_1_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getRootEBooleanParserRuleCall_1_1_0()); }
+	ruleEBoolean{ after(grammarAccess.getBinaryConstraintAccess().getRootEBooleanParserRuleCall_1_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__NameAssignment_1_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_2_0()); }
+	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__LeftAssignment_1_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_1_3_0()); }
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getLeftExpressionEStringParserRuleCall_1_3_0_1()); }
+	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getLeftExpressionEStringParserRuleCall_1_3_0_1()); }
+)
+{ after(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_1_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__OperatorAssignment_1_4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_1_4_0()); }
+	ruleBinaryOperators{ after(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_1_4_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BinaryConstraint__RightAssignment_1_5
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_1_5_0()); }
+(
+{ before(grammarAccess.getBinaryConstraintAccess().getRightExpressionEStringParserRuleCall_1_5_0_1()); }
+	ruleEString{ after(grammarAccess.getBinaryConstraintAccess().getRightExpressionEStringParserRuleCall_1_5_0_1()); }
+)
+{ after(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_1_5_0()); }
 )
 
 ;

@@ -24,40 +24,40 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'cfg'", "','", "'assign'", "'to'", "'param'", "'='", "'-'", "'true'", "'false'", "'bc'", "'set'", "'['", "']'", "'uc'", "'int'", "'boolean'", "'string'", "'less'", "'greater'", "'equal'", "'multiplication'", "'addition'", "'subset'", "'and'", "'or'", "'not'"
     };
-    public static final int RULE_ID=5;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int EOF=-1;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__30=30;
-    public static final int T__19=19;
-    public static final int T__31=31;
     public static final int RULE_STRING=4;
-    public static final int T__32=32;
-    public static final int T__33=33;
-    public static final int T__16=16;
-    public static final int T__34=34;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int T__19=19;
     public static final int T__15=15;
-    public static final int T__35=35;
-    public static final int T__18=18;
-    public static final int T__36=36;
+    public static final int T__16=16;
     public static final int T__17=17;
-    public static final int T__12=12;
+    public static final int T__18=18;
     public static final int T__11=11;
-    public static final int T__14=14;
+    public static final int T__33=33;
+    public static final int T__12=12;
+    public static final int T__34=34;
     public static final int T__13=13;
-    public static final int RULE_INT=6;
+    public static final int T__35=35;
+    public static final int T__14=14;
+    public static final int T__36=36;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_ID=5;
     public static final int RULE_WS=9;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int RULE_INT=6;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -1856,147 +1856,355 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBinaryConstraint"
-    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:764:1: ruleBinaryConstraint returns [EObject current=null] : (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) ;
+    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:764:1: ruleBinaryConstraint returns [EObject current=null] : ( (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) | (otherlv_5= 'bc' ( (lv_root_6_0= ruleEBoolean ) ) ( (lv_name_7_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_9_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) ) ;
     public final EObject ruleBinaryConstraint() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token otherlv_5=null;
         AntlrDatatypeRuleToken lv_name_1_0 = null;
 
         Enumerator lv_operator_3_0 = null;
+
+        AntlrDatatypeRuleToken lv_root_6_0 = null;
+
+        AntlrDatatypeRuleToken lv_name_7_0 = null;
+
+        Enumerator lv_operator_9_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:767:28: ( (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:768:1: (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:767:28: ( ( (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) | (otherlv_5= 'bc' ( (lv_root_6_0= ruleEBoolean ) ) ( (lv_name_7_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_9_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:768:1: ( (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) | (otherlv_5= 'bc' ( (lv_root_6_0= ruleEBoolean ) ) ( (lv_name_7_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_9_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:768:1: (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:768:3: otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) )
-            {
-            otherlv_0=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleBinaryConstraint1703); 
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:768:1: ( (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) | (otherlv_5= 'bc' ( (lv_root_6_0= ruleEBoolean ) ) ( (lv_name_7_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_9_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) ) )
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-                	newLeafNode(otherlv_0, grammarAccess.getBinaryConstraintAccess().getBcKeyword_0());
-                
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:772:1: ( (lv_name_1_0= ruleEString ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:773:1: (lv_name_1_0= ruleEString )
-            {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:773:1: (lv_name_1_0= ruleEString )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:774:3: lv_name_1_0= ruleEString
-            {
-             
-            	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1724);
-            lv_name_1_0=ruleEString();
+            if ( (LA9_0==20) ) {
+                int LA9_1 = input.LA(2);
 
-            state._fsp--;
+                if ( ((LA9_1>=18 && LA9_1<=19)) ) {
+                    alt9=2;
+                }
+                else if ( ((LA9_1>=RULE_STRING && LA9_1<=RULE_ID)) ) {
+                    alt9=1;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 9, 1, input);
 
-
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
-            	        }
-                   		set(
-                   			current, 
-                   			"name",
-                    		lv_name_1_0, 
-                    		"EString");
-            	        afterParserOrEnumRuleCall();
-            	    
-
+                    throw nvae;
+                }
             }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 9, 0, input);
 
-
+                throw nvae;
             }
+            switch (alt9) {
+                case 1 :
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:768:2: (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:768:2: (otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:768:4: otherlv_0= 'bc' ( (lv_name_1_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_3_0= ruleBinaryOperators ) ) ( ( ruleEString ) )
+                    {
+                    otherlv_0=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleBinaryConstraint1704); 
 
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:790:2: ( ( ruleEString ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:791:1: ( ruleEString )
-            {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:791:1: ( ruleEString )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:792:3: ruleEString
-            {
+                        	newLeafNode(otherlv_0, grammarAccess.getBinaryConstraintAccess().getBcKeyword_0_0());
+                        
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:772:1: ( (lv_name_1_0= ruleEString ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:773:1: (lv_name_1_0= ruleEString )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:773:1: (lv_name_1_0= ruleEString )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:774:3: lv_name_1_0= ruleEString
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_0_1_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1725);
+                    lv_name_1_0=ruleEString();
 
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getBinaryConstraintRule());
-            	        }
-                    
-             
-            	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_2_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1747);
-            ruleEString();
-
-            state._fsp--;
-
-             
-            	        afterParserOrEnumRuleCall();
-            	    
-
-            }
-
-
-            }
-
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:805:2: ( (lv_operator_3_0= ruleBinaryOperators ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:806:1: (lv_operator_3_0= ruleBinaryOperators )
-            {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:806:1: (lv_operator_3_0= ruleBinaryOperators )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:807:3: lv_operator_3_0= ruleBinaryOperators
-            {
-             
-            	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_3_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleBinaryOperators_in_ruleBinaryConstraint1768);
-            lv_operator_3_0=ruleBinaryOperators();
-
-            state._fsp--;
+                    state._fsp--;
 
 
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
-            	        }
-                   		set(
-                   			current, 
-                   			"operator",
-                    		lv_operator_3_0, 
-                    		"BinaryOperators");
-            	        afterParserOrEnumRuleCall();
-            	    
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"name",
+                            		lv_name_1_0, 
+                            		"EString");
+                    	        afterParserOrEnumRuleCall();
+                    	    
 
-            }
-
-
-            }
-
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:823:2: ( ( ruleEString ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:824:1: ( ruleEString )
-            {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:824:1: ( ruleEString )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:825:3: ruleEString
-            {
-
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getBinaryConstraintRule());
-            	        }
-                    
-             
-            	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_4_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1791);
-            ruleEString();
-
-            state._fsp--;
-
-             
-            	        afterParserOrEnumRuleCall();
-            	    
-
-            }
+                    }
 
 
-            }
+                    }
 
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:790:2: ( ( ruleEString ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:791:1: ( ruleEString )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:791:1: ( ruleEString )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:792:3: ruleEString
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                            
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_0_2_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1748);
+                    ruleEString();
+
+                    state._fsp--;
+
+                     
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:805:2: ( (lv_operator_3_0= ruleBinaryOperators ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:806:1: (lv_operator_3_0= ruleBinaryOperators )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:806:1: (lv_operator_3_0= ruleBinaryOperators )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:807:3: lv_operator_3_0= ruleBinaryOperators
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_0_3_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleBinaryOperators_in_ruleBinaryConstraint1769);
+                    lv_operator_3_0=ruleBinaryOperators();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"operator",
+                            		lv_operator_3_0, 
+                            		"BinaryOperators");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:823:2: ( ( ruleEString ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:824:1: ( ruleEString )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:824:1: ( ruleEString )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:825:3: ruleEString
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                            
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_0_4_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1792);
+                    ruleEString();
+
+                    state._fsp--;
+
+                     
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:839:6: (otherlv_5= 'bc' ( (lv_root_6_0= ruleEBoolean ) ) ( (lv_name_7_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_9_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:839:6: (otherlv_5= 'bc' ( (lv_root_6_0= ruleEBoolean ) ) ( (lv_name_7_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_9_0= ruleBinaryOperators ) ) ( ( ruleEString ) ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:839:8: otherlv_5= 'bc' ( (lv_root_6_0= ruleEBoolean ) ) ( (lv_name_7_0= ruleEString ) ) ( ( ruleEString ) ) ( (lv_operator_9_0= ruleBinaryOperators ) ) ( ( ruleEString ) )
+                    {
+                    otherlv_5=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleBinaryConstraint1812); 
+
+                        	newLeafNode(otherlv_5, grammarAccess.getBinaryConstraintAccess().getBcKeyword_1_0());
+                        
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:843:1: ( (lv_root_6_0= ruleEBoolean ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:844:1: (lv_root_6_0= ruleEBoolean )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:844:1: (lv_root_6_0= ruleEBoolean )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:845:3: lv_root_6_0= ruleEBoolean
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getRootEBooleanParserRuleCall_1_1_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEBoolean_in_ruleBinaryConstraint1833);
+                    lv_root_6_0=ruleEBoolean();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"root",
+                            		lv_root_6_0, 
+                            		"EBoolean");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:861:2: ( (lv_name_7_0= ruleEString ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:862:1: (lv_name_7_0= ruleEString )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:862:1: (lv_name_7_0= ruleEString )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:863:3: lv_name_7_0= ruleEString
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_2_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1854);
+                    lv_name_7_0=ruleEString();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"name",
+                            		lv_name_7_0, 
+                            		"EString");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:879:2: ( ( ruleEString ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:880:1: ( ruleEString )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:880:1: ( ruleEString )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:881:3: ruleEString
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                            
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_1_3_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1877);
+                    ruleEString();
+
+                    state._fsp--;
+
+                     
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:894:2: ( (lv_operator_9_0= ruleBinaryOperators ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:895:1: (lv_operator_9_0= ruleBinaryOperators )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:895:1: (lv_operator_9_0= ruleBinaryOperators )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:896:3: lv_operator_9_0= ruleBinaryOperators
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_1_4_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleBinaryOperators_in_ruleBinaryConstraint1898);
+                    lv_operator_9_0=ruleBinaryOperators();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"operator",
+                            		lv_operator_9_0, 
+                            		"BinaryOperators");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:912:2: ( ( ruleEString ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:913:1: ( ruleEString )
+                    {
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:913:1: ( ruleEString )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:914:3: ruleEString
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getBinaryConstraintRule());
+                    	        }
+                            
+                     
+                    	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_1_5_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleBinaryConstraint1921);
+                    ruleEString();
+
+                    state._fsp--;
+
+                     
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -2018,7 +2226,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSet"
-    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:846:1: entryRuleSet returns [EObject current=null] : iv_ruleSet= ruleSet EOF ;
+    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:935:1: entryRuleSet returns [EObject current=null] : iv_ruleSet= ruleSet EOF ;
     public final EObject entryRuleSet() throws RecognitionException {
         EObject current = null;
 
@@ -2026,17 +2234,17 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:847:2: (iv_ruleSet= ruleSet EOF )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:848:2: iv_ruleSet= ruleSet EOF
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:936:2: (iv_ruleSet= ruleSet EOF )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:937:2: iv_ruleSet= ruleSet EOF
             {
              newCompositeNode(grammarAccess.getSetRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleSet_in_entryRuleSet1827);
+            pushFollow(FollowSets000.FOLLOW_ruleSet_in_entryRuleSet1958);
             iv_ruleSet=ruleSet();
 
             state._fsp--;
 
              current =iv_ruleSet; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleSet1837); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleSet1968); 
 
             }
 
@@ -2054,7 +2262,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSet"
-    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:855:1: ruleSet returns [EObject current=null] : (otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )? ) ;
+    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:944:1: ruleSet returns [EObject current=null] : (otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )? ) ;
     public final EObject ruleSet() throws RecognitionException {
         EObject current = null;
 
@@ -2068,26 +2276,26 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:858:28: ( (otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )? ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:859:1: (otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )? )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:947:28: ( (otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )? ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:948:1: (otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )? )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:859:1: (otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )? )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:859:3: otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )?
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:948:1: (otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )? )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:948:3: otherlv_0= 'set' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )?
             {
-            otherlv_0=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleSet1874); 
+            otherlv_0=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleSet2005); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSetAccess().getSetKeyword_0());
                 
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:863:1: ( (lv_name_1_0= ruleEString ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:864:1: (lv_name_1_0= ruleEString )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:952:1: ( (lv_name_1_0= ruleEString ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:953:1: (lv_name_1_0= ruleEString )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:864:1: (lv_name_1_0= ruleEString )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:865:3: lv_name_1_0= ruleEString
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:953:1: (lv_name_1_0= ruleEString )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:954:3: lv_name_1_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getSetAccess().getNameEStringParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSet1895);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSet2026);
             lv_name_1_0=ruleEString();
 
             state._fsp--;
@@ -2109,26 +2317,26 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:881:2: (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )?
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:970:2: (otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']' )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA10_0==22) ) {
-                alt10=1;
+            if ( (LA11_0==22) ) {
+                alt11=1;
             }
-            switch (alt10) {
+            switch (alt11) {
                 case 1 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:881:4: otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:970:4: otherlv_2= '[' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ']'
                     {
-                    otherlv_2=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleSet1908); 
+                    otherlv_2=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleSet2039); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getSetAccess().getLeftSquareBracketKeyword_2_0());
                         
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:885:1: ( ( ruleEString ) )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:886:1: ( ruleEString )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:974:1: ( ( ruleEString ) )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:975:1: ( ruleEString )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:886:1: ( ruleEString )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:887:3: ruleEString
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:975:1: ( ruleEString )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:976:3: ruleEString
                     {
 
                     			if (current==null) {
@@ -2138,7 +2346,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getSetAccess().getHasValueCrossReference_2_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSet1931);
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSet2062);
                     ruleEString();
 
                     state._fsp--;
@@ -2152,30 +2360,30 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:900:2: (otherlv_4= ',' ( ( ruleEString ) ) )*
-                    loop9:
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:989:2: (otherlv_4= ',' ( ( ruleEString ) ) )*
+                    loop10:
                     do {
-                        int alt9=2;
-                        int LA9_0 = input.LA(1);
+                        int alt10=2;
+                        int LA10_0 = input.LA(1);
 
-                        if ( (LA9_0==12) ) {
-                            alt9=1;
+                        if ( (LA10_0==12) ) {
+                            alt10=1;
                         }
 
 
-                        switch (alt9) {
+                        switch (alt10) {
                     	case 1 :
-                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:900:4: otherlv_4= ',' ( ( ruleEString ) )
+                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:989:4: otherlv_4= ',' ( ( ruleEString ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleSet1944); 
+                    	    otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleSet2075); 
 
                     	        	newLeafNode(otherlv_4, grammarAccess.getSetAccess().getCommaKeyword_2_2_0());
                     	        
-                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:904:1: ( ( ruleEString ) )
-                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:905:1: ( ruleEString )
+                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:993:1: ( ( ruleEString ) )
+                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:994:1: ( ruleEString )
                     	    {
-                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:905:1: ( ruleEString )
-                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:906:3: ruleEString
+                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:994:1: ( ruleEString )
+                    	    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:995:3: ruleEString
                     	    {
 
                     	    			if (current==null) {
@@ -2185,7 +2393,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     	     
                     	    	        newCompositeNode(grammarAccess.getSetAccess().getHasValueCrossReference_2_2_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSet1967);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSet2098);
                     	    ruleEString();
 
                     	    state._fsp--;
@@ -2204,11 +2412,11 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop9;
+                    	    break loop10;
                         }
                     } while (true);
 
-                    otherlv_6=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleSet1981); 
+                    otherlv_6=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleSet2112); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getSetAccess().getRightSquareBracketKeyword_2_3());
                         
@@ -2239,7 +2447,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUnaryConstraint"
-    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:931:1: entryRuleUnaryConstraint returns [EObject current=null] : iv_ruleUnaryConstraint= ruleUnaryConstraint EOF ;
+    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1020:1: entryRuleUnaryConstraint returns [EObject current=null] : iv_ruleUnaryConstraint= ruleUnaryConstraint EOF ;
     public final EObject entryRuleUnaryConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -2247,17 +2455,17 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:932:2: (iv_ruleUnaryConstraint= ruleUnaryConstraint EOF )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:933:2: iv_ruleUnaryConstraint= ruleUnaryConstraint EOF
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1021:2: (iv_ruleUnaryConstraint= ruleUnaryConstraint EOF )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1022:2: iv_ruleUnaryConstraint= ruleUnaryConstraint EOF
             {
              newCompositeNode(grammarAccess.getUnaryConstraintRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleUnaryConstraint_in_entryRuleUnaryConstraint2019);
+            pushFollow(FollowSets000.FOLLOW_ruleUnaryConstraint_in_entryRuleUnaryConstraint2150);
             iv_ruleUnaryConstraint=ruleUnaryConstraint();
 
             state._fsp--;
 
              current =iv_ruleUnaryConstraint; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleUnaryConstraint2029); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleUnaryConstraint2160); 
 
             }
 
@@ -2275,7 +2483,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryConstraint"
-    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:940:1: ruleUnaryConstraint returns [EObject current=null] : (otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) ) ) ;
+    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1029:1: ruleUnaryConstraint returns [EObject current=null] : (otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) ) ) ;
     public final EObject ruleUnaryConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -2288,26 +2496,26 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:943:28: ( (otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) ) ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:944:1: (otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1032:28: ( (otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) ) ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1033:1: (otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) ) )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:944:1: (otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:944:3: otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1033:1: (otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1033:3: otherlv_0= 'uc' ( (lv_name_1_0= ruleEString ) ) ( (lv_Operator_2_0= ruleUnaryOperators ) ) ( ( ruleEString ) )
             {
-            otherlv_0=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleUnaryConstraint2066); 
+            otherlv_0=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleUnaryConstraint2197); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getUnaryConstraintAccess().getUcKeyword_0());
                 
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:948:1: ( (lv_name_1_0= ruleEString ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:949:1: (lv_name_1_0= ruleEString )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1037:1: ( (lv_name_1_0= ruleEString ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1038:1: (lv_name_1_0= ruleEString )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:949:1: (lv_name_1_0= ruleEString )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:950:3: lv_name_1_0= ruleEString
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1038:1: (lv_name_1_0= ruleEString )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1039:3: lv_name_1_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getNameEStringParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleUnaryConstraint2087);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleUnaryConstraint2218);
             lv_name_1_0=ruleEString();
 
             state._fsp--;
@@ -2329,16 +2537,16 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:966:2: ( (lv_Operator_2_0= ruleUnaryOperators ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:967:1: (lv_Operator_2_0= ruleUnaryOperators )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1055:2: ( (lv_Operator_2_0= ruleUnaryOperators ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1056:1: (lv_Operator_2_0= ruleUnaryOperators )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:967:1: (lv_Operator_2_0= ruleUnaryOperators )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:968:3: lv_Operator_2_0= ruleUnaryOperators
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1056:1: (lv_Operator_2_0= ruleUnaryOperators )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1057:3: lv_Operator_2_0= ruleUnaryOperators
             {
              
             	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getOperatorUnaryOperatorsEnumRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleUnaryOperators_in_ruleUnaryConstraint2108);
+            pushFollow(FollowSets000.FOLLOW_ruleUnaryOperators_in_ruleUnaryConstraint2239);
             lv_Operator_2_0=ruleUnaryOperators();
 
             state._fsp--;
@@ -2360,11 +2568,11 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:984:2: ( ( ruleEString ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:985:1: ( ruleEString )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1073:2: ( ( ruleEString ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1074:1: ( ruleEString )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:985:1: ( ruleEString )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:986:3: ruleEString
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1074:1: ( ruleEString )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1075:3: ruleEString
             {
 
             			if (current==null) {
@@ -2374,7 +2582,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getExpressionExpressionCrossReference_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleUnaryConstraint2131);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleUnaryConstraint2262);
             ruleEString();
 
             state._fsp--;
@@ -2409,7 +2617,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypeEnum"
-    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1007:1: ruleTypeEnum returns [Enumerator current=null] : ( (enumLiteral_0= 'int' ) | (enumLiteral_1= 'boolean' ) | (enumLiteral_2= 'string' ) ) ;
+    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1096:1: ruleTypeEnum returns [Enumerator current=null] : ( (enumLiteral_0= 'int' ) | (enumLiteral_1= 'boolean' ) | (enumLiteral_2= 'string' ) ) ;
     public final Enumerator ruleTypeEnum() throws RecognitionException {
         Enumerator current = null;
 
@@ -2419,42 +2627,42 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1009:28: ( ( (enumLiteral_0= 'int' ) | (enumLiteral_1= 'boolean' ) | (enumLiteral_2= 'string' ) ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1010:1: ( (enumLiteral_0= 'int' ) | (enumLiteral_1= 'boolean' ) | (enumLiteral_2= 'string' ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1098:28: ( ( (enumLiteral_0= 'int' ) | (enumLiteral_1= 'boolean' ) | (enumLiteral_2= 'string' ) ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1099:1: ( (enumLiteral_0= 'int' ) | (enumLiteral_1= 'boolean' ) | (enumLiteral_2= 'string' ) )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1010:1: ( (enumLiteral_0= 'int' ) | (enumLiteral_1= 'boolean' ) | (enumLiteral_2= 'string' ) )
-            int alt11=3;
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1099:1: ( (enumLiteral_0= 'int' ) | (enumLiteral_1= 'boolean' ) | (enumLiteral_2= 'string' ) )
+            int alt12=3;
             switch ( input.LA(1) ) {
             case 25:
                 {
-                alt11=1;
+                alt12=1;
                 }
                 break;
             case 26:
                 {
-                alt11=2;
+                alt12=2;
                 }
                 break;
             case 27:
                 {
-                alt11=3;
+                alt12=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 11, 0, input);
+                    new NoViableAltException("", 12, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt11) {
+            switch (alt12) {
                 case 1 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1010:2: (enumLiteral_0= 'int' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1099:2: (enumLiteral_0= 'int' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1010:2: (enumLiteral_0= 'int' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1010:4: enumLiteral_0= 'int'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1099:2: (enumLiteral_0= 'int' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1099:4: enumLiteral_0= 'int'
                     {
-                    enumLiteral_0=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleTypeEnum2181); 
+                    enumLiteral_0=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleTypeEnum2312); 
 
                             current = grammarAccess.getTypeEnumAccess().getIntegerTypeEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getTypeEnumAccess().getIntegerTypeEnumLiteralDeclaration_0()); 
@@ -2466,12 +2674,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1016:6: (enumLiteral_1= 'boolean' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1105:6: (enumLiteral_1= 'boolean' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1016:6: (enumLiteral_1= 'boolean' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1016:8: enumLiteral_1= 'boolean'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1105:6: (enumLiteral_1= 'boolean' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1105:8: enumLiteral_1= 'boolean'
                     {
-                    enumLiteral_1=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleTypeEnum2198); 
+                    enumLiteral_1=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleTypeEnum2329); 
 
                             current = grammarAccess.getTypeEnumAccess().getBooleanTypeEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getTypeEnumAccess().getBooleanTypeEnumLiteralDeclaration_1()); 
@@ -2483,12 +2691,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1022:6: (enumLiteral_2= 'string' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1111:6: (enumLiteral_2= 'string' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1022:6: (enumLiteral_2= 'string' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1022:8: enumLiteral_2= 'string'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1111:6: (enumLiteral_2= 'string' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1111:8: enumLiteral_2= 'string'
                     {
-                    enumLiteral_2=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleTypeEnum2215); 
+                    enumLiteral_2=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleTypeEnum2346); 
 
                             current = grammarAccess.getTypeEnumAccess().getStringTypeEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getTypeEnumAccess().getStringTypeEnumLiteralDeclaration_2()); 
@@ -2520,7 +2728,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBinaryOperators"
-    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1032:1: ruleBinaryOperators returns [Enumerator current=null] : ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'equal' ) | (enumLiteral_3= 'multiplication' ) | (enumLiteral_4= 'addition' ) | (enumLiteral_5= 'subset' ) | (enumLiteral_6= 'and' ) | (enumLiteral_7= 'or' ) ) ;
+    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1121:1: ruleBinaryOperators returns [Enumerator current=null] : ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'equal' ) | (enumLiteral_3= 'multiplication' ) | (enumLiteral_4= 'addition' ) | (enumLiteral_5= 'subset' ) | (enumLiteral_6= 'and' ) | (enumLiteral_7= 'or' ) ) ;
     public final Enumerator ruleBinaryOperators() throws RecognitionException {
         Enumerator current = null;
 
@@ -2535,67 +2743,67 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1034:28: ( ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'equal' ) | (enumLiteral_3= 'multiplication' ) | (enumLiteral_4= 'addition' ) | (enumLiteral_5= 'subset' ) | (enumLiteral_6= 'and' ) | (enumLiteral_7= 'or' ) ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1035:1: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'equal' ) | (enumLiteral_3= 'multiplication' ) | (enumLiteral_4= 'addition' ) | (enumLiteral_5= 'subset' ) | (enumLiteral_6= 'and' ) | (enumLiteral_7= 'or' ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1123:28: ( ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'equal' ) | (enumLiteral_3= 'multiplication' ) | (enumLiteral_4= 'addition' ) | (enumLiteral_5= 'subset' ) | (enumLiteral_6= 'and' ) | (enumLiteral_7= 'or' ) ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1124:1: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'equal' ) | (enumLiteral_3= 'multiplication' ) | (enumLiteral_4= 'addition' ) | (enumLiteral_5= 'subset' ) | (enumLiteral_6= 'and' ) | (enumLiteral_7= 'or' ) )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1035:1: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'equal' ) | (enumLiteral_3= 'multiplication' ) | (enumLiteral_4= 'addition' ) | (enumLiteral_5= 'subset' ) | (enumLiteral_6= 'and' ) | (enumLiteral_7= 'or' ) )
-            int alt12=8;
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1124:1: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'equal' ) | (enumLiteral_3= 'multiplication' ) | (enumLiteral_4= 'addition' ) | (enumLiteral_5= 'subset' ) | (enumLiteral_6= 'and' ) | (enumLiteral_7= 'or' ) )
+            int alt13=8;
             switch ( input.LA(1) ) {
             case 28:
                 {
-                alt12=1;
+                alt13=1;
                 }
                 break;
             case 29:
                 {
-                alt12=2;
+                alt13=2;
                 }
                 break;
             case 30:
                 {
-                alt12=3;
+                alt13=3;
                 }
                 break;
             case 31:
                 {
-                alt12=4;
+                alt13=4;
                 }
                 break;
             case 32:
                 {
-                alt12=5;
+                alt13=5;
                 }
                 break;
             case 33:
                 {
-                alt12=6;
+                alt13=6;
                 }
                 break;
             case 34:
                 {
-                alt12=7;
+                alt13=7;
                 }
                 break;
             case 35:
                 {
-                alt12=8;
+                alt13=8;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 13, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt12) {
+            switch (alt13) {
                 case 1 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1035:2: (enumLiteral_0= 'less' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1124:2: (enumLiteral_0= 'less' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1035:2: (enumLiteral_0= 'less' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1035:4: enumLiteral_0= 'less'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1124:2: (enumLiteral_0= 'less' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1124:4: enumLiteral_0= 'less'
                     {
-                    enumLiteral_0=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleBinaryOperators2260); 
+                    enumLiteral_0=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleBinaryOperators2391); 
 
                             current = grammarAccess.getBinaryOperatorsAccess().getLessEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getBinaryOperatorsAccess().getLessEnumLiteralDeclaration_0()); 
@@ -2607,12 +2815,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1041:6: (enumLiteral_1= 'greater' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1130:6: (enumLiteral_1= 'greater' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1041:6: (enumLiteral_1= 'greater' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1041:8: enumLiteral_1= 'greater'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1130:6: (enumLiteral_1= 'greater' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1130:8: enumLiteral_1= 'greater'
                     {
-                    enumLiteral_1=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleBinaryOperators2277); 
+                    enumLiteral_1=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleBinaryOperators2408); 
 
                             current = grammarAccess.getBinaryOperatorsAccess().getGreaterEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getBinaryOperatorsAccess().getGreaterEnumLiteralDeclaration_1()); 
@@ -2624,12 +2832,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1047:6: (enumLiteral_2= 'equal' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1136:6: (enumLiteral_2= 'equal' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1047:6: (enumLiteral_2= 'equal' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1047:8: enumLiteral_2= 'equal'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1136:6: (enumLiteral_2= 'equal' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1136:8: enumLiteral_2= 'equal'
                     {
-                    enumLiteral_2=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleBinaryOperators2294); 
+                    enumLiteral_2=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleBinaryOperators2425); 
 
                             current = grammarAccess.getBinaryOperatorsAccess().getEqualEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getBinaryOperatorsAccess().getEqualEnumLiteralDeclaration_2()); 
@@ -2641,12 +2849,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1053:6: (enumLiteral_3= 'multiplication' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1142:6: (enumLiteral_3= 'multiplication' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1053:6: (enumLiteral_3= 'multiplication' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1053:8: enumLiteral_3= 'multiplication'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1142:6: (enumLiteral_3= 'multiplication' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1142:8: enumLiteral_3= 'multiplication'
                     {
-                    enumLiteral_3=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleBinaryOperators2311); 
+                    enumLiteral_3=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleBinaryOperators2442); 
 
                             current = grammarAccess.getBinaryOperatorsAccess().getMultiplicationEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getBinaryOperatorsAccess().getMultiplicationEnumLiteralDeclaration_3()); 
@@ -2658,12 +2866,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1059:6: (enumLiteral_4= 'addition' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1148:6: (enumLiteral_4= 'addition' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1059:6: (enumLiteral_4= 'addition' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1059:8: enumLiteral_4= 'addition'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1148:6: (enumLiteral_4= 'addition' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1148:8: enumLiteral_4= 'addition'
                     {
-                    enumLiteral_4=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleBinaryOperators2328); 
+                    enumLiteral_4=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleBinaryOperators2459); 
 
                             current = grammarAccess.getBinaryOperatorsAccess().getAdditionEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_4, grammarAccess.getBinaryOperatorsAccess().getAdditionEnumLiteralDeclaration_4()); 
@@ -2675,12 +2883,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1065:6: (enumLiteral_5= 'subset' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1154:6: (enumLiteral_5= 'subset' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1065:6: (enumLiteral_5= 'subset' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1065:8: enumLiteral_5= 'subset'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1154:6: (enumLiteral_5= 'subset' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1154:8: enumLiteral_5= 'subset'
                     {
-                    enumLiteral_5=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleBinaryOperators2345); 
+                    enumLiteral_5=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleBinaryOperators2476); 
 
                             current = grammarAccess.getBinaryOperatorsAccess().getSubsetEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_5, grammarAccess.getBinaryOperatorsAccess().getSubsetEnumLiteralDeclaration_5()); 
@@ -2692,12 +2900,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1071:6: (enumLiteral_6= 'and' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1160:6: (enumLiteral_6= 'and' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1071:6: (enumLiteral_6= 'and' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1071:8: enumLiteral_6= 'and'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1160:6: (enumLiteral_6= 'and' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1160:8: enumLiteral_6= 'and'
                     {
-                    enumLiteral_6=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleBinaryOperators2362); 
+                    enumLiteral_6=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleBinaryOperators2493); 
 
                             current = grammarAccess.getBinaryOperatorsAccess().getAndEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_6, grammarAccess.getBinaryOperatorsAccess().getAndEnumLiteralDeclaration_6()); 
@@ -2709,12 +2917,12 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1077:6: (enumLiteral_7= 'or' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1166:6: (enumLiteral_7= 'or' )
                     {
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1077:6: (enumLiteral_7= 'or' )
-                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1077:8: enumLiteral_7= 'or'
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1166:6: (enumLiteral_7= 'or' )
+                    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1166:8: enumLiteral_7= 'or'
                     {
-                    enumLiteral_7=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleBinaryOperators2379); 
+                    enumLiteral_7=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleBinaryOperators2510); 
 
                             current = grammarAccess.getBinaryOperatorsAccess().getOrEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_7, grammarAccess.getBinaryOperatorsAccess().getOrEnumLiteralDeclaration_7()); 
@@ -2746,7 +2954,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryOperators"
-    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1087:1: ruleUnaryOperators returns [Enumerator current=null] : (enumLiteral_0= 'not' ) ;
+    // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1176:1: ruleUnaryOperators returns [Enumerator current=null] : (enumLiteral_0= 'not' ) ;
     public final Enumerator ruleUnaryOperators() throws RecognitionException {
         Enumerator current = null;
 
@@ -2754,13 +2962,13 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1089:28: ( (enumLiteral_0= 'not' ) )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1090:1: (enumLiteral_0= 'not' )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1178:28: ( (enumLiteral_0= 'not' ) )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1179:1: (enumLiteral_0= 'not' )
             {
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1090:1: (enumLiteral_0= 'not' )
-            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1090:3: enumLiteral_0= 'not'
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1179:1: (enumLiteral_0= 'not' )
+            // ../org.xtext.cfgdsl/src-gen/org/xtext/cfgdsl/parser/antlr/internal/InternalCfgDsl.g:1179:3: enumLiteral_0= 'not'
             {
-            enumLiteral_0=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleUnaryOperators2423); 
+            enumLiteral_0=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleUnaryOperators2554); 
 
                     current = grammarAccess.getUnaryOperatorsAccess().getNotEnumLiteralDeclaration().getEnumLiteral().getInstance();
                     newLeafNode(enumLiteral_0, grammarAccess.getUnaryOperatorsAccess().getNotEnumLiteralDeclaration()); 
@@ -2797,7 +3005,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
     static final String DFA3_maxS =
         "\1\33\3\uffff\3\5\1\uffff\2\20\1\23\3\uffff";
     static final String DFA3_acceptS =
-        "\1\uffff\1\1\1\2\1\3\3\uffff\1\7\3\uffff\1\5\1\6\1\4";
+        "\1\uffff\1\1\1\2\1\3\3\uffff\1\7\3\uffff\1\4\1\5\1\6";
     static final String DFA3_specialS =
         "\16\uffff}>";
     static final String[] DFA3_transitionS = {
@@ -2811,7 +3019,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
             "",
             "\1\12",
             "\1\12",
-            "\2\15\1\13\12\uffff\1\13\2\14",
+            "\2\13\1\14\12\uffff\1\14\2\15",
             "",
             "",
             ""
@@ -2916,38 +3124,44 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_19_in_ruleEBoolean1616 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleBinaryConstraint_in_entryRuleBinaryConstraint1656 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleBinaryConstraint1666 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_20_in_ruleBinaryConstraint1703 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1724 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1747 = new BitSet(new long[]{0x0000000FF0000000L});
-        public static final BitSet FOLLOW_ruleBinaryOperators_in_ruleBinaryConstraint1768 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1791 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleSet_in_entryRuleSet1827 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleSet1837 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_21_in_ruleSet1874 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleSet1895 = new BitSet(new long[]{0x0000000000400002L});
-        public static final BitSet FOLLOW_22_in_ruleSet1908 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleSet1931 = new BitSet(new long[]{0x0000000000801000L});
-        public static final BitSet FOLLOW_12_in_ruleSet1944 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleSet1967 = new BitSet(new long[]{0x0000000000801000L});
-        public static final BitSet FOLLOW_23_in_ruleSet1981 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleUnaryConstraint_in_entryRuleUnaryConstraint2019 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleUnaryConstraint2029 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_24_in_ruleUnaryConstraint2066 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleUnaryConstraint2087 = new BitSet(new long[]{0x0000001000000000L});
-        public static final BitSet FOLLOW_ruleUnaryOperators_in_ruleUnaryConstraint2108 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleUnaryConstraint2131 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_25_in_ruleTypeEnum2181 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_26_in_ruleTypeEnum2198 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_27_in_ruleTypeEnum2215 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_28_in_ruleBinaryOperators2260 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_29_in_ruleBinaryOperators2277 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_30_in_ruleBinaryOperators2294 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_31_in_ruleBinaryOperators2311 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_32_in_ruleBinaryOperators2328 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_33_in_ruleBinaryOperators2345 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_34_in_ruleBinaryOperators2362 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_35_in_ruleBinaryOperators2379 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_36_in_ruleUnaryOperators2423 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_20_in_ruleBinaryConstraint1704 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1725 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1748 = new BitSet(new long[]{0x0000000FF0000000L});
+        public static final BitSet FOLLOW_ruleBinaryOperators_in_ruleBinaryConstraint1769 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1792 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_20_in_ruleBinaryConstraint1812 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_ruleEBoolean_in_ruleBinaryConstraint1833 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1854 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1877 = new BitSet(new long[]{0x0000000FF0000000L});
+        public static final BitSet FOLLOW_ruleBinaryOperators_in_ruleBinaryConstraint1898 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleBinaryConstraint1921 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleSet_in_entryRuleSet1958 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleSet1968 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_21_in_ruleSet2005 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleSet2026 = new BitSet(new long[]{0x0000000000400002L});
+        public static final BitSet FOLLOW_22_in_ruleSet2039 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleSet2062 = new BitSet(new long[]{0x0000000000801000L});
+        public static final BitSet FOLLOW_12_in_ruleSet2075 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleSet2098 = new BitSet(new long[]{0x0000000000801000L});
+        public static final BitSet FOLLOW_23_in_ruleSet2112 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleUnaryConstraint_in_entryRuleUnaryConstraint2150 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleUnaryConstraint2160 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_24_in_ruleUnaryConstraint2197 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleUnaryConstraint2218 = new BitSet(new long[]{0x0000001000000000L});
+        public static final BitSet FOLLOW_ruleUnaryOperators_in_ruleUnaryConstraint2239 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleUnaryConstraint2262 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_25_in_ruleTypeEnum2312 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_26_in_ruleTypeEnum2329 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_27_in_ruleTypeEnum2346 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_28_in_ruleBinaryOperators2391 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_29_in_ruleBinaryOperators2408 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_30_in_ruleBinaryOperators2425 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_31_in_ruleBinaryOperators2442 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_32_in_ruleBinaryOperators2459 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_33_in_ruleBinaryOperators2476 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_34_in_ruleBinaryOperators2493 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_35_in_ruleBinaryOperators2510 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_36_in_ruleUnaryOperators2554 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

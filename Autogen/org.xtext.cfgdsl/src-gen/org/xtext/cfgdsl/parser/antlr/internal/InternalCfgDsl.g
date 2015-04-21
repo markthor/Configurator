@@ -765,14 +765,14 @@ ruleBinaryConstraint returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='bc' 
+((	otherlv_0='bc' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getBinaryConstraintAccess().getBcKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getBinaryConstraintAccess().getBcKeyword_0_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_0_1_0()); 
 	    }
 		lv_name_1_0=ruleEString		{
 	        if ($current==null) {
@@ -795,7 +795,7 @@ ruleBinaryConstraint returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_2_0()); 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_0_2_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
@@ -805,7 +805,7 @@ ruleBinaryConstraint returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_0_3_0()); 
 	    }
 		lv_operator_3_0=ruleBinaryOperators		{
 	        if ($current==null) {
@@ -828,7 +828,7 @@ ruleBinaryConstraint returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_4_0()); 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_0_4_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
@@ -836,6 +836,95 @@ ruleBinaryConstraint returns [EObject current=null]
 
 )
 ))
+    |(	otherlv_5='bc' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getBinaryConstraintAccess().getBcKeyword_1_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getRootEBooleanParserRuleCall_1_1_0()); 
+	    }
+		lv_root_6_0=ruleEBoolean		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"root",
+        		lv_root_6_0, 
+        		"EBoolean");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getNameEStringParserRuleCall_1_2_0()); 
+	    }
+		lv_name_7_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"name",
+        		lv_name_7_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBinaryConstraintRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getLeftExpressionCrossReference_1_3_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getOperatorBinaryOperatorsEnumRuleCall_1_4_0()); 
+	    }
+		lv_operator_9_0=ruleBinaryOperators		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getBinaryConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"operator",
+        		lv_operator_9_0, 
+        		"BinaryOperators");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBinaryConstraintRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getBinaryConstraintAccess().getRightExpressionCrossReference_1_5_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
 ;
 
 

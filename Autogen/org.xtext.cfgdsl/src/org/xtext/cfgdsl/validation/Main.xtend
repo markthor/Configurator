@@ -1,11 +1,11 @@
 package org.xtext.cfgdsl.validation
 
+import ConfiguratorPackage.ConfiguratorPackagePackage
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
-import ConfiguratorPackage.*
 
 class Main {
 	def static void main(String[] args) {
@@ -18,7 +18,7 @@ class Main {
 		
 		
 		// register our meta-model package
-		ConfiguratorPackage.ConfiguratorPackagePackage.eINSTANCE.eClass()
+		ConfiguratorPackagePackage.eINSTANCE.eClass()
 		//FsmPackage.eINSTANCE.eClass()
 		
 		// load the file 
@@ -43,7 +43,9 @@ class Main {
 		
 		//val uri = URI::createURI("test-files/recurseunarybinarysatisfy.xmi")	//correct
 		
-		val uri = URI::createURI("test-files/unsetproperties.xmi") //error
+//		val uri = URI::createURI("test-files/unsetproperties.xmi") //error
+		val uri = URI::createURI("test-files/checkrootsatisfy.xmi")	//correct
+//		val uri = URI::createURI("test-files/checkrootnot.xmi")	//correct
 		
 		
 		val resource = resourceSet.getResource(uri, true)					/* true means follow proxies */

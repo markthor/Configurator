@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ConfiguratorPackage.impl.BinaryConstraintImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link ConfiguratorPackage.impl.BinaryConstraintImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link ConfiguratorPackage.impl.BinaryConstraintImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link ConfiguratorPackage.impl.BinaryConstraintImpl#isRoot <em>Root</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +70,26 @@ public class BinaryConstraintImpl extends NamedElementImpl implements BinaryCons
 	 * @ordered
 	 */
 	protected Expression right;
+
+	/**
+	 * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ROOT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean root = ROOT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,6 +212,27 @@ public class BinaryConstraintImpl extends NamedElementImpl implements BinaryCons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRoot() {
+		return root;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoot(boolean newRoot) {
+		boolean oldRoot = root;
+		root = newRoot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackagePackage.BINARY_CONSTRAINT__ROOT, oldRoot, root));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -202,6 +244,8 @@ public class BinaryConstraintImpl extends NamedElementImpl implements BinaryCons
 			case ConfiguratorPackagePackage.BINARY_CONSTRAINT__RIGHT:
 				if (resolve) return getRight();
 				return basicGetRight();
+			case ConfiguratorPackagePackage.BINARY_CONSTRAINT__ROOT:
+				return isRoot();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -222,6 +266,9 @@ public class BinaryConstraintImpl extends NamedElementImpl implements BinaryCons
 				return;
 			case ConfiguratorPackagePackage.BINARY_CONSTRAINT__RIGHT:
 				setRight((Expression)newValue);
+				return;
+			case ConfiguratorPackagePackage.BINARY_CONSTRAINT__ROOT:
+				setRoot((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -244,6 +291,9 @@ public class BinaryConstraintImpl extends NamedElementImpl implements BinaryCons
 			case ConfiguratorPackagePackage.BINARY_CONSTRAINT__RIGHT:
 				setRight((Expression)null);
 				return;
+			case ConfiguratorPackagePackage.BINARY_CONSTRAINT__ROOT:
+				setRoot(ROOT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -262,6 +312,8 @@ public class BinaryConstraintImpl extends NamedElementImpl implements BinaryCons
 				return left != null;
 			case ConfiguratorPackagePackage.BINARY_CONSTRAINT__RIGHT:
 				return right != null;
+			case ConfiguratorPackagePackage.BINARY_CONSTRAINT__ROOT:
+				return root != ROOT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -278,6 +330,8 @@ public class BinaryConstraintImpl extends NamedElementImpl implements BinaryCons
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (operator: ");
 		result.append(operator);
+		result.append(", root: ");
+		result.append(root);
 		result.append(')');
 		return result.toString();
 	}
