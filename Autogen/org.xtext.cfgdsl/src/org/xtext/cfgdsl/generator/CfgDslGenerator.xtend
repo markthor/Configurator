@@ -36,13 +36,69 @@ class CfgDslGenerator implements IGenerator {
 					for(Expression expr : «it.expressions.filter(typeof(BinaryConstraint))») {
 						BinaryConstraint bc = (BinaryConstraint) expr;
 						switch(bc.getOperator()) {
-							case less:
+							case less: return false
 								
 						}
 					}
 				}
 				
-				public boolean 
+				public Expression validate(BinaryConstraint bc, Map<String, Assignment> map){
+					Expression left;
+					Expression right;
+					
+					if(bc.getLeft() instanceof BinaryConstraint){
+						if(validate(bc.getLeft(), map)){
+							
+						}
+					} else if(bc.getLeft() instanceof UnaryConstraint){
+						
+					} else if(bc.getLeft() instanceof Parameter){
+						Assignment a = map.get(bc.getLeft().getName());
+						Expression left = a.getValue();
+					} else {
+						Expression left = bc.getLeft();
+					}
+
+					
+					/*
+					else if(bc.getLeft() instanceof Set){
+						
+					}
+					else if(bc.getLeft() instanceof Value){
+						Expression left = bc.getLeft();
+					}
+					
+					*/
+					
+					switch(bc.getOperator()) {
+						case equals:			if(left instanceof Value && right instanceof Value)
+													return left.equals(right);
+												else
+													return false;
+						case less:				if(left instanceof IntegerValue && right instanceof IntegerValue)
+													return left < right ? true : false;
+												else 
+													return false;
+						case greater:			if(left instanceof IntegerValue && right instanceof IntegerValue)
+													return left > right ? true : false;
+												else 
+													return false;
+						case addition:			if(bc.getRoot()) 
+													return false;
+												else if(left instanceof IntegerValue && right instanceof IntegerValue){
+													return left + right; AS INTEGER VALUE-----------------------------------------------------------------------------
+												} else
+													return false;
+						case multiplication: 	if(bc.getRoot()) 
+													return false;
+												else if(left instanceof IntegerValue && right instanceof IntegerValue){
+													return left * right; AS INTEGER VALUE-----------------------------------------------------------------------------
+												} else
+													return false;
+						case subset:			
+						
+						}
+				}
 			}
   		'''
 	}
