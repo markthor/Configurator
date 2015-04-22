@@ -277,6 +277,15 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getBinaryConstraint_Root() {
+		return (EAttribute)binaryConstraintEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getParameter() {
 		return parameterEClass;
 	}
@@ -561,6 +570,7 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 		createEAttribute(binaryConstraintEClass, BINARY_CONSTRAINT__OPERATOR);
 		createEReference(binaryConstraintEClass, BINARY_CONSTRAINT__LEFT);
 		createEReference(binaryConstraintEClass, BINARY_CONSTRAINT__RIGHT);
+		createEAttribute(binaryConstraintEClass, BINARY_CONSTRAINT__ROOT);
 
 		parameterEClass = createEClass(PARAMETER);
 		createEAttribute(parameterEClass, PARAMETER__TYPE);
@@ -651,6 +661,7 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 		initEAttribute(getBinaryConstraint_Operator(), this.getBinaryOperators(), "operator", null, 1, 1, BinaryConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBinaryConstraint_Left(), this.getExpression(), null, "left", null, 1, 1, BinaryConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBinaryConstraint_Right(), this.getExpression(), null, "right", null, 1, 1, BinaryConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBinaryConstraint_Root(), ecorePackage.getEBoolean(), "root", "false", 1, 1, BinaryConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Type(), this.getTypeEnum(), "type", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

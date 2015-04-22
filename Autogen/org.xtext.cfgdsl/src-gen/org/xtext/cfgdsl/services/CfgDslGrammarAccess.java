@@ -420,58 +420,120 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class BinaryConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BinaryConstraint");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cBcKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cLeftAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cLeftExpressionCrossReference_2_0 = (CrossReference)cLeftAssignment_2.eContents().get(0);
-		private final RuleCall cLeftExpressionEStringParserRuleCall_2_0_1 = (RuleCall)cLeftExpressionCrossReference_2_0.eContents().get(1);
-		private final Assignment cOperatorAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cOperatorBinaryOperatorsEnumRuleCall_3_0 = (RuleCall)cOperatorAssignment_3.eContents().get(0);
-		private final Assignment cRightAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cRightExpressionCrossReference_4_0 = (CrossReference)cRightAssignment_4.eContents().get(0);
-		private final RuleCall cRightExpressionEStringParserRuleCall_4_0_1 = (RuleCall)cRightExpressionCrossReference_4_0.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cBcKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Assignment cLeftAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final CrossReference cLeftExpressionCrossReference_0_2_0 = (CrossReference)cLeftAssignment_0_2.eContents().get(0);
+		private final RuleCall cLeftExpressionEStringParserRuleCall_0_2_0_1 = (RuleCall)cLeftExpressionCrossReference_0_2_0.eContents().get(1);
+		private final Assignment cOperatorAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final RuleCall cOperatorBinaryOperatorsEnumRuleCall_0_3_0 = (RuleCall)cOperatorAssignment_0_3.eContents().get(0);
+		private final Assignment cRightAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
+		private final CrossReference cRightExpressionCrossReference_0_4_0 = (CrossReference)cRightAssignment_0_4.eContents().get(0);
+		private final RuleCall cRightExpressionEStringParserRuleCall_0_4_0_1 = (RuleCall)cRightExpressionCrossReference_0_4_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cBcKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cRootAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cRootEBooleanParserRuleCall_1_1_0 = (RuleCall)cRootAssignment_1_1.eContents().get(0);
+		private final Assignment cNameAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_1_2_0 = (RuleCall)cNameAssignment_1_2.eContents().get(0);
+		private final Assignment cLeftAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final CrossReference cLeftExpressionCrossReference_1_3_0 = (CrossReference)cLeftAssignment_1_3.eContents().get(0);
+		private final RuleCall cLeftExpressionEStringParserRuleCall_1_3_0_1 = (RuleCall)cLeftExpressionCrossReference_1_3_0.eContents().get(1);
+		private final Assignment cOperatorAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
+		private final RuleCall cOperatorBinaryOperatorsEnumRuleCall_1_4_0 = (RuleCall)cOperatorAssignment_1_4.eContents().get(0);
+		private final Assignment cRightAssignment_1_5 = (Assignment)cGroup_1.eContents().get(5);
+		private final CrossReference cRightExpressionCrossReference_1_5_0 = (CrossReference)cRightAssignment_1_5.eContents().get(0);
+		private final RuleCall cRightExpressionEStringParserRuleCall_1_5_0_1 = (RuleCall)cRightExpressionCrossReference_1_5_0.eContents().get(1);
 		
 		//BinaryConstraint:
-		//	"bc" name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString];
+		//	"bc" name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString] | "bc" root=EBoolean
+		//	name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString];
 		public ParserRule getRule() { return rule; }
 
+		//"bc" name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString] | "bc" root=EBoolean
+		//name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString]
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//"bc" name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString]
-		public Group getGroup() { return cGroup; }
+		public Group getGroup_0() { return cGroup_0; }
 
 		//"bc"
-		public Keyword getBcKeyword_0() { return cBcKeyword_0; }
+		public Keyword getBcKeyword_0_0() { return cBcKeyword_0_0; }
 
 		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		public RuleCall getNameEStringParserRuleCall_0_1_0() { return cNameEStringParserRuleCall_0_1_0; }
 
 		//left=[Expression|EString]
-		public Assignment getLeftAssignment_2() { return cLeftAssignment_2; }
+		public Assignment getLeftAssignment_0_2() { return cLeftAssignment_0_2; }
 
 		//[Expression|EString]
-		public CrossReference getLeftExpressionCrossReference_2_0() { return cLeftExpressionCrossReference_2_0; }
+		public CrossReference getLeftExpressionCrossReference_0_2_0() { return cLeftExpressionCrossReference_0_2_0; }
 
 		//EString
-		public RuleCall getLeftExpressionEStringParserRuleCall_2_0_1() { return cLeftExpressionEStringParserRuleCall_2_0_1; }
+		public RuleCall getLeftExpressionEStringParserRuleCall_0_2_0_1() { return cLeftExpressionEStringParserRuleCall_0_2_0_1; }
 
 		//operator=BinaryOperators
-		public Assignment getOperatorAssignment_3() { return cOperatorAssignment_3; }
+		public Assignment getOperatorAssignment_0_3() { return cOperatorAssignment_0_3; }
 
 		//BinaryOperators
-		public RuleCall getOperatorBinaryOperatorsEnumRuleCall_3_0() { return cOperatorBinaryOperatorsEnumRuleCall_3_0; }
+		public RuleCall getOperatorBinaryOperatorsEnumRuleCall_0_3_0() { return cOperatorBinaryOperatorsEnumRuleCall_0_3_0; }
 
 		//right=[Expression|EString]
-		public Assignment getRightAssignment_4() { return cRightAssignment_4; }
+		public Assignment getRightAssignment_0_4() { return cRightAssignment_0_4; }
 
 		//[Expression|EString]
-		public CrossReference getRightExpressionCrossReference_4_0() { return cRightExpressionCrossReference_4_0; }
+		public CrossReference getRightExpressionCrossReference_0_4_0() { return cRightExpressionCrossReference_0_4_0; }
 
 		//EString
-		public RuleCall getRightExpressionEStringParserRuleCall_4_0_1() { return cRightExpressionEStringParserRuleCall_4_0_1; }
+		public RuleCall getRightExpressionEStringParserRuleCall_0_4_0_1() { return cRightExpressionEStringParserRuleCall_0_4_0_1; }
+
+		//"bc" root=EBoolean name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString]
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"bc"
+		public Keyword getBcKeyword_1_0() { return cBcKeyword_1_0; }
+
+		//root=EBoolean
+		public Assignment getRootAssignment_1_1() { return cRootAssignment_1_1; }
+
+		//EBoolean
+		public RuleCall getRootEBooleanParserRuleCall_1_1_0() { return cRootEBooleanParserRuleCall_1_1_0; }
+
+		//name=EString
+		public Assignment getNameAssignment_1_2() { return cNameAssignment_1_2; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_2_0() { return cNameEStringParserRuleCall_1_2_0; }
+
+		//left=[Expression|EString]
+		public Assignment getLeftAssignment_1_3() { return cLeftAssignment_1_3; }
+
+		//[Expression|EString]
+		public CrossReference getLeftExpressionCrossReference_1_3_0() { return cLeftExpressionCrossReference_1_3_0; }
+
+		//EString
+		public RuleCall getLeftExpressionEStringParserRuleCall_1_3_0_1() { return cLeftExpressionEStringParserRuleCall_1_3_0_1; }
+
+		//operator=BinaryOperators
+		public Assignment getOperatorAssignment_1_4() { return cOperatorAssignment_1_4; }
+
+		//BinaryOperators
+		public RuleCall getOperatorBinaryOperatorsEnumRuleCall_1_4_0() { return cOperatorBinaryOperatorsEnumRuleCall_1_4_0; }
+
+		//right=[Expression|EString]
+		public Assignment getRightAssignment_1_5() { return cRightAssignment_1_5; }
+
+		//[Expression|EString]
+		public CrossReference getRightExpressionCrossReference_1_5_0() { return cRightExpressionCrossReference_1_5_0; }
+
+		//EString
+		public RuleCall getRightExpressionEStringParserRuleCall_1_5_0_1() { return cRightExpressionEStringParserRuleCall_1_5_0_1; }
 	}
 
 	public class SetElements extends AbstractParserRuleElementFinder {
@@ -903,7 +965,8 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BinaryConstraint:
-	//	"bc" name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString];
+	//	"bc" name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString] | "bc" root=EBoolean
+	//	name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString];
 	public BinaryConstraintElements getBinaryConstraintAccess() {
 		return (pBinaryConstraint != null) ? pBinaryConstraint : (pBinaryConstraint = new BinaryConstraintElements());
 	}

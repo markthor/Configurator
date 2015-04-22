@@ -19,7 +19,6 @@ import ConfiguratorPackage.Value
 import java.util.HashMap
 import java.util.HashSet
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.validation.Check
 
 import static ConfiguratorPackage.BinaryOperators.*
 
@@ -65,7 +64,7 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	}
 	
 	def static dispatch boolean constraint(BinaryConstraint it) {
-		constraintBinary(it)
+		constraintBinary(it) && constraintBinaryRoot(it)
 	}
 	
 	def static dispatch boolean constraint(UnaryConstraint it) {
@@ -178,6 +177,32 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 		}
 		println("Done with constraintBinary. b="+b)
 		b
+	}
+	
+	def static boolean constraintBinaryRoot(BinaryConstraint it) {
+		println("Starting constraintBinaryRoot")
+		var b = true
+		
+		if(root)
+			b = expressionResolver(left) && expressionResolver(right)
+		
+		println("Done with constraintBinaryRoot. b="+b)
+		b
+	}
+	
+	def static boolean expressionResolver(Expression it) {
+		if(it instanceof BinaryConstraint) {
+			val bc = it as BinaryConstraint
+			if(bc.root) {
+				return false;
+			} else {
+				return expressionResolver(left) && expressionResolver(right)
+			}
+		} else if(it instanceof UnaryConstraint) {
+			val uc = it as UnaryConstraint
+			return expressionResolver(uc.expression)
+		}
+		true
 	}
 	
 	/**

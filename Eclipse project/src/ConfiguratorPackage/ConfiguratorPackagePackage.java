@@ -178,13 +178,22 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	int BINARY_CONSTRAINT__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Root</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_CONSTRAINT__ROOT = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Binary Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINARY_CONSTRAINT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+	int BINARY_CONSTRAINT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Binary Constraint</em>' class.
@@ -779,6 +788,17 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	EReference getBinaryConstraint_Right();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ConfiguratorPackage.BinaryConstraint#isRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Root</em>'.
+	 * @see ConfiguratorPackage.BinaryConstraint#isRoot()
+	 * @see #getBinaryConstraint()
+	 * @generated
+	 */
+	EAttribute getBinaryConstraint_Root();
+
+	/**
 	 * Returns the meta object for class '{@link ConfiguratorPackage.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1157,6 +1177,14 @@ public interface ConfiguratorPackagePackage extends EPackage {
 		 * @generated
 		 */
 		EReference BINARY_CONSTRAINT__RIGHT = eINSTANCE.getBinaryConstraint_Right();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BINARY_CONSTRAINT__ROOT = eINSTANCE.getBinaryConstraint_Root();
 
 		/**
 		 * The meta object literal for the '{@link ConfiguratorPackage.impl.ParameterImpl <em>Parameter</em>}' class.

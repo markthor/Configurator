@@ -80,7 +80,15 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   }
   
   protected static boolean _constraint(final BinaryConstraint it) {
-    return CfgDslValidator.constraintBinary(it);
+    boolean _and = false;
+    boolean _constraintBinary = CfgDslValidator.constraintBinary(it);
+    if (!_constraintBinary) {
+      _and = false;
+    } else {
+      boolean _constraintBinaryRoot = CfgDslValidator.constraintBinaryRoot(it);
+      _and = _constraintBinaryRoot;
+    }
+    return _and;
   }
   
   protected static boolean _constraint(final UnaryConstraint it) {
@@ -488,6 +496,64 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
       }
       InputOutput.<String>println(("Done with constraintBinary. b=" + Boolean.valueOf(b)));
       _xblockexpression = b;
+    }
+    return _xblockexpression;
+  }
+  
+  public static boolean constraintBinaryRoot(final BinaryConstraint it) {
+    boolean _xblockexpression = false;
+    {
+      InputOutput.<String>println("Starting constraintBinaryRoot");
+      boolean b = true;
+      boolean _isRoot = it.isRoot();
+      if (_isRoot) {
+        boolean _and = false;
+        Expression _left = it.getLeft();
+        boolean _expressionResolver = CfgDslValidator.expressionResolver(_left);
+        if (!_expressionResolver) {
+          _and = false;
+        } else {
+          Expression _right = it.getRight();
+          boolean _expressionResolver_1 = CfgDslValidator.expressionResolver(_right);
+          _and = _expressionResolver_1;
+        }
+        b = _and;
+      }
+      InputOutput.<String>println(("Done with constraintBinaryRoot. b=" + Boolean.valueOf(b)));
+      _xblockexpression = b;
+    }
+    return _xblockexpression;
+  }
+  
+  public static boolean expressionResolver(final Expression it) {
+    boolean _xblockexpression = false;
+    {
+      if ((it instanceof BinaryConstraint)) {
+        final BinaryConstraint bc = ((BinaryConstraint) it);
+        boolean _isRoot = bc.isRoot();
+        if (_isRoot) {
+          return false;
+        } else {
+          boolean _and = false;
+          Expression _left = ((BinaryConstraint)it).getLeft();
+          boolean _expressionResolver = CfgDslValidator.expressionResolver(_left);
+          if (!_expressionResolver) {
+            _and = false;
+          } else {
+            Expression _right = ((BinaryConstraint)it).getRight();
+            boolean _expressionResolver_1 = CfgDslValidator.expressionResolver(_right);
+            _and = _expressionResolver_1;
+          }
+          return _and;
+        }
+      } else {
+        if ((it instanceof UnaryConstraint)) {
+          final UnaryConstraint uc = ((UnaryConstraint) it);
+          Expression _expression = uc.getExpression();
+          return CfgDslValidator.expressionResolver(_expression);
+        }
+      }
+      _xblockexpression = true;
     }
     return _xblockexpression;
   }
