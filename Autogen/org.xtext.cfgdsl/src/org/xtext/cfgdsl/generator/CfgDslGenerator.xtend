@@ -58,23 +58,25 @@ class CfgDslGenerator implements IGenerator {
 					if(!valid)
 						return false;
 					
-					for(Expression expr : «it.expressions.filter(typeof(BinaryConstraint)).toList») {
-						BinaryConstraint bc = (BinaryConstraint) expr;
-						if(bc.getRoot()){
-							if(!validate(bc, map)) {
-								return false;
+					«FOR expr : it.expressions»
+						if(«expr instanceof BinaryConstraint»){
+							BinaryConstraint bc = (BinaryConstraint) «expr»;
+							if(bc.getRoot()){
+								if(!validate(bc, map)) {
+									return false;
+								}
 							}
 						}
-					}
-					
-					for(Expression expr : «it.expressions.filter(typeof(UnaryConstraint)).toList») {
-						UnaryConstraint uc = (UnaryConstraint) expr;
-						if(uc.getRoot()){
-							if(!validate(uc, map)) {
-								return false;
+						if(«expr instanceof UnaryConstraint»){
+							UnaryConstraint uc = (UnaryConstraint) «expr»;
+							if(uc.getRoot()){
+								if(!validate(uc, map)) {
+									return false;
+								}
 							}
 						}
-					}
+						
+					«ENDFOR»
 					return true;
 				}
 
@@ -180,6 +182,8 @@ class CfgDslGenerator implements IGenerator {
 					}
 					return b;
 				}
+				
+				
 			}
   		'''
 	}
