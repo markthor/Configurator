@@ -99,7 +99,7 @@ public class ParameterImpl extends NamedElementImpl implements Parameter {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfiguratorPackagePackage.PARAMETER__TYPE:
-				setType((TypeEnum)newValue);
+				setType((TypeEnum) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

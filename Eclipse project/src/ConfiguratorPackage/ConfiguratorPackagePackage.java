@@ -665,13 +665,22 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	int UNARY_CONSTRAINT__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Root</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_CONSTRAINT__ROOT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Unary Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNARY_CONSTRAINT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+	int UNARY_CONSTRAINT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Unary Constraint</em>' class.
@@ -1064,6 +1073,17 @@ public interface ConfiguratorPackagePackage extends EPackage {
 	EAttribute getUnaryConstraint_Operator();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ConfiguratorPackage.UnaryConstraint#isRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Root</em>'.
+	 * @see ConfiguratorPackage.UnaryConstraint#isRoot()
+	 * @see #getUnaryConstraint()
+	 * @generated
+	 */
+	EAttribute getUnaryConstraint_Root();
+
+	/**
 	 * Returns the meta object for enum '{@link ConfiguratorPackage.TypeEnum <em>Type Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1405,6 +1425,14 @@ public interface ConfiguratorPackagePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UNARY_CONSTRAINT__OPERATOR = eINSTANCE.getUnaryConstraint_Operator();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNARY_CONSTRAINT__ROOT = eINSTANCE.getUnaryConstraint_Root();
 
 		/**
 		 * The meta object literal for the '{@link ConfiguratorPackage.TypeEnum <em>Type Enum</em>}' enum.

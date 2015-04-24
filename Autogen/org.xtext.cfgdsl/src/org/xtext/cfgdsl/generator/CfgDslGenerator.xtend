@@ -8,6 +8,7 @@ import ConfiguratorPackage.Root
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
+import ConfiguratorPackage.UnaryConstraint
 
 /**
  * Generates code from your model files on save.
@@ -34,93 +35,144 @@ class CfgDslGenerator implements IGenerator {
 					
 					for(Expression expr : «it.expressions.filter(typeof(BinaryConstraint))») {
 						BinaryConstraint bc = (BinaryConstraint) expr;
-						switch(bc.getOperator()) {
-							case less: return false
-								
+						if(bc.getRoot()){
+							if(validate(bc, map)){
+								return true;
+							} else{
+								return false;
+							}
+						} else{
+							return true;
+						}
+					}
+					
+					for(Expression expr : «it.expressions.filter(typeof(UnaryConstraint))») {
+						UnaryConstraint uc = (UnaryConstraint) expr;
+						if(uc.getRoot()){
+							if(validate(uc, map)){
+								return true;
+							} else{
+								return false;
+							}
+						} else{
+							return true;
 						}
 					}
 				}
-				
 
 				public Expression validate(BinaryConstraint bc, Map<String, Assignment> map){
-					Expression left;
-					Expression right;
+					Expression left = getExpr(bc.getLeft(), map);
+					Expression right = getExpr(bc.getRight(), map);
 					
-					if(bc.getLeft() instanceof BinaryConstraint){
-						if(validate(bc.getLeft(), map)){
-							
-						}
-					} else if(bc.getLeft() instanceof UnaryConstraint){
-						
-					} else if(bc.getLeft() instanceof Parameter){
-						Assignment a = map.get(bc.getLeft().getName());
-						Expression left = a.getValue();
-					} else {
-						Expression left = bc.getLeft();
-					}
-
-					
-					/*
-					else if(bc.getLeft() instanceof Set){
-						
-					}
-					else if(bc.getLeft() instanceof Value){
-						Expression left = bc.getLeft();
-					}
-					
-					*/
+					ConfiguratorPackageFactoryImpl config = ConfiguratorPackageFactoryImpl.init();
 					
 					switch(bc.getOperator()) {
-						case equals:			if(left instanceof Value && right instanceof Value)
-													return left.equals(right);
-												else
-													return false;
-						case less:				if(left instanceof IntegerValue && right instanceof IntegerValue)
-													return left < right ? true : false;
-												else 
-													return false;
-						case greater:			if(left instanceof IntegerValue && right instanceof IntegerValue)
-													return left > right ? true : false;
-												else 
-													return false;
-						case addition:			if(bc.getRoot()) 
-													return false;
+						case equals:			return left.equals(right);
+						case less:				BooleanValue b = config.createBooleanValue();
+												b.setValue(false);
+												if(left instanceof IntegerValue && right instanceof IntegerValue)
+													if(left.getValue() < right.getValue()){
+														b.setValue(true);
+													}
+												return b;
+						case greater:			BooleanValue b = config.createBooleanValue();
+												b.setValue(false);
+												if(left instanceof IntegerValue && right instanceof IntegerValue)
+													if(left.getValue() > right.getValue()){
+														b.setValue(true);
+													}
+						case addition:			if(bc.getRoot())
+													BooleanValue b = config.createBooleanValue();
+													b.setValue(false);
+													return b;
 												else if(left instanceof IntegerValue && right instanceof IntegerValue){
-													return left + right; AS INTEGER VALUE-----------------------------------------------------------------------------
+													IntegerValue i = config.createIntegerValue();
+													i.setValue(left.getValue() + right.getValue())
+													return i;
 												} else
-													return false;
-						case multiplication: 	if(bc.getRoot()) 
-													return false;
+													BooleanValue b = config.createBooleanValue();
+													b.setValue(false);
+													return b;
+						case multiplication:	if(bc.getRoot())
+													BooleanValue b = config.createBooleanValue();
+													b.setValue(false);
+													return b;
 												else if(left instanceof IntegerValue && right instanceof IntegerValue){
-													return left * right; AS INTEGER VALUE-----------------------------------------------------------------------------
+													IntegerValue i = config.createIntegerValue();
+													i.setValue(left.getValue() * right.getValue())
+													return i;
 												} else
-													return false;
-						case subset:			
-						
+													BooleanValue b = config.createBooleanValue();
+													b.setValue(false);
+													return b;
+						case subset:			BooleanValue b = config.createBooleanValue();
+													b.setValue(false);
+												if(right.getHas().contains(left)){
+													b.setValue(true);
+												}
+												return b;
+						case and:				BooleanValue b = config.createBooleanValue();
+												b.setValue(false);
+												if(left instanceof BooleanValue && right instanceof BooleanValue)
+													if(left.getValue() && right.getValue()){
+														b.setValue(true);
+													}
+												return b;
+						case or:				BooleanValue b = config.createBooleanValue();
+												b.setValue(false);
+												if(left instanceof BooleanValue && right instanceof BooleanValue)
+													if(left.getValue() || right.getValue()){
+														b.setValue(true);
+													}
+												return b;
 						}
 				}
-
-
-/*
-				public boolean validate(BinaryConstraint bc, Map<String, Assignment> map) {
-					TypeEnum leftType = null, rightType = null;
-					
-					if(bc.getLeft() instanceof BinaryConstraint) {
-						if(validate((BinaryConstraint) bc.getLeft())) {
-							leftType = BooleanType;
-						} else {
-							return false;
+				
+				
+				private Expression getExpr(Expression expr, Map<String, Assignment> map) {
+					Expression e;
+					if(expr instanceof BinaryConstraint) {
+						BinaryConstraint bc = (BinaryConstraint) expr;
+						e = validate(bc, map);
 						}
+					} else if(expr instanceof UnaryConstraint) {
+						UnaryConstraint uc = (UnaryConstraint) expr;
+						e = validate(uc, map);
+					} else if(expr instanceof Parameter) {
+						Parameter p = (Parameter) expr;
+						Assignment a = map.get(p.getName());
+						Expression e = a.getValue();
 					} else {
-						leftType = bc.getLeft().getType();
+						Expression e = expr;
 					}
-					
-					switch(bc.getOperator()) {
-						case less:
-							
-					}
+					return e;
 				}
-*/
+				
+				
+				
+				public BooleanValue validate(UnaryConstraint uc, Map<String, Assignment> map){
+					ConfiguratorPackageFactoryImpl config = ConfiguratorPackageFactoryImpl.init();
+					BooleanValue b = config.createBooleanValue();
+					
+					Expression expr = uc.getExpression;
+					
+					if(expr instanceof BinaryConstraint){
+						BinaryConstraint bc = (BinaryConstraint) expr;
+						BooleanValue value = validate(bc, map);
+						b.setValue(!(value.getValue()));
+					}
+					else if(expr instanceof UnaryConstraint){
+						UnaryConstraint uc = (UnaryConstraint) expr;
+						
+						BooleanValue value = validate(bc, map);
+						b.setValue(!(value.getValue()));
+					}
+					else if(expr instanceof BooleanValue){
+						BooleanValue value = (BooleanValue)expr;
+						b.setValue(!(value.getValue()));
+					}
+					return b;
+				}
 			}
   		'''
 	}

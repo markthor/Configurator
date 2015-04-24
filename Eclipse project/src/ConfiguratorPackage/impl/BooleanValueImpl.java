@@ -146,7 +146,7 @@ public class BooleanValueImpl extends ValueImpl implements BooleanValue {
 				setValue((Boolean)newValue);
 				return;
 			case ConfiguratorPackagePackage.BOOLEAN_VALUE__TYPE:
-				setType((TypeEnum)newValue);
+				setType((TypeEnum) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

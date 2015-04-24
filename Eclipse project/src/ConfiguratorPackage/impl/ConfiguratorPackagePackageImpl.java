@@ -511,6 +511,15 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getUnaryConstraint_Root() {
+		return (EAttribute)unaryConstraintEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getTypeEnum() {
 		return typeEnumEEnum;
 	}
@@ -606,6 +615,7 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 		unaryConstraintEClass = createEClass(UNARY_CONSTRAINT);
 		createEReference(unaryConstraintEClass, UNARY_CONSTRAINT__EXPRESSION);
 		createEAttribute(unaryConstraintEClass, UNARY_CONSTRAINT__OPERATOR);
+		createEAttribute(unaryConstraintEClass, UNARY_CONSTRAINT__ROOT);
 
 		// Create enums
 		typeEnumEEnum = createEEnum(TYPE_ENUM);
@@ -697,6 +707,7 @@ public class ConfiguratorPackagePackageImpl extends EPackageImpl implements Conf
 		initEClass(unaryConstraintEClass, UnaryConstraint.class, "UnaryConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUnaryConstraint_Expression(), this.getExpression(), null, "expression", null, 1, 1, UnaryConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUnaryConstraint_Operator(), this.getUnaryOperators(), "Operator", null, 1, 1, UnaryConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUnaryConstraint_Root(), ecorePackage.getEBoolean(), "root", "false", 1, 1, UnaryConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(typeEnumEEnum, TypeEnum.class, "TypeEnum");

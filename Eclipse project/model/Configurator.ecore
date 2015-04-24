@@ -72,6 +72,8 @@
         eType="#//Expression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Operator" lowerBound="1"
         eType="#//UnaryOperators"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="root" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="UnaryOperators">
     <eLiterals name="not"/>

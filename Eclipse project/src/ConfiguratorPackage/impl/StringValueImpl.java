@@ -146,7 +146,7 @@ public class StringValueImpl extends ValueImpl implements StringValue {
 				setValue((String)newValue);
 				return;
 			case ConfiguratorPackagePackage.STRING_VALUE__TYPE:
-				setType((TypeEnum)newValue);
+				setType((TypeEnum) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
