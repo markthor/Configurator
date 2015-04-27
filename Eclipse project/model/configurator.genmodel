@@ -67,6 +67,7 @@
     <genClasses ecoreClass="Configurator.ecore#//UnaryConstraint">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Configurator.ecore#//UnaryConstraint/expression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//UnaryConstraint/Operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configurator.ecore#//UnaryConstraint/root"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

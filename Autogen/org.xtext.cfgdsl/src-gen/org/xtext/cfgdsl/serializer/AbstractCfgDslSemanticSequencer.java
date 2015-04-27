@@ -256,19 +256,6 @@ public abstract class AbstractCfgDslSemanticSequencer extends AbstractDelegating
 	 *     (name=EString Operator=UnaryOperators expression=[Expression|EString])
 	 */
 	protected void sequence_UnaryConstraint(EObject context, UnaryConstraint semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackagePackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackagePackage.Literals.NAMED_ELEMENT__NAME));
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackagePackage.Literals.UNARY_CONSTRAINT__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackagePackage.Literals.UNARY_CONSTRAINT__EXPRESSION));
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackagePackage.Literals.UNARY_CONSTRAINT__OPERATOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackagePackage.Literals.UNARY_CONSTRAINT__OPERATOR));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getUnaryConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getUnaryConstraintAccess().getOperatorUnaryOperatorsEnumRuleCall_2_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getUnaryConstraintAccess().getExpressionExpressionEStringParserRuleCall_3_0_1(), semanticObject.getExpression());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link ConfiguratorPackage.impl.UnaryConstraintImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link ConfiguratorPackage.impl.UnaryConstraintImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link ConfiguratorPackage.impl.UnaryConstraintImpl#isRoot <em>Root</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,6 +59,26 @@ public class UnaryConstraintImpl extends NamedElementImpl implements UnaryConstr
 	 * @ordered
 	 */
 	protected UnaryOperators operator = OPERATOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ROOT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean root = ROOT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,6 +163,27 @@ public class UnaryConstraintImpl extends NamedElementImpl implements UnaryConstr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRoot() {
+		return root;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoot(boolean newRoot) {
+		boolean oldRoot = root;
+		root = newRoot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackagePackage.UNARY_CONSTRAINT__ROOT, oldRoot, root));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -150,6 +192,8 @@ public class UnaryConstraintImpl extends NamedElementImpl implements UnaryConstr
 				return basicGetExpression();
 			case ConfiguratorPackagePackage.UNARY_CONSTRAINT__OPERATOR:
 				return getOperator();
+			case ConfiguratorPackagePackage.UNARY_CONSTRAINT__ROOT:
+				return isRoot();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -167,6 +211,9 @@ public class UnaryConstraintImpl extends NamedElementImpl implements UnaryConstr
 				return;
 			case ConfiguratorPackagePackage.UNARY_CONSTRAINT__OPERATOR:
 				setOperator((UnaryOperators)newValue);
+				return;
+			case ConfiguratorPackagePackage.UNARY_CONSTRAINT__ROOT:
+				setRoot((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -186,6 +233,9 @@ public class UnaryConstraintImpl extends NamedElementImpl implements UnaryConstr
 			case ConfiguratorPackagePackage.UNARY_CONSTRAINT__OPERATOR:
 				setOperator(OPERATOR_EDEFAULT);
 				return;
+			case ConfiguratorPackagePackage.UNARY_CONSTRAINT__ROOT:
+				setRoot(ROOT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -202,6 +252,8 @@ public class UnaryConstraintImpl extends NamedElementImpl implements UnaryConstr
 				return expression != null;
 			case ConfiguratorPackagePackage.UNARY_CONSTRAINT__OPERATOR:
 				return operator != OPERATOR_EDEFAULT;
+			case ConfiguratorPackagePackage.UNARY_CONSTRAINT__ROOT:
+				return root != ROOT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -218,6 +270,8 @@ public class UnaryConstraintImpl extends NamedElementImpl implements UnaryConstr
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (Operator: ");
 		result.append(operator);
+		result.append(", root: ");
+		result.append(root);
 		result.append(')');
 		return result.toString();
 	}

@@ -146,7 +146,7 @@ public class IntegerValueImpl extends ValueImpl implements IntegerValue {
 				setValue((Integer)newValue);
 				return;
 			case ConfiguratorPackagePackage.INTEGER_VALUE__TYPE:
-				setType((TypeEnum)newValue);
+				setType((TypeEnum) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

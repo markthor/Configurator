@@ -8,6 +8,7 @@ import ConfiguratorPackage.Root
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
+import ConfiguratorPackage.UnaryConstraint
 
 /**
  * Generates code from your model files on save.
@@ -19,56 +20,180 @@ class CfgDslGenerator implements IGenerator {
 	def static compileToJava(Root it) {
 		'''
 			package cfgdsl;
+			
+			import java.util.HashMap;
+			import java.util.List;
+			import java.util.Map;
+			
+			import ConfiguratorPackage.Assignment;
+			import ConfiguratorPackage.BinaryConstraint;
+			import ConfiguratorPackage.BooleanValue;
+			import ConfiguratorPackage.ConfiguratorPackageFactory;
+			import ConfiguratorPackage.Expression;
+			import ConfiguratorPackage.IntegerValue;
+			import ConfiguratorPackage.Parameter;
+			import ConfiguratorPackage.Set;
+			import ConfiguratorPackage.StringValue;
+			import ConfiguratorPackage.UnaryConstraint;
+			import ConfiguratorPackage.Value;
+			import ConfiguratorPackage.impl.ConfiguratorPackageFactoryImpl;
 
 			class Validator {
 				
-				public boolean validate(List<Assignment> assignments) {
+				public static boolean validate(List<Assignment> assignments) {
 					boolean valid = true;
 					Map<String, Assignment> map = new HashMap<String, Assignment>();
 					
 					// Check the types of the assignments are well typed
 					for(Assignment a : assignments) {
-						valid = valid && (a.getParameter().getType().equals(a.getValue().getType()));
+						if(a.getValue() instanceof StringValue)
+							valid = valid && (a.getParameter().getType().equals(((StringValue)a.getValue()).getType()));
+						if(a.getValue() instanceof IntegerValue)
+							valid = valid && (a.getParameter().getType().equals(((IntegerValue)a.getValue()).getType()));
+						if(a.getValue() instanceof BooleanValue)
+							valid = valid && (a.getParameter().getType().equals(((BooleanValue)a.getValue()).getType()));
+						
 						map.put(a.getParameter().getName(), a);
 					}
+					if(!valid)
+						return false;
 					
-					for(Expression expr : «it.expressions.filter(typeof(BinaryConstraint))») {
-						BinaryConstraint bc = (BinaryConstraint) expr;
-						switch(bc.getOperator()) {
-							case less:
-								
+					«FOR expr : it.expressions»
+						if(«expr instanceof BinaryConstraint»){
+							BinaryConstraint bc = (BinaryConstraint) «expr»;
+							if(bc.getRoot()){
+								if(!validate(bc, map)) {
+									return false;
+								}
+							}
 						}
+						if(«expr instanceof UnaryConstraint»){
+							UnaryConstraint uc = (UnaryConstraint) «expr»;
+							if(uc.getRoot()){
+								if(!validate(uc, map)) {
+									return false;
+								}
+							}
+						}
+						
+					«ENDFOR»
+					return true;
+				}
+
+				public Expression validate(BinaryConstraint bc, Map<String, Assignment> map){
+					Expression left = getExpr(bc.getLeft(), map);
+					Expression right = getExpr(bc.getRight(), map);
+					
+					ConfiguratorPackageFactory config = ConfiguratorPackageFactoryImpl.init();
+					
+					BooleanValue b = config.createBooleanValue();
+					switch(bc.getOperator()) {
+						case EQUAL:				b.setValue(left.equals(right));
+												return b;
+						case LESS:				b.setValue(false);
+												if(left instanceof IntegerValue && right instanceof IntegerValue)
+													if(((IntegerValue)left).getValue() < ((IntegerValue)right).getValue())
+														b.setValue(true);
+												return b;
+						case GREATER:			b.setValue(false);
+												if(left instanceof IntegerValue && right instanceof IntegerValue)
+													if(((IntegerValue)left).getValue() > ((IntegerValue)right).getValue())
+														b.setValue(true);
+												return b;
+						case ADDITION:			if(bc.isRoot()) {
+													b.setValue(false);
+													return b;
+												} else if(left instanceof IntegerValue && right instanceof IntegerValue){
+													IntegerValue i = config.createIntegerValue();
+													i.setValue(((IntegerValue)left).getValue() + ((IntegerValue)right).getValue());
+													return i;
+												} else
+													b.setValue(false);
+													return b;
+						case MULTIPLICATION:	if(bc.isRoot()) {
+													b.setValue(false);
+													return b;
+												}
+												else if(left instanceof IntegerValue && right instanceof IntegerValue){
+													IntegerValue i = config.createIntegerValue();
+													i.setValue(((IntegerValue)left).getValue() * ((IntegerValue)right).getValue());
+													return i;
+												} else {
+													b.setValue(false);
+													return b;
+												}
+						case SUBSET:			b.setValue(false);
+												if(right instanceof Set && left instanceof Value)
+													if(((Set)right).getHas().contains(left))
+														b.setValue(true);
+												return b;
+						case AND:				b.setValue(false);
+												if(left instanceof BooleanValue && right instanceof BooleanValue)
+													if(((BooleanValue)left).isValue() && ((BooleanValue)right).isValue())
+														b.setValue(true);
+												return b;
+						case OR:				b.setValue(false);
+												if(left instanceof BooleanValue && right instanceof BooleanValue)
+													if(((BooleanValue)left).isValue() || ((BooleanValue)right).isValue())
+														b.setValue(true);
+												return b;
 					}
+					b.setValue(false);
+					return b;
 				}
 				
-				public boolean validate(BinaryConstraint bc, Map<String, Assignment> map) {
-					TypeEnum leftType = null, rightType = null;
-					
-					if(bc.getLeft() instanceof BinaryConstraint) {
-						if(validate((BinaryConstraint) bc.getLeft())) {
-							leftType = BooleanType;
-						} else {
-							return false;
-						}
+				
+				private Expression getExpr(Expression expr, Map<String, Assignment> map) {
+					Expression e;
+					if(expr instanceof BinaryConstraint) {
+						BinaryConstraint bc = (BinaryConstraint) expr;
+						e = validate(bc, map);
+					} else if(expr instanceof UnaryConstraint) {
+						UnaryConstraint uc = (UnaryConstraint) expr;
+						e = validate(uc, map);
+					} else if(expr instanceof Parameter) {
+						Parameter p = (Parameter) expr;
+						Assignment a = map.get(p.getName());
+						e = a.getValue();
 					} else {
-						leftType = bc.getLeft().getType();
+						e = expr;
 					}
-					
-					switch(bc.getOperator()) {
-						case less:
-							
-					}
+					return e;
 				}
+				
+				public BooleanValue validate(UnaryConstraint uc, Map<String, Assignment> map){
+					ConfiguratorPackageFactory config = ConfiguratorPackageFactoryImpl.init();
+					BooleanValue b = config.createBooleanValue();
+					
+					Expression expr = uc.getExpression();
+					
+					if(expr instanceof BinaryConstraint){
+						BinaryConstraint bc = (BinaryConstraint) expr;
+						BooleanValue value = (BooleanValue) validate(bc, map);
+						b.setValue(!(value.isValue()));
+					}
+					else if(expr instanceof UnaryConstraint){
+						BooleanValue value = validate((UnaryConstraint) expr, map);
+						b.setValue(!(value.isValue()));
+					}
+					else if(expr instanceof BooleanValue){
+						BooleanValue value = (BooleanValue) expr;
+						b.setValue(!(value.isValue()));
+					}
+					return b;
+				}
+				
 				
 			}
   		'''
 	}
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+		resource.allContents.toIterable.filter(typeof(Root)).
+			forEach [ Root it | 
+				val fname = "Mikkel"
+				// generate Java implementation
+				fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+			]
 	}
 }
