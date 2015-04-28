@@ -5,10 +5,13 @@ package org.xtext.cfgdsl.generator
 
 import ConfiguratorPackage.BinaryConstraint
 import ConfiguratorPackage.Root
+import ConfiguratorPackage.UnaryConstraint
+import com.google.gson.Gson
+import java.io.FileWriter
+import java.io.IOException
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
-import ConfiguratorPackage.UnaryConstraint
 
 /**
  * Generates code from your model files on save.
@@ -188,12 +191,18 @@ class CfgDslGenerator implements IGenerator {
   		'''
 	}
 	
+	def static compileToJson(Root it) {
+		JsonConverter.generate(it)
+ 
+	}
+	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		resource.allContents.toIterable.filter(typeof(Root)).
 			forEach [ Root it | 
 				val fname = "Mikkel"
 				// generate Java implementation
-				fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+				//fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+				fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
 			]
 	}
 }
