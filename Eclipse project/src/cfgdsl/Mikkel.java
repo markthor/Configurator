@@ -3,6 +3,7 @@ package cfgdsl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 import ConfiguratorPackage.Assignment;
 import ConfiguratorPackage.BinaryConstraint;
@@ -13,6 +14,7 @@ import ConfiguratorPackage.IntegerValue;
 import ConfiguratorPackage.Parameter;
 import ConfiguratorPackage.Set;
 import ConfiguratorPackage.StringValue;
+import ConfiguratorPackage.TypeEnum;
 import ConfiguratorPackage.UnaryConstraint;
 import ConfiguratorPackage.Value;
 import ConfiguratorPackage.impl.ConfiguratorPackageFactoryImpl;
@@ -37,24 +39,248 @@ class Validator {
 		if(!valid)
 			return false;
 		
-		for(Expression expr : [ConfiguratorPackage.impl.BinaryConstraintImpl@be1cf7 (name: lessTest) (operator: less, root: false)]) {
-			BinaryConstraint bc = (BinaryConstraint) expr;
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.StringValueImpl@79b28caa (name: s1) (value: something, type: StringType);
 			if(bc.getRoot()){
 				if(!validate(bc, map)) {
 					return false;
 				}
 			}
 		}
-		
-		for(Expression expr : [ConfiguratorPackage.impl.UnaryConstraintImpl@431ca72b (name: notTrue) (Operator: not, root: false)]) {
-			UnaryConstraint uc = (UnaryConstraint) expr;
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.StringValueImpl@79b28caa (name: s1) (value: something, type: StringType);
 			if(uc.getRoot()){
 				if(!validate(uc, map)) {
 					return false;
 				}
 			}
 		}
+		
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.StringValueImpl@6e761f90 (name: s2) (value: somethingElse, type: StringType);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.StringValueImpl@6e761f90 (name: s2) (value: somethingElse, type: StringType);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.IntegerValueImpl@8a4cada (name: i1) (value: 1, type: IntegerType);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.IntegerValueImpl@8a4cada (name: i1) (value: 1, type: IntegerType);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.IntegerValueImpl@7c292792 (name: i2) (value: 2, type: IntegerType);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.IntegerValueImpl@7c292792 (name: i2) (value: 2, type: IntegerType);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.BooleanValueImpl@11133361 (name: b1) (value: false, type: BooleanType);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.BooleanValueImpl@11133361 (name: b1) (value: false, type: BooleanType);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.SetImpl@4fc7244c (name: set1);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.SetImpl@4fc7244c (name: set1);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.ParameterImpl@611bc574 (name: x) (type: IntegerType);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.ParameterImpl@611bc574 (name: x) (type: IntegerType);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.ParameterImpl@54bb6b72 (name: y) (type: IntegerType);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.ParameterImpl@54bb6b72 (name: y) (type: IntegerType);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
+		if(true){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.BinaryConstraintImpl@5cbbc2bf (name: lessTest) (operator: less, root: false);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(false){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.BinaryConstraintImpl@5cbbc2bf (name: lessTest) (operator: less, root: false);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
+		if(false){
+			BinaryConstraint bc = (BinaryConstraint) ConfiguratorPackage.impl.UnaryConstraintImpl@2a286820 (name: notTrue) (Operator: not, root: false);
+			if(bc.getRoot()){
+				if(!validate(bc, map)) {
+					return false;
+				}
+			}
+		}
+		if(true){
+			UnaryConstraint uc = (UnaryConstraint) ConfiguratorPackage.impl.UnaryConstraintImpl@2a286820 (name: notTrue) (Operator: not, root: false);
+			if(uc.getRoot()){
+				if(!validate(uc, map)) {
+					return false;
+				}
+			}
+		}
+		
 		return true;
+	}
+	
+	public static List<Expression> something() {
+		ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
+		List<Expression> expressions = new ArrayList<Expression>();
+		Map<String, Value> values = new HashMap<String, Value>();
+		
+		StringValue s;
+		s = factory.createStringValue();
+		s.setName("s1");
+		s.setType(TypeEnum.get("StringType"));
+		s.setValue("something");
+		expressions.add(s);
+		values.put("s1", s);
+		s = factory.createStringValue();
+		s.setName("s2");
+		s.setType(TypeEnum.get("StringType"));
+		s.setValue("somethingElse");
+		expressions.add(s);
+		values.put("s2", s);
+		
+		IntegerValue i;
+		i = factory.createIntegerValue();
+		i.setName("i1");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(1);
+		expressions.add(i);
+		values.put("i1", i);
+		i = factory.createIntegerValue();
+		i.setName("i2");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(2);
+		expressions.add(i);
+		values.put("i2", i);
+		
+		BooleanValue b;
+		b = factory.createBooleanValue();
+		b.setName("b1");
+		b.setType(TypeEnum.get("BooleanType"));
+		b.setValue(false);
+		expressions.add(b);
+		values.put("b1", b);
+		
+		Parameter p;
+		p = factory.createParameter();
+		p.setName("x");
+		p.setType(TypeEnum.get("IntegerType"));
+		expressions.add(p);
+		p = factory.createParameter();
+		p.setName("y");
+		p.setType(TypeEnum.get("IntegerType"));
+		expressions.add(p);
+		
+		Set set;
+		set = factory.createSet();
+		set.setName("set1");
+								
+		set.getHas().add(values.get("s1"));
+		set.getHas().add(values.get("s2"));
+		expressions.add(set);
+		
+		Parameter p = factory.createParameter();
+		p.setName("x");
+		p.setType(TypeEnum.get("IntegerType"));
+		expressions.add(p);
+		Parameter p = factory.createParameter();
+		p.setName("y");
+		p.setType(TypeEnum.get("IntegerType"));
+		expressions.add(p);
+		
+		return expressions;
 	}
 
 	public Expression validate(BinaryConstraint bc, Map<String, Assignment> map){
@@ -76,7 +302,7 @@ class Validator {
 									if(left instanceof IntegerValue && right instanceof IntegerValue)
 										if(((IntegerValue)left).getValue() > ((IntegerValue)right).getValue())
 											b.setValue(true);
-								return b;
+									return b;
 			case ADDITION:			if(bc.isRoot()) {
 										b.setValue(false);
 										return b;
@@ -114,7 +340,7 @@ class Validator {
 										if(((BooleanValue)left).isValue() || ((BooleanValue)right).isValue())
 											b.setValue(true);
 									return b;
-			}
+		}
 		b.setValue(false);
 		return b;
 	}
@@ -138,8 +364,6 @@ class Validator {
 		return e;
 	}
 	
-	
-	
 	public BooleanValue validate(UnaryConstraint uc, Map<String, Assignment> map){
 		ConfiguratorPackageFactory config = ConfiguratorPackageFactoryImpl.init();
 		BooleanValue b = config.createBooleanValue();
@@ -161,4 +385,6 @@ class Validator {
 		}
 		return b;
 	}
+	
+	
 }
