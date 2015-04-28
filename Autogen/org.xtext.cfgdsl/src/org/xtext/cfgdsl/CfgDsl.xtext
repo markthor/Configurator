@@ -52,7 +52,7 @@ BinaryConstraint returns BinaryConstraint:
 	'bc' root=EBoolean name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString];
 
 Set returns Set:
-	'set' name=EString ('[' has+=[Value|EString] ( "," has+=[Value|EString])* ']' )?;
+	'set' name=EString '=' ('[' has+=[Value|EString] ( "," has+=[Value|EString])* ']' )?;
 
 UnaryConstraint returns UnaryConstraint:
 	'uc' name=EString Operator=UnaryOperators expression=[Expression|EString] ;
