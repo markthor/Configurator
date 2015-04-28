@@ -542,23 +542,24 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSetKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cLeftSquareBracketKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cHasAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cHasValueCrossReference_2_1_0 = (CrossReference)cHasAssignment_2_1.eContents().get(0);
-		private final RuleCall cHasValueEStringParserRuleCall_2_1_0_1 = (RuleCall)cHasValueCrossReference_2_1_0.eContents().get(1);
-		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
-		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
-		private final Assignment cHasAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
-		private final CrossReference cHasValueCrossReference_2_2_1_0 = (CrossReference)cHasAssignment_2_2_1.eContents().get(0);
-		private final RuleCall cHasValueEStringParserRuleCall_2_2_1_0_1 = (RuleCall)cHasValueCrossReference_2_2_1_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftSquareBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cHasAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cHasValueCrossReference_3_1_0 = (CrossReference)cHasAssignment_3_1.eContents().get(0);
+		private final RuleCall cHasValueEStringParserRuleCall_3_1_0_1 = (RuleCall)cHasValueCrossReference_3_1_0.eContents().get(1);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cHasAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final CrossReference cHasValueCrossReference_3_2_1_0 = (CrossReference)cHasAssignment_3_2_1.eContents().get(0);
+		private final RuleCall cHasValueEStringParserRuleCall_3_2_1_0_1 = (RuleCall)cHasValueCrossReference_3_2_1_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		
 		//Set:
-		//	"set" name=EString ("[" has+=[Value|EString] ("," has+=[Value|EString])* "]")?;
+		//	"set" name=EString "=" ("[" has+=[Value|EString] ("," has+=[Value|EString])* "]")?;
 		public ParserRule getRule() { return rule; }
 
-		//"set" name=EString ("[" has+=[Value|EString] ("," has+=[Value|EString])* "]")?
+		//"set" name=EString "=" ("[" has+=[Value|EString] ("," has+=[Value|EString])* "]")?
 		public Group getGroup() { return cGroup; }
 
 		//"set"
@@ -570,38 +571,41 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
+		//"="
+		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
+
 		//("[" has+=[Value|EString] ("," has+=[Value|EString])* "]")?
-		public Group getGroup_2() { return cGroup_2; }
+		public Group getGroup_3() { return cGroup_3; }
 
 		//"["
-		public Keyword getLeftSquareBracketKeyword_2_0() { return cLeftSquareBracketKeyword_2_0; }
+		public Keyword getLeftSquareBracketKeyword_3_0() { return cLeftSquareBracketKeyword_3_0; }
 
 		//has+=[Value|EString]
-		public Assignment getHasAssignment_2_1() { return cHasAssignment_2_1; }
+		public Assignment getHasAssignment_3_1() { return cHasAssignment_3_1; }
 
 		//[Value|EString]
-		public CrossReference getHasValueCrossReference_2_1_0() { return cHasValueCrossReference_2_1_0; }
+		public CrossReference getHasValueCrossReference_3_1_0() { return cHasValueCrossReference_3_1_0; }
 
 		//EString
-		public RuleCall getHasValueEStringParserRuleCall_2_1_0_1() { return cHasValueEStringParserRuleCall_2_1_0_1; }
+		public RuleCall getHasValueEStringParserRuleCall_3_1_0_1() { return cHasValueEStringParserRuleCall_3_1_0_1; }
 
 		//("," has+=[Value|EString])*
-		public Group getGroup_2_2() { return cGroup_2_2; }
+		public Group getGroup_3_2() { return cGroup_3_2; }
 
 		//","
-		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
+		public Keyword getCommaKeyword_3_2_0() { return cCommaKeyword_3_2_0; }
 
 		//has+=[Value|EString]
-		public Assignment getHasAssignment_2_2_1() { return cHasAssignment_2_2_1; }
+		public Assignment getHasAssignment_3_2_1() { return cHasAssignment_3_2_1; }
 
 		//[Value|EString]
-		public CrossReference getHasValueCrossReference_2_2_1_0() { return cHasValueCrossReference_2_2_1_0; }
+		public CrossReference getHasValueCrossReference_3_2_1_0() { return cHasValueCrossReference_3_2_1_0; }
 
 		//EString
-		public RuleCall getHasValueEStringParserRuleCall_2_2_1_0_1() { return cHasValueEStringParserRuleCall_2_2_1_0_1; }
+		public RuleCall getHasValueEStringParserRuleCall_3_2_1_0_1() { return cHasValueEStringParserRuleCall_3_2_1_0_1; }
 
 		//"]"
-		public Keyword getRightSquareBracketKeyword_2_3() { return cRightSquareBracketKeyword_2_3; }
+		public Keyword getRightSquareBracketKeyword_3_3() { return cRightSquareBracketKeyword_3_3; }
 	}
 
 	public class UnaryConstraintElements extends AbstractParserRuleElementFinder {
@@ -976,7 +980,7 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Set:
-	//	"set" name=EString ("[" has+=[Value|EString] ("," has+=[Value|EString])* "]")?;
+	//	"set" name=EString "=" ("[" has+=[Value|EString] ("," has+=[Value|EString])* "]")?;
 	public SetElements getSetAccess() {
 		return (pSet != null) ? pSet : (pSet = new SetElements());
 	}
