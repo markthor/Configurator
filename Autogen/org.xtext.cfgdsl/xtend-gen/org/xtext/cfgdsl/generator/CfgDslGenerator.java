@@ -4,9 +4,16 @@
 package org.xtext.cfgdsl.generator;
 
 import ConfiguratorPackage.BinaryConstraint;
+import ConfiguratorPackage.BooleanValue;
 import ConfiguratorPackage.Expression;
+import ConfiguratorPackage.IntegerValue;
+import ConfiguratorPackage.Parameter;
 import ConfiguratorPackage.Root;
+import ConfiguratorPackage.Set;
+import ConfiguratorPackage.StringValue;
+import ConfiguratorPackage.TypeEnum;
 import ConfiguratorPackage.UnaryConstraint;
+import ConfiguratorPackage.Value;
 import com.google.common.collect.Iterables;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -38,6 +45,8 @@ public class CfgDslGenerator implements IGenerator {
     _builder.newLine();
     _builder.append("import java.util.Map;");
     _builder.newLine();
+    _builder.append("import java.util.ArrayList;");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("import ConfiguratorPackage.Assignment;");
     _builder.newLine();
@@ -56,6 +65,8 @@ public class CfgDslGenerator implements IGenerator {
     _builder.append("import ConfiguratorPackage.Set;");
     _builder.newLine();
     _builder.append("import ConfiguratorPackage.StringValue;");
+    _builder.newLine();
+    _builder.append("import ConfiguratorPackage.TypeEnum;");
     _builder.newLine();
     _builder.append("import ConfiguratorPackage.UnaryConstraint;");
     _builder.newLine();
@@ -196,6 +207,243 @@ public class CfgDslGenerator implements IGenerator {
     }
     _builder.append("\t\t");
     _builder.append("return true;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static List<Expression> something() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("List<Expression> expressions = new ArrayList<Expression>();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("Map<String, Value> values = new HashMap<String, Value>();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("StringValue s;");
+    _builder.newLine();
+    {
+      EList<Expression> _expressions_1 = it.getExpressions();
+      Iterable<StringValue> _filter = Iterables.<StringValue>filter(_expressions_1, StringValue.class);
+      for(final StringValue expr_1 : _filter) {
+        _builder.append("\t\t");
+        _builder.append("s = factory.createStringValue();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("s.setName(\"");
+        String _name = expr_1.getName();
+        _builder.append(_name, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("s.setType(TypeEnum.get(\"");
+        TypeEnum _type = expr_1.getType();
+        _builder.append(_type, "\t\t");
+        _builder.append("\"));");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("s.setValue(\"");
+        String _value = expr_1.getValue();
+        _builder.append(_value, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("expressions.add(s);");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("values.put(\"");
+        String _name_1 = expr_1.getName();
+        _builder.append(_name_1, "\t\t");
+        _builder.append("\", s);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("IntegerValue i;");
+    _builder.newLine();
+    {
+      EList<Expression> _expressions_2 = it.getExpressions();
+      Iterable<IntegerValue> _filter_1 = Iterables.<IntegerValue>filter(_expressions_2, IntegerValue.class);
+      for(final IntegerValue expr_2 : _filter_1) {
+        _builder.append("\t\t");
+        _builder.append("i = factory.createIntegerValue();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("i.setName(\"");
+        String _name_2 = expr_2.getName();
+        _builder.append(_name_2, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("i.setType(TypeEnum.get(\"");
+        TypeEnum _type_1 = expr_2.getType();
+        _builder.append(_type_1, "\t\t");
+        _builder.append("\"));");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("i.setValue(");
+        int _value_1 = expr_2.getValue();
+        _builder.append(_value_1, "\t\t");
+        _builder.append(");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("expressions.add(i);");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("values.put(\"");
+        String _name_3 = expr_2.getName();
+        _builder.append(_name_3, "\t\t");
+        _builder.append("\", i);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("BooleanValue b;");
+    _builder.newLine();
+    {
+      EList<Expression> _expressions_3 = it.getExpressions();
+      Iterable<BooleanValue> _filter_2 = Iterables.<BooleanValue>filter(_expressions_3, BooleanValue.class);
+      for(final BooleanValue expr_3 : _filter_2) {
+        _builder.append("\t\t");
+        _builder.append("b = factory.createBooleanValue();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("b.setName(\"");
+        String _name_4 = expr_3.getName();
+        _builder.append(_name_4, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("b.setType(TypeEnum.get(\"");
+        TypeEnum _type_2 = expr_3.getType();
+        _builder.append(_type_2, "\t\t");
+        _builder.append("\"));");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("b.setValue(");
+        boolean _isValue = expr_3.isValue();
+        _builder.append(_isValue, "\t\t");
+        _builder.append(");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("expressions.add(b);");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("values.put(\"");
+        String _name_5 = expr_3.getName();
+        _builder.append(_name_5, "\t\t");
+        _builder.append("\", b);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("Parameter p;");
+    _builder.newLine();
+    {
+      EList<Expression> _expressions_4 = it.getExpressions();
+      Iterable<Parameter> _filter_3 = Iterables.<Parameter>filter(_expressions_4, Parameter.class);
+      for(final Parameter expr_4 : _filter_3) {
+        _builder.append("\t\t");
+        _builder.append("p = factory.createParameter();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("p.setName(\"");
+        String _name_6 = expr_4.getName();
+        _builder.append(_name_6, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("p.setType(TypeEnum.get(\"");
+        TypeEnum _type_3 = expr_4.getType();
+        _builder.append(_type_3, "\t\t");
+        _builder.append("\"));");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("expressions.add(p);");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("Set set;");
+    _builder.newLine();
+    {
+      EList<Expression> _expressions_5 = it.getExpressions();
+      Iterable<Set> _filter_4 = Iterables.<Set>filter(_expressions_5, Set.class);
+      for(final Set expr_5 : _filter_4) {
+        _builder.append("\t\t");
+        _builder.append("set = factory.createSet();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("set.setName(\"");
+        String _name_7 = expr_5.getName();
+        _builder.append(_name_7, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("\t\t\t\t\t\t");
+        _builder.newLine();
+        {
+          EList<Value> _has = expr_5.getHas();
+          for(final Value value : _has) {
+            _builder.append("\t\t");
+            _builder.append("set.getHas().add(values.get(\"");
+            String _name_8 = value.getName();
+            _builder.append(_name_8, "\t\t");
+            _builder.append("\"));");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t");
+        _builder.append("expressions.add(set);");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    {
+      EList<Expression> _expressions_6 = it.getExpressions();
+      Iterable<Parameter> _filter_5 = Iterables.<Parameter>filter(_expressions_6, Parameter.class);
+      for(final Parameter expr_6 : _filter_5) {
+        _builder.append("\t\t");
+        _builder.append("Parameter p = factory.createParameter();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("p.setName(\"");
+        String _name_9 = expr_6.getName();
+        _builder.append(_name_9, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("p.setType(TypeEnum.get(\"");
+        TypeEnum _type_4 = expr_6.getType();
+        _builder.append(_type_4, "\t\t");
+        _builder.append("\"));");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("expressions.add(p);");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return expressions;");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
