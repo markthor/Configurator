@@ -33,7 +33,7 @@ public class IntegerValueImpl extends ValueImpl implements IntegerValue {
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
-	 * @ordered
+	 * @ordered 
 	 */
 	protected static final int VALUE_EDEFAULT = 0;
 
