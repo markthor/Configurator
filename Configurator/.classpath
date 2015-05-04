@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="D:/Program Files/Eclipse modeling/plugins/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files/Eclipse modeling/plugins/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="D:/Documents/Git/Configurator/Configurator/lib/commons-lang3-3.4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
