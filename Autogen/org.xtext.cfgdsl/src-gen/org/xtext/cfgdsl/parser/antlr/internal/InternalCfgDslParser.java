@@ -24,40 +24,40 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'cfg'", "','", "'assign'", "'to'", "'param'", "'='", "'-'", "'true'", "'false'", "'bc'", "'set'", "'['", "']'", "'uc'", "'int'", "'boolean'", "'string'", "'less'", "'greater'", "'equal'", "'multiplication'", "'addition'", "'subset'", "'and'", "'or'", "'not'"
     };
-    public static final int RULE_STRING=4;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int T__19=19;
-    public static final int T__15=15;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
-    public static final int T__11=11;
-    public static final int T__33=33;
-    public static final int T__12=12;
-    public static final int T__34=34;
-    public static final int T__13=13;
-    public static final int T__35=35;
-    public static final int T__14=14;
-    public static final int T__36=36;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
     public static final int RULE_ID=5;
-    public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int RULE_INT=6;
     public static final int T__29=29;
-    public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__23=23;
-    public static final int T__24=24;
+    public static final int T__28=28;
+    public static final int T__27=27;
+    public static final int T__26=26;
     public static final int T__25=25;
-    public static final int T__20=20;
+    public static final int T__24=24;
+    public static final int T__23=23;
+    public static final int T__22=22;
+    public static final int RULE_ANY_OTHER=10;
     public static final int T__21=21;
+    public static final int T__20=20;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int EOF=-1;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__30=30;
+    public static final int T__19=19;
+    public static final int T__31=31;
+    public static final int RULE_STRING=4;
+    public static final int T__32=32;
+    public static final int T__33=33;
+    public static final int T__16=16;
+    public static final int T__34=34;
+    public static final int T__15=15;
+    public static final int T__35=35;
+    public static final int T__18=18;
+    public static final int T__36=36;
+    public static final int T__17=17;
+    public static final int T__12=12;
+    public static final int T__11=11;
+    public static final int T__14=14;
+    public static final int T__13=13;
+    public static final int RULE_INT=6;
+    public static final int RULE_WS=9;
 
     // delegates
     // delegators
@@ -1886,11 +1886,11 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
             if ( (LA9_0==20) ) {
                 int LA9_1 = input.LA(2);
 
-                if ( ((LA9_1>=18 && LA9_1<=19)) ) {
-                    alt9=2;
-                }
-                else if ( ((LA9_1>=RULE_STRING && LA9_1<=RULE_ID)) ) {
+                if ( ((LA9_1>=RULE_STRING && LA9_1<=RULE_ID)) ) {
                     alt9=1;
+                }
+                else if ( ((LA9_1>=18 && LA9_1<=19)) ) {
+                    alt9=2;
                 }
                 else {
                     NoViableAltException nvae =
@@ -3010,7 +3010,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
     static final String DFA3_maxS =
         "\1\33\3\uffff\3\5\1\uffff\2\20\1\23\3\uffff";
     static final String DFA3_acceptS =
-        "\1\uffff\1\1\1\2\1\3\3\uffff\1\7\3\uffff\1\4\1\5\1\6";
+        "\1\uffff\1\1\1\2\1\3\3\uffff\1\7\3\uffff\1\5\1\6\1\4";
     static final String DFA3_specialS =
         "\16\uffff}>";
     static final String[] DFA3_transitionS = {
@@ -3024,7 +3024,7 @@ public class InternalCfgDslParser extends AbstractInternalAntlrParser {
             "",
             "\1\12",
             "\1\12",
-            "\2\13\1\14\12\uffff\1\14\2\15",
+            "\2\15\1\13\12\uffff\1\13\2\14",
             "",
             "",
             ""
