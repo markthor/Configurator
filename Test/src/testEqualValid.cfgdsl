@@ -1,0 +1,18 @@
+string s1 = asdlkj2lk323l2aasd3k
+string s2 = asdlkj2lk323l2aasd3k
+
+boolean b1 = true
+boolean b2 = true
+
+boolean b3 = false
+boolean b4 = false
+
+int i1 = 10
+int i2 = 10
+
+bc true stringEqual s1 == s2
+
+bc true trueEqualTrue b1 == b2
+bc true falseEqualFalse b3 == b4
+
+bc tenEqualTen i1 == i2
