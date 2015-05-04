@@ -209,33 +209,29 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class ParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Parameter");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cParamKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeTypeEnumEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeTypeEnumEnumRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//Parameter:
-		//	"param" type=TypeEnum name=EString;
+		//	type=TypeEnum name=EString;
 		public ParserRule getRule() { return rule; }
 
-		//"param" type=TypeEnum name=EString
+		//type=TypeEnum name=EString
 		public Group getGroup() { return cGroup; }
 
-		//"param"
-		public Keyword getParamKeyword_0() { return cParamKeyword_0; }
-
 		//type=TypeEnum
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
 
 		//TypeEnum
-		public RuleCall getTypeTypeEnumEnumRuleCall_1_0() { return cTypeTypeEnumEnumRuleCall_1_0; }
+		public RuleCall getTypeTypeEnumEnumRuleCall_0_0() { return cTypeTypeEnumEnumRuleCall_0_0; }
 
 		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 	}
 
 	public class EStringElements extends AbstractParserRuleElementFinder {
@@ -693,58 +689,58 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "BinaryOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cLessEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cLessLessKeyword_0_0 = (Keyword)cLessEnumLiteralDeclaration_0.eContents().get(0);
+		private final Keyword cLessLessThanSignKeyword_0_0 = (Keyword)cLessEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cGreaterEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cGreaterGreaterKeyword_1_0 = (Keyword)cGreaterEnumLiteralDeclaration_1.eContents().get(0);
+		private final Keyword cGreaterGreaterThanSignKeyword_1_0 = (Keyword)cGreaterEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cEqualEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cEqualEqualKeyword_2_0 = (Keyword)cEqualEnumLiteralDeclaration_2.eContents().get(0);
+		private final Keyword cEqualEqualsSignEqualsSignKeyword_2_0 = (Keyword)cEqualEnumLiteralDeclaration_2.eContents().get(0);
 		private final EnumLiteralDeclaration cMultiplicationEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cMultiplicationMultiplicationKeyword_3_0 = (Keyword)cMultiplicationEnumLiteralDeclaration_3.eContents().get(0);
+		private final Keyword cMultiplicationAsteriskKeyword_3_0 = (Keyword)cMultiplicationEnumLiteralDeclaration_3.eContents().get(0);
 		private final EnumLiteralDeclaration cAdditionEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
-		private final Keyword cAdditionAdditionKeyword_4_0 = (Keyword)cAdditionEnumLiteralDeclaration_4.eContents().get(0);
+		private final Keyword cAdditionPlusSignKeyword_4_0 = (Keyword)cAdditionEnumLiteralDeclaration_4.eContents().get(0);
 		private final EnumLiteralDeclaration cSubsetEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
 		private final Keyword cSubsetSubsetKeyword_5_0 = (Keyword)cSubsetEnumLiteralDeclaration_5.eContents().get(0);
 		private final EnumLiteralDeclaration cAndEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
-		private final Keyword cAndAndKeyword_6_0 = (Keyword)cAndEnumLiteralDeclaration_6.eContents().get(0);
+		private final Keyword cAndAmpersandAmpersandKeyword_6_0 = (Keyword)cAndEnumLiteralDeclaration_6.eContents().get(0);
 		private final EnumLiteralDeclaration cOrEnumLiteralDeclaration_7 = (EnumLiteralDeclaration)cAlternatives.eContents().get(7);
-		private final Keyword cOrOrKeyword_7_0 = (Keyword)cOrEnumLiteralDeclaration_7.eContents().get(0);
+		private final Keyword cOrVerticalLineVerticalLineKeyword_7_0 = (Keyword)cOrEnumLiteralDeclaration_7.eContents().get(0);
 		
 		//enum BinaryOperators:
-		//	less | greater | equal | multiplication | addition | subset | and | or;
+		//	less="<" | greater=">" | equal="==" | multiplication="*" | addition="+" | subset | and="&&" | or="||";
 		public EnumRule getRule() { return rule; }
 
-		//less | greater | equal | multiplication | addition | subset | and | or
+		//less="<" | greater=">" | equal="==" | multiplication="*" | addition="+" | subset | and="&&" | or="||"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//less
+		//less="<"
 		public EnumLiteralDeclaration getLessEnumLiteralDeclaration_0() { return cLessEnumLiteralDeclaration_0; }
 
-		//"less"
-		public Keyword getLessLessKeyword_0_0() { return cLessLessKeyword_0_0; }
+		//"<"
+		public Keyword getLessLessThanSignKeyword_0_0() { return cLessLessThanSignKeyword_0_0; }
 
-		//greater
+		//greater=">"
 		public EnumLiteralDeclaration getGreaterEnumLiteralDeclaration_1() { return cGreaterEnumLiteralDeclaration_1; }
 
-		//"greater"
-		public Keyword getGreaterGreaterKeyword_1_0() { return cGreaterGreaterKeyword_1_0; }
+		//">"
+		public Keyword getGreaterGreaterThanSignKeyword_1_0() { return cGreaterGreaterThanSignKeyword_1_0; }
 
-		//equal
+		//equal="=="
 		public EnumLiteralDeclaration getEqualEnumLiteralDeclaration_2() { return cEqualEnumLiteralDeclaration_2; }
 
-		//"equal"
-		public Keyword getEqualEqualKeyword_2_0() { return cEqualEqualKeyword_2_0; }
+		//"=="
+		public Keyword getEqualEqualsSignEqualsSignKeyword_2_0() { return cEqualEqualsSignEqualsSignKeyword_2_0; }
 
-		//multiplication
+		//multiplication="*"
 		public EnumLiteralDeclaration getMultiplicationEnumLiteralDeclaration_3() { return cMultiplicationEnumLiteralDeclaration_3; }
 
-		//"multiplication"
-		public Keyword getMultiplicationMultiplicationKeyword_3_0() { return cMultiplicationMultiplicationKeyword_3_0; }
+		//"*"
+		public Keyword getMultiplicationAsteriskKeyword_3_0() { return cMultiplicationAsteriskKeyword_3_0; }
 
-		//addition
+		//addition="+"
 		public EnumLiteralDeclaration getAdditionEnumLiteralDeclaration_4() { return cAdditionEnumLiteralDeclaration_4; }
 
-		//"addition"
-		public Keyword getAdditionAdditionKeyword_4_0() { return cAdditionAdditionKeyword_4_0; }
+		//"+"
+		public Keyword getAdditionPlusSignKeyword_4_0() { return cAdditionPlusSignKeyword_4_0; }
 
 		//subset
 		public EnumLiteralDeclaration getSubsetEnumLiteralDeclaration_5() { return cSubsetEnumLiteralDeclaration_5; }
@@ -752,33 +748,33 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"subset"
 		public Keyword getSubsetSubsetKeyword_5_0() { return cSubsetSubsetKeyword_5_0; }
 
-		//and
+		//and="&&"
 		public EnumLiteralDeclaration getAndEnumLiteralDeclaration_6() { return cAndEnumLiteralDeclaration_6; }
 
-		//"and"
-		public Keyword getAndAndKeyword_6_0() { return cAndAndKeyword_6_0; }
+		//"&&"
+		public Keyword getAndAmpersandAmpersandKeyword_6_0() { return cAndAmpersandAmpersandKeyword_6_0; }
 
-		//or
+		//or="||"
 		public EnumLiteralDeclaration getOrEnumLiteralDeclaration_7() { return cOrEnumLiteralDeclaration_7; }
 
-		//"or"
-		public Keyword getOrOrKeyword_7_0() { return cOrOrKeyword_7_0; }
+		//"||"
+		public Keyword getOrVerticalLineVerticalLineKeyword_7_0() { return cOrVerticalLineVerticalLineKeyword_7_0; }
 	}
 
 	public class UnaryOperatorsElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "UnaryOperators");
 		private final EnumLiteralDeclaration cNotEnumLiteralDeclaration = (EnumLiteralDeclaration)rule.eContents().get(1);
-		private final Keyword cNotNotKeyword_0 = (Keyword)cNotEnumLiteralDeclaration.eContents().get(0);
+		private final Keyword cNotExclamationMarkKeyword_0 = (Keyword)cNotEnumLiteralDeclaration.eContents().get(0);
 		
 		//enum UnaryOperators:
-		//	not;
+		//	not="!";
 		public EnumRule getRule() { return rule; }
 
-		//not
+		//not="!"
 		public EnumLiteralDeclaration getNotEnumLiteralDeclaration() { return cNotEnumLiteralDeclaration; }
 
-		//"not"
-		public Keyword getNotNotKeyword_0() { return cNotNotKeyword_0; }
+		//"!"
+		public Keyword getNotExclamationMarkKeyword_0() { return cNotExclamationMarkKeyword_0; }
 	}
 	
 	private RootElements pRoot;
@@ -889,7 +885,7 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Parameter:
-	//	"param" type=TypeEnum name=EString;
+	//	type=TypeEnum name=EString;
 	public ParameterElements getParameterAccess() {
 		return (pParameter != null) ? pParameter : (pParameter = new ParameterElements());
 	}
@@ -1000,7 +996,7 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum BinaryOperators:
-	//	less | greater | equal | multiplication | addition | subset | and | or;
+	//	less="<" | greater=">" | equal="==" | multiplication="*" | addition="+" | subset | and="&&" | or="||";
 	public BinaryOperatorsElements getBinaryOperatorsAccess() {
 		return (unknownRuleBinaryOperators != null) ? unknownRuleBinaryOperators : (unknownRuleBinaryOperators = new BinaryOperatorsElements());
 	}
@@ -1010,7 +1006,7 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum UnaryOperators:
-	//	not;
+	//	not="!";
 	public UnaryOperatorsElements getUnaryOperatorsAccess() {
 		return (unknownRuleUnaryOperators != null) ? unknownRuleUnaryOperators : (unknownRuleUnaryOperators = new UnaryOperatorsElements());
 	}

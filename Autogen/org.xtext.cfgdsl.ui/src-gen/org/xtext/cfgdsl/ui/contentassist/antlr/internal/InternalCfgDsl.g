@@ -497,7 +497,7 @@ ruleUnaryOperators
 :
 (
 { before(grammarAccess.getUnaryOperatorsAccess().getNotEnumLiteralDeclaration()); }
-(	'not' 
+(	'!' 
 )
 { after(grammarAccess.getUnaryOperatorsAccess().getNotEnumLiteralDeclaration()); }
 )
@@ -670,35 +670,35 @@ rule__BinaryOperators__Alternatives
 :
 (
 { before(grammarAccess.getBinaryOperatorsAccess().getLessEnumLiteralDeclaration_0()); }
-(	'less' 
+(	'<' 
 )
 { after(grammarAccess.getBinaryOperatorsAccess().getLessEnumLiteralDeclaration_0()); }
 )
 
     |(
 { before(grammarAccess.getBinaryOperatorsAccess().getGreaterEnumLiteralDeclaration_1()); }
-(	'greater' 
+(	'>' 
 )
 { after(grammarAccess.getBinaryOperatorsAccess().getGreaterEnumLiteralDeclaration_1()); }
 )
 
     |(
 { before(grammarAccess.getBinaryOperatorsAccess().getEqualEnumLiteralDeclaration_2()); }
-(	'equal' 
+(	'==' 
 )
 { after(grammarAccess.getBinaryOperatorsAccess().getEqualEnumLiteralDeclaration_2()); }
 )
 
     |(
 { before(grammarAccess.getBinaryOperatorsAccess().getMultiplicationEnumLiteralDeclaration_3()); }
-(	'multiplication' 
+(	'*' 
 )
 { after(grammarAccess.getBinaryOperatorsAccess().getMultiplicationEnumLiteralDeclaration_3()); }
 )
 
     |(
 { before(grammarAccess.getBinaryOperatorsAccess().getAdditionEnumLiteralDeclaration_4()); }
-(	'addition' 
+(	'+' 
 )
 { after(grammarAccess.getBinaryOperatorsAccess().getAdditionEnumLiteralDeclaration_4()); }
 )
@@ -712,14 +712,14 @@ rule__BinaryOperators__Alternatives
 
     |(
 { before(grammarAccess.getBinaryOperatorsAccess().getAndEnumLiteralDeclaration_6()); }
-(	'and' 
+(	'&&' 
 )
 { after(grammarAccess.getBinaryOperatorsAccess().getAndEnumLiteralDeclaration_6()); }
 )
 
     |(
 { before(grammarAccess.getBinaryOperatorsAccess().getOrEnumLiteralDeclaration_7()); }
-(	'or' 
+(	'||' 
 )
 { after(grammarAccess.getBinaryOperatorsAccess().getOrEnumLiteralDeclaration_7()); }
 )
@@ -1190,11 +1190,9 @@ rule__Parameter__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getParameterAccess().getParamKeyword_0()); }
-
-	'param' 
-
-{ after(grammarAccess.getParameterAccess().getParamKeyword_0()); }
+{ before(grammarAccess.getParameterAccess().getTypeAssignment_0()); }
+(rule__Parameter__TypeAssignment_0)
+{ after(grammarAccess.getParameterAccess().getTypeAssignment_0()); }
 )
 
 ;
@@ -1209,7 +1207,6 @@ rule__Parameter__Group__1
     }
 :
 	rule__Parameter__Group__1__Impl
-	rule__Parameter__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1221,45 +1218,15 @@ rule__Parameter__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getParameterAccess().getTypeAssignment_1()); }
-(rule__Parameter__TypeAssignment_1)
-{ after(grammarAccess.getParameterAccess().getTypeAssignment_1()); }
+{ before(grammarAccess.getParameterAccess().getNameAssignment_1()); }
+(rule__Parameter__NameAssignment_1)
+{ after(grammarAccess.getParameterAccess().getNameAssignment_1()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
-
-
-rule__Parameter__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Parameter__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Parameter__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getParameterAccess().getNameAssignment_2()); }
-(rule__Parameter__NameAssignment_2)
-{ after(grammarAccess.getParameterAccess().getNameAssignment_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
 
 
 
@@ -2588,14 +2555,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Parameter__TypeAssignment_1
+rule__Parameter__TypeAssignment_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getParameterAccess().getTypeTypeEnumEnumRuleCall_1_0()); }
-	ruleTypeEnum{ after(grammarAccess.getParameterAccess().getTypeTypeEnumEnumRuleCall_1_0()); }
+{ before(grammarAccess.getParameterAccess().getTypeTypeEnumEnumRuleCall_0_0()); }
+	ruleTypeEnum{ after(grammarAccess.getParameterAccess().getTypeTypeEnumEnumRuleCall_0_0()); }
 )
 
 ;
@@ -2603,14 +2570,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Parameter__NameAssignment_2
+rule__Parameter__NameAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_2_0()); }
-	ruleEString{ after(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_2_0()); }
+{ before(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_1_0()); }
+	ruleEString{ after(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_1_0()); }
 )
 
 ;

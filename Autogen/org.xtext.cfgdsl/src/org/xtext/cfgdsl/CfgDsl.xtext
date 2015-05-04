@@ -24,7 +24,7 @@ Assignment returns Assignment:
 	'assign' parameter=[Parameter|EString] 'to' value=[Value|EString];
 
 Parameter returns Parameter:
-	'param' type=TypeEnum name=EString;
+	type=TypeEnum name=EString;
 
 EString returns ecore::EString:
 	STRING | ID;
@@ -58,8 +58,8 @@ UnaryConstraint returns UnaryConstraint:
 	'uc' name=EString Operator=UnaryOperators expression=[Expression|EString] ;
 
 enum BinaryOperators returns BinaryOperators:
-	less = 'less' | greater = 'greater' | equal = 'equal' | multiplication = 'multiplication' |
-addition = 'addition' | subset = 'subset' | and = 'and' | or = 'or';
+	less = '<' | greater = '>' | equal = '==' | multiplication = '*' |
+addition = '+' | subset = 'subset' | and = '&&' | or = '||';
 
 enum UnaryOperators returns UnaryOperators:
-not = 'not';
+not = '!';
