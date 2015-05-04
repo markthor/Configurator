@@ -42,6 +42,7 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 					put(grammarAccess.getEBooleanAccess().getAlternatives(), "rule__EBoolean__Alternatives");
 					put(grammarAccess.getBinaryConstraintAccess().getAlternatives(), "rule__BinaryConstraint__Alternatives");
+					put(grammarAccess.getUnaryConstraintAccess().getAlternatives(), "rule__UnaryConstraint__Alternatives");
 					put(grammarAccess.getTypeEnumAccess().getAlternatives(), "rule__TypeEnum__Alternatives");
 					put(grammarAccess.getBinaryOperatorsAccess().getAlternatives(), "rule__BinaryOperators__Alternatives");
 					put(grammarAccess.getRootAccess().getGroup(), "rule__Root__Group__0");
@@ -59,7 +60,8 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSetAccess().getGroup(), "rule__Set__Group__0");
 					put(grammarAccess.getSetAccess().getGroup_3(), "rule__Set__Group_3__0");
 					put(grammarAccess.getSetAccess().getGroup_3_2(), "rule__Set__Group_3_2__0");
-					put(grammarAccess.getUnaryConstraintAccess().getGroup(), "rule__UnaryConstraint__Group__0");
+					put(grammarAccess.getUnaryConstraintAccess().getGroup_0(), "rule__UnaryConstraint__Group_0__0");
+					put(grammarAccess.getUnaryConstraintAccess().getGroup_1(), "rule__UnaryConstraint__Group_1__0");
 					put(grammarAccess.getRootAccess().getConfiguratorsAssignment_1(), "rule__Root__ConfiguratorsAssignment_1");
 					put(grammarAccess.getRootAccess().getExpressionsAssignment_2(), "rule__Root__ExpressionsAssignment_2");
 					put(grammarAccess.getConfigurationAccess().getAssignmentsAssignment_2_0(), "rule__Configuration__AssignmentsAssignment_2_0");
@@ -89,9 +91,13 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSetAccess().getNameAssignment_1(), "rule__Set__NameAssignment_1");
 					put(grammarAccess.getSetAccess().getHasAssignment_3_1(), "rule__Set__HasAssignment_3_1");
 					put(grammarAccess.getSetAccess().getHasAssignment_3_2_1(), "rule__Set__HasAssignment_3_2_1");
-					put(grammarAccess.getUnaryConstraintAccess().getNameAssignment_1(), "rule__UnaryConstraint__NameAssignment_1");
-					put(grammarAccess.getUnaryConstraintAccess().getOperatorAssignment_2(), "rule__UnaryConstraint__OperatorAssignment_2");
-					put(grammarAccess.getUnaryConstraintAccess().getExpressionAssignment_3(), "rule__UnaryConstraint__ExpressionAssignment_3");
+					put(grammarAccess.getUnaryConstraintAccess().getNameAssignment_0_1(), "rule__UnaryConstraint__NameAssignment_0_1");
+					put(grammarAccess.getUnaryConstraintAccess().getOperatorAssignment_0_2(), "rule__UnaryConstraint__OperatorAssignment_0_2");
+					put(grammarAccess.getUnaryConstraintAccess().getExpressionAssignment_0_3(), "rule__UnaryConstraint__ExpressionAssignment_0_3");
+					put(grammarAccess.getUnaryConstraintAccess().getRootAssignment_1_1(), "rule__UnaryConstraint__RootAssignment_1_1");
+					put(grammarAccess.getUnaryConstraintAccess().getNameAssignment_1_2(), "rule__UnaryConstraint__NameAssignment_1_2");
+					put(grammarAccess.getUnaryConstraintAccess().getOperatorAssignment_1_3(), "rule__UnaryConstraint__OperatorAssignment_1_3");
+					put(grammarAccess.getUnaryConstraintAccess().getExpressionAssignment_1_4(), "rule__UnaryConstraint__ExpressionAssignment_1_4");
 				}
 			};
 		}

@@ -606,46 +606,96 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class UnaryConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UnaryConstraint");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cUcKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cOperatorAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cOperatorUnaryOperatorsEnumRuleCall_2_0 = (RuleCall)cOperatorAssignment_2.eContents().get(0);
-		private final Assignment cExpressionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cExpressionExpressionCrossReference_3_0 = (CrossReference)cExpressionAssignment_3.eContents().get(0);
-		private final RuleCall cExpressionExpressionEStringParserRuleCall_3_0_1 = (RuleCall)cExpressionExpressionCrossReference_3_0.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cUcKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cOperatorUnaryOperatorsEnumRuleCall_0_2_0 = (RuleCall)cOperatorAssignment_0_2.eContents().get(0);
+		private final Assignment cExpressionAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final CrossReference cExpressionExpressionCrossReference_0_3_0 = (CrossReference)cExpressionAssignment_0_3.eContents().get(0);
+		private final RuleCall cExpressionExpressionEStringParserRuleCall_0_3_0_1 = (RuleCall)cExpressionExpressionCrossReference_0_3_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cUcKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cRootAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cRootEBooleanParserRuleCall_1_1_0 = (RuleCall)cRootAssignment_1_1.eContents().get(0);
+		private final Assignment cNameAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_1_2_0 = (RuleCall)cNameAssignment_1_2.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cOperatorUnaryOperatorsEnumRuleCall_1_3_0 = (RuleCall)cOperatorAssignment_1_3.eContents().get(0);
+		private final Assignment cExpressionAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
+		private final CrossReference cExpressionExpressionCrossReference_1_4_0 = (CrossReference)cExpressionAssignment_1_4.eContents().get(0);
+		private final RuleCall cExpressionExpressionEStringParserRuleCall_1_4_0_1 = (RuleCall)cExpressionExpressionCrossReference_1_4_0.eContents().get(1);
 		
 		//UnaryConstraint:
-		//	"uc" name=EString Operator=UnaryOperators expression=[Expression|EString];
+		//	"uc" name=EString Operator=UnaryOperators expression=[Expression|EString] | "uc" root=EBoolean name=EString
+		//	Operator=UnaryOperators expression=[Expression|EString];
 		public ParserRule getRule() { return rule; }
 
+		//"uc" name=EString Operator=UnaryOperators expression=[Expression|EString] | "uc" root=EBoolean name=EString
+		//Operator=UnaryOperators expression=[Expression|EString]
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//"uc" name=EString Operator=UnaryOperators expression=[Expression|EString]
-		public Group getGroup() { return cGroup; }
+		public Group getGroup_0() { return cGroup_0; }
 
 		//"uc"
-		public Keyword getUcKeyword_0() { return cUcKeyword_0; }
+		public Keyword getUcKeyword_0_0() { return cUcKeyword_0_0; }
 
 		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		public RuleCall getNameEStringParserRuleCall_0_1_0() { return cNameEStringParserRuleCall_0_1_0; }
 
 		//Operator=UnaryOperators
-		public Assignment getOperatorAssignment_2() { return cOperatorAssignment_2; }
+		public Assignment getOperatorAssignment_0_2() { return cOperatorAssignment_0_2; }
 
 		//UnaryOperators
-		public RuleCall getOperatorUnaryOperatorsEnumRuleCall_2_0() { return cOperatorUnaryOperatorsEnumRuleCall_2_0; }
+		public RuleCall getOperatorUnaryOperatorsEnumRuleCall_0_2_0() { return cOperatorUnaryOperatorsEnumRuleCall_0_2_0; }
 
 		//expression=[Expression|EString]
-		public Assignment getExpressionAssignment_3() { return cExpressionAssignment_3; }
+		public Assignment getExpressionAssignment_0_3() { return cExpressionAssignment_0_3; }
 
 		//[Expression|EString]
-		public CrossReference getExpressionExpressionCrossReference_3_0() { return cExpressionExpressionCrossReference_3_0; }
+		public CrossReference getExpressionExpressionCrossReference_0_3_0() { return cExpressionExpressionCrossReference_0_3_0; }
 
 		//EString
-		public RuleCall getExpressionExpressionEStringParserRuleCall_3_0_1() { return cExpressionExpressionEStringParserRuleCall_3_0_1; }
+		public RuleCall getExpressionExpressionEStringParserRuleCall_0_3_0_1() { return cExpressionExpressionEStringParserRuleCall_0_3_0_1; }
+
+		//"uc" root=EBoolean name=EString Operator=UnaryOperators expression=[Expression|EString]
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"uc"
+		public Keyword getUcKeyword_1_0() { return cUcKeyword_1_0; }
+
+		//root=EBoolean
+		public Assignment getRootAssignment_1_1() { return cRootAssignment_1_1; }
+
+		//EBoolean
+		public RuleCall getRootEBooleanParserRuleCall_1_1_0() { return cRootEBooleanParserRuleCall_1_1_0; }
+
+		//name=EString
+		public Assignment getNameAssignment_1_2() { return cNameAssignment_1_2; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_2_0() { return cNameEStringParserRuleCall_1_2_0; }
+
+		//Operator=UnaryOperators
+		public Assignment getOperatorAssignment_1_3() { return cOperatorAssignment_1_3; }
+
+		//UnaryOperators
+		public RuleCall getOperatorUnaryOperatorsEnumRuleCall_1_3_0() { return cOperatorUnaryOperatorsEnumRuleCall_1_3_0; }
+
+		//expression=[Expression|EString]
+		public Assignment getExpressionAssignment_1_4() { return cExpressionAssignment_1_4; }
+
+		//[Expression|EString]
+		public CrossReference getExpressionExpressionCrossReference_1_4_0() { return cExpressionExpressionCrossReference_1_4_0; }
+
+		//EString
+		public RuleCall getExpressionExpressionEStringParserRuleCall_1_4_0_1() { return cExpressionExpressionEStringParserRuleCall_1_4_0_1; }
 	}
 	
 	
@@ -986,7 +1036,8 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UnaryConstraint:
-	//	"uc" name=EString Operator=UnaryOperators expression=[Expression|EString];
+	//	"uc" name=EString Operator=UnaryOperators expression=[Expression|EString] | "uc" root=EBoolean name=EString
+	//	Operator=UnaryOperators expression=[Expression|EString];
 	public UnaryConstraintElements getUnaryConstraintAccess() {
 		return (pUnaryConstraint != null) ? pUnaryConstraint : (pUnaryConstraint = new UnaryConstraintElements());
 	}

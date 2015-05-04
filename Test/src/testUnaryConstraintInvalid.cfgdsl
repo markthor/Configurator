@@ -1,0 +1,2 @@
+boolean fail = true
+uc true testConstraint ! fail

@@ -1,6 +1,7 @@
 {
 	"root": {
 		"expressions": {
+<<<<<<< HEAD
 			"binaryConstraints": [
 					{
 						"name": "e",
@@ -22,6 +23,8 @@
 						"type": "StringType"
 					}
 			]
+=======
+>>>>>>> 17b04305daa5c3dbec095c4c041c22bbe9cc449d
 		}
 	}
 }

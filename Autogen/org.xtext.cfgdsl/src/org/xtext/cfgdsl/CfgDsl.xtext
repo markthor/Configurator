@@ -55,7 +55,8 @@ Set returns Set:
 	'set' name=EString '=' ('[' has+=[Value|EString] ( "," has+=[Value|EString])* ']' )?;
 
 UnaryConstraint returns UnaryConstraint:
-	'uc' name=EString Operator=UnaryOperators expression=[Expression|EString] ;
+	'uc' name=EString Operator=UnaryOperators expression=[Expression|EString] |
+	'uc' root=EBoolean name=EString Operator=UnaryOperators expression=[Expression|EString];
 
 enum BinaryOperators returns BinaryOperators:
 	less = '<' | greater = '>' | equal = '==' | multiplication = '*' |
