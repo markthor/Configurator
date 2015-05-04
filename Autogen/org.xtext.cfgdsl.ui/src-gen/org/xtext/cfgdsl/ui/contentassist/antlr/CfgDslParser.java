@@ -66,8 +66,8 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConfigurationAccess().getAssignmentsAssignment_2_1_1(), "rule__Configuration__AssignmentsAssignment_2_1_1");
 					put(grammarAccess.getAssignmentAccess().getParameterAssignment_1(), "rule__Assignment__ParameterAssignment_1");
 					put(grammarAccess.getAssignmentAccess().getValueAssignment_3(), "rule__Assignment__ValueAssignment_3");
-					put(grammarAccess.getParameterAccess().getTypeAssignment_1(), "rule__Parameter__TypeAssignment_1");
-					put(grammarAccess.getParameterAccess().getNameAssignment_2(), "rule__Parameter__NameAssignment_2");
+					put(grammarAccess.getParameterAccess().getTypeAssignment_0(), "rule__Parameter__TypeAssignment_0");
+					put(grammarAccess.getParameterAccess().getNameAssignment_1(), "rule__Parameter__NameAssignment_1");
 					put(grammarAccess.getStringValueAccess().getTypeAssignment_0(), "rule__StringValue__TypeAssignment_0");
 					put(grammarAccess.getStringValueAccess().getNameAssignment_1(), "rule__StringValue__NameAssignment_1");
 					put(grammarAccess.getStringValueAccess().getValueAssignment_3(), "rule__StringValue__ValueAssignment_3");
