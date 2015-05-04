@@ -14,7 +14,6 @@ import ConfiguratorPackage.UnaryConstraint
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
-import ConfiguratorPackage.BinaryOperators
 
 /**
  * Generates code from your model files on save.
@@ -26,13 +25,12 @@ class CfgDslGenerator implements IGenerator {
 	def static compileToJava(Root it) {
 		'''
 			package mddp.configurator.logic;
-			
+
+			import java.util.ArrayList;
 			import java.util.HashMap;
 			import java.util.List;
 			import java.util.Map;
-			import java.util.ArrayList;
 			
-			import ConfiguratorPackage.Assignment;
 			import ConfiguratorPackage.BinaryConstraint;
 			import ConfiguratorPackage.BinaryOperators;
 			import ConfiguratorPackage.BooleanValue;
@@ -49,22 +47,18 @@ class CfgDslGenerator implements IGenerator {
 			import ConfiguratorPackage.impl.ConfiguratorPackageFactoryImpl;
 
 
-			class ParameterHolder {
+			public class ParameterHolder {
 				
 				private static List<Parameter> parameters;
-				
-				
-				
-				
-				
+				private static List<Expression> expressions;
 				
 				public static List<Parameter> getParameters() {
 					if(parameters != null)
 						return parameters;
 						
+					if(expressions == null)
+						expressions = getExpressions();
 					
-					
-					List<Expression> expressions = getExpressions();
 					
 					parameters = new ArrayList<Parameter>();
 					
@@ -81,8 +75,10 @@ class CfgDslGenerator implements IGenerator {
 				}
 				
 				public static List<Expression> getExpressions() {
+					if(expressions == null)
+						expressions = getExpressions();
+					
 					ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
-					List<Expression> expressions = new ArrayList<Expression>();
 					Map<String, Value> values = new HashMap<String, Value>();
 					
 					parameters = new ArrayList<Parameter>();
@@ -135,8 +131,7 @@ class CfgDslGenerator implements IGenerator {
 						expressions.add(set);
 					«ENDFOR»
 					
-					//HashMap<Expression, Expression> constraintMap = new HashMap<Expression, Expression>();
-					
+
 					HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 					
 					BinaryConstraint bc;
@@ -145,12 +140,7 @@ class CfgDslGenerator implements IGenerator {
 						bc.setName("«expr.name»");
 						bc.setOperator(BinaryOperators.«expr.operator.toString().toUpperCase»);
 						bc.setRoot(«expr.root»);
-						
-						//bc.setLeft(EXPRESSION)
-						//bc.setRight(EXPRESSION)
-						
-						
-						//constraintMap.put(bc, «expr»);
+
 						constraintMap.put("«expr.name»", bc);
 						
 						expressions.add(bc);
@@ -162,10 +152,7 @@ class CfgDslGenerator implements IGenerator {
 						uc.setName("«expr.name»");
 						uc.setOperator(UnaryOperators.«expr.operator.toString().toUpperCase»);
 						uc.setRoot(«expr.root»);
-						
-						//uc.setExpression(expression)
-						
-						//unsetConstraints.put(uc, «expr»);
+
 						constraintMap.put("«expr.name»", uc);
 						
 						expressions.add(uc);
@@ -188,25 +175,6 @@ class CfgDslGenerator implements IGenerator {
 						}
 					}
 					
-					/*
-					
-					BinaryConstraint bc;
-					«FOR expr : it.expressions.filter(typeof(BinaryConstraint))»
-						bc = factory.createBinaryConstraint();
-						bc.setName("«expr.name»");
-						bc.setOperator(«expr.operator»);
-						bc.setRoot(«expr.root»);
-						
-						bc.setLeft(EXPRESSION)
-						bc.setLeft(RIGHT)
-						
-						
-						unsetConstraints.put(bc, «expr»);
-						
-						
-						expressions.add(bc);
-					«ENDFOR»
-					*/
 					return expressions;
 				}
 			}
@@ -258,8 +226,8 @@ class CfgDslGenerator implements IGenerator {
 			forEach [ Root it | 
 				val fname = "Mikkel"
 				// generate Java implementation
-				//fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
-				fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
+				fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+				//fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
 			]
 	}
 }

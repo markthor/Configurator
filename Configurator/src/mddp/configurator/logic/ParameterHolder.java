@@ -1,11 +1,10 @@
 package mddp.configurator.logic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
 
-import ConfiguratorPackage.Assignment;
 import ConfiguratorPackage.BinaryConstraint;
 import ConfiguratorPackage.BinaryOperators;
 import ConfiguratorPackage.BooleanValue;
@@ -22,14 +21,10 @@ import ConfiguratorPackage.Value;
 import ConfiguratorPackage.impl.ConfiguratorPackageFactoryImpl;
 
 
-class ParameterHolder {
+public class ParameterHolder {
 	
 	private static List<Parameter> parameters;
 	private static List<Expression> expressions;
-	
-	
-	
-	
 	
 	public static List<Parameter> getParameters() {
 		if(parameters != null)
@@ -37,7 +32,6 @@ class ParameterHolder {
 			
 		if(expressions == null)
 			expressions = getExpressions();
-		
 		
 		
 		parameters = new ArrayList<Parameter>();
@@ -57,8 +51,10 @@ class ParameterHolder {
 	}
 	
 	public static List<Expression> getExpressions() {
+		if(expressions == null)
+			expressions = getExpressions();
+		
 		ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
-		List<Expression> expressions = new ArrayList<Expression>();
 		Map<String, Value> values = new HashMap<String, Value>();
 		
 		parameters = new ArrayList<Parameter>();
@@ -130,7 +126,7 @@ class ParameterHolder {
 		//bc.setRight(EXPRESSION)
 		
 		
-		//constraintMap.put(bc, ConfiguratorPackage.impl.BinaryConstraintImpl@26253986 (name: lessTest) (operator: less, root: false));
+		//constraintMap.put(bc, ConfiguratorPackage.impl.BinaryConstraintImpl@4a65c92 (name: lessTest) (operator: less, root: false));
 		constraintMap.put("lessTest", bc);
 		
 		expressions.add(bc);
@@ -143,7 +139,7 @@ class ParameterHolder {
 		
 		//uc.setExpression(expression)
 		
-		//unsetConstraints.put(uc, ConfiguratorPackage.impl.UnaryConstraintImpl@7e33a239 (name: notTrue) (Operator: not, root: false));
+		//unsetConstraints.put(uc, ConfiguratorPackage.impl.UnaryConstraintImpl@726b7b48 (name: notTrue) (Operator: not, root: false));
 		constraintMap.put("notTrue", uc);
 		
 		expressions.add(uc);
@@ -177,7 +173,7 @@ class ParameterHolder {
 		bc.setLeft(RIGHT)
 		
 		
-		unsetConstraints.put(bc, ConfiguratorPackage.impl.BinaryConstraintImpl@26253986 (name: lessTest) (operator: less, root: false));
+		unsetConstraints.put(bc, ConfiguratorPackage.impl.BinaryConstraintImpl@4a65c92 (name: lessTest) (operator: less, root: false));
 		
 		
 		expressions.add(bc);

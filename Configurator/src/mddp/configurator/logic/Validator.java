@@ -149,7 +149,4 @@ public class Validator {
 		}
 		return b;
 	}
-	
-	
-}
 }
