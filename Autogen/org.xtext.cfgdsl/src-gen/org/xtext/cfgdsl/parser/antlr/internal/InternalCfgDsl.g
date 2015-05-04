@@ -363,23 +363,19 @@ ruleParameter returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='param' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getParameterAccess().getParamKeyword_0());
-    }
-(
+((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getParameterAccess().getTypeTypeEnumEnumRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getParameterAccess().getTypeTypeEnumEnumRuleCall_0_0()); 
 	    }
-		lv_type_1_0=ruleTypeEnum		{
+		lv_type_0_0=ruleTypeEnum		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getParameterRule());
 	        }
        		set(
        			$current, 
        			"type",
-        		lv_type_1_0, 
+        		lv_type_0_0, 
         		"TypeEnum");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -388,16 +384,16 @@ ruleParameter returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_1_0()); 
 	    }
-		lv_name_2_0=ruleEString		{
+		lv_name_1_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getParameterRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_2_0, 
+        		lv_name_1_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -967,9 +963,13 @@ ruleSet returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_2='[' 
+)	otherlv_2='=' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getSetAccess().getLeftSquareBracketKeyword_2_0());
+    	newLeafNode(otherlv_2, grammarAccess.getSetAccess().getEqualsSignKeyword_2());
+    }
+(	otherlv_3='[' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getSetAccess().getLeftSquareBracketKeyword_3_0());
     }
 (
 (
@@ -979,16 +979,16 @@ ruleSet returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getSetAccess().getHasValueCrossReference_2_1_0()); 
+	        newCompositeNode(grammarAccess.getSetAccess().getHasValueCrossReference_3_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_4=',' 
+)(	otherlv_5=',' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getSetAccess().getCommaKeyword_2_2_0());
+    	newLeafNode(otherlv_5, grammarAccess.getSetAccess().getCommaKeyword_3_2_0());
     }
 (
 (
@@ -998,16 +998,16 @@ ruleSet returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getSetAccess().getHasValueCrossReference_2_2_1_0()); 
+	        newCompositeNode(grammarAccess.getSetAccess().getHasValueCrossReference_3_2_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_6=']' 
+))*	otherlv_7=']' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getSetAccess().getRightSquareBracketKeyword_2_3());
+    	newLeafNode(otherlv_7, grammarAccess.getSetAccess().getRightSquareBracketKeyword_3_3());
     }
 )?)
 ;
@@ -1121,31 +1121,31 @@ ruleTypeEnum returns [Enumerator current=null]
 ruleBinaryOperators returns [Enumerator current=null] 
     @init { enterRule(); }
     @after { leaveRule(); }:
-((	enumLiteral_0='less' 
+((	enumLiteral_0='<' 
 	{
         $current = grammarAccess.getBinaryOperatorsAccess().getLessEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_0, grammarAccess.getBinaryOperatorsAccess().getLessEnumLiteralDeclaration_0()); 
     }
 )
-    |(	enumLiteral_1='greater' 
+    |(	enumLiteral_1='>' 
 	{
         $current = grammarAccess.getBinaryOperatorsAccess().getGreaterEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_1, grammarAccess.getBinaryOperatorsAccess().getGreaterEnumLiteralDeclaration_1()); 
     }
 )
-    |(	enumLiteral_2='equal' 
+    |(	enumLiteral_2='==' 
 	{
         $current = grammarAccess.getBinaryOperatorsAccess().getEqualEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_2, grammarAccess.getBinaryOperatorsAccess().getEqualEnumLiteralDeclaration_2()); 
     }
 )
-    |(	enumLiteral_3='multiplication' 
+    |(	enumLiteral_3='*' 
 	{
         $current = grammarAccess.getBinaryOperatorsAccess().getMultiplicationEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_3, grammarAccess.getBinaryOperatorsAccess().getMultiplicationEnumLiteralDeclaration_3()); 
     }
 )
-    |(	enumLiteral_4='addition' 
+    |(	enumLiteral_4='+' 
 	{
         $current = grammarAccess.getBinaryOperatorsAccess().getAdditionEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_4, grammarAccess.getBinaryOperatorsAccess().getAdditionEnumLiteralDeclaration_4()); 
@@ -1157,13 +1157,13 @@ ruleBinaryOperators returns [Enumerator current=null]
         newLeafNode(enumLiteral_5, grammarAccess.getBinaryOperatorsAccess().getSubsetEnumLiteralDeclaration_5()); 
     }
 )
-    |(	enumLiteral_6='and' 
+    |(	enumLiteral_6='&&' 
 	{
         $current = grammarAccess.getBinaryOperatorsAccess().getAndEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_6, grammarAccess.getBinaryOperatorsAccess().getAndEnumLiteralDeclaration_6()); 
     }
 )
-    |(	enumLiteral_7='or' 
+    |(	enumLiteral_7='||' 
 	{
         $current = grammarAccess.getBinaryOperatorsAccess().getOrEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_7, grammarAccess.getBinaryOperatorsAccess().getOrEnumLiteralDeclaration_7()); 
@@ -1176,7 +1176,7 @@ ruleBinaryOperators returns [Enumerator current=null]
 ruleUnaryOperators returns [Enumerator current=null] 
     @init { enterRule(); }
     @after { leaveRule(); }:
-(	enumLiteral_0='not' 
+(	enumLiteral_0='!' 
 	{
         $current = grammarAccess.getUnaryOperatorsAccess().getNotEnumLiteralDeclaration().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_0, grammarAccess.getUnaryOperatorsAccess().getNotEnumLiteralDeclaration()); 

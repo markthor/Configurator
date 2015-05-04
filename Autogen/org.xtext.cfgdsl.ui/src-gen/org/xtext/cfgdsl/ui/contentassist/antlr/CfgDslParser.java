@@ -57,8 +57,8 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBinaryConstraintAccess().getGroup_0(), "rule__BinaryConstraint__Group_0__0");
 					put(grammarAccess.getBinaryConstraintAccess().getGroup_1(), "rule__BinaryConstraint__Group_1__0");
 					put(grammarAccess.getSetAccess().getGroup(), "rule__Set__Group__0");
-					put(grammarAccess.getSetAccess().getGroup_2(), "rule__Set__Group_2__0");
-					put(grammarAccess.getSetAccess().getGroup_2_2(), "rule__Set__Group_2_2__0");
+					put(grammarAccess.getSetAccess().getGroup_3(), "rule__Set__Group_3__0");
+					put(grammarAccess.getSetAccess().getGroup_3_2(), "rule__Set__Group_3_2__0");
 					put(grammarAccess.getUnaryConstraintAccess().getGroup(), "rule__UnaryConstraint__Group__0");
 					put(grammarAccess.getRootAccess().getConfiguratorsAssignment_1(), "rule__Root__ConfiguratorsAssignment_1");
 					put(grammarAccess.getRootAccess().getExpressionsAssignment_2(), "rule__Root__ExpressionsAssignment_2");
@@ -66,8 +66,8 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConfigurationAccess().getAssignmentsAssignment_2_1_1(), "rule__Configuration__AssignmentsAssignment_2_1_1");
 					put(grammarAccess.getAssignmentAccess().getParameterAssignment_1(), "rule__Assignment__ParameterAssignment_1");
 					put(grammarAccess.getAssignmentAccess().getValueAssignment_3(), "rule__Assignment__ValueAssignment_3");
-					put(grammarAccess.getParameterAccess().getTypeAssignment_1(), "rule__Parameter__TypeAssignment_1");
-					put(grammarAccess.getParameterAccess().getNameAssignment_2(), "rule__Parameter__NameAssignment_2");
+					put(grammarAccess.getParameterAccess().getTypeAssignment_0(), "rule__Parameter__TypeAssignment_0");
+					put(grammarAccess.getParameterAccess().getNameAssignment_1(), "rule__Parameter__NameAssignment_1");
 					put(grammarAccess.getStringValueAccess().getTypeAssignment_0(), "rule__StringValue__TypeAssignment_0");
 					put(grammarAccess.getStringValueAccess().getNameAssignment_1(), "rule__StringValue__NameAssignment_1");
 					put(grammarAccess.getStringValueAccess().getValueAssignment_3(), "rule__StringValue__ValueAssignment_3");
@@ -87,8 +87,8 @@ public class CfgDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBinaryConstraintAccess().getOperatorAssignment_1_4(), "rule__BinaryConstraint__OperatorAssignment_1_4");
 					put(grammarAccess.getBinaryConstraintAccess().getRightAssignment_1_5(), "rule__BinaryConstraint__RightAssignment_1_5");
 					put(grammarAccess.getSetAccess().getNameAssignment_1(), "rule__Set__NameAssignment_1");
-					put(grammarAccess.getSetAccess().getHasAssignment_2_1(), "rule__Set__HasAssignment_2_1");
-					put(grammarAccess.getSetAccess().getHasAssignment_2_2_1(), "rule__Set__HasAssignment_2_2_1");
+					put(grammarAccess.getSetAccess().getHasAssignment_3_1(), "rule__Set__HasAssignment_3_1");
+					put(grammarAccess.getSetAccess().getHasAssignment_3_2_1(), "rule__Set__HasAssignment_3_2_1");
 					put(grammarAccess.getUnaryConstraintAccess().getNameAssignment_1(), "rule__UnaryConstraint__NameAssignment_1");
 					put(grammarAccess.getUnaryConstraintAccess().getOperatorAssignment_2(), "rule__UnaryConstraint__OperatorAssignment_2");
 					put(grammarAccess.getUnaryConstraintAccess().getExpressionAssignment_3(), "rule__UnaryConstraint__ExpressionAssignment_3");

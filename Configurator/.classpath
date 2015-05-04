@@ -3,9 +3,12 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MDDP Configurator"/>
-	<classpathentry kind="lib" path="D:/Program Files/Eclipse modeling/plugins/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
-	<classpathentry kind="lib" path="D:/Program Files/Eclipse modeling/plugins/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="D:/Documents/Git/Configurator/Configurator/lib/commons-lang3-3.4.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+=======
+	<classpathentry kind="lib" path="D:/Documents/Git/Configurator/Configurator/lib/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
+	<classpathentry kind="lib" path="D:/Documents/Git/Configurator/Configurator/lib/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
+>>>>>>> 9cc89a6de924e0b932b9266a8d24ad3b2938a33a
 	<classpathentry kind="output" path="bin"/>
 </classpath>

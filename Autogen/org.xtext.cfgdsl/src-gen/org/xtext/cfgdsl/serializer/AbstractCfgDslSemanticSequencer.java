@@ -205,8 +205,8 @@ public abstract class AbstractCfgDslSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getParameterAccess().getTypeTypeEnumEnumRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getParameterAccess().getTypeTypeEnumEnumRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	

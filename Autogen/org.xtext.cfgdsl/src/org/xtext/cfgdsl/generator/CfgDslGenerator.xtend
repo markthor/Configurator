@@ -247,13 +247,19 @@ class CfgDslGenerator implements IGenerator {
 				
 				
 	}*/
+	 
+	def static compileToJson(Root it) {
+		JsonConverter.generate(it)
+ 
+	}
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		resource.allContents.toIterable.filter(typeof(Root)).
 			forEach [ Root it | 
 				val fname = "Mikkel"
 				// generate Java implementation
-				fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+				//fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+				fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
 			]
 	}
 }

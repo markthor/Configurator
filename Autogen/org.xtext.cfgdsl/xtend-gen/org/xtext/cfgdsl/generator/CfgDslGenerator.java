@@ -26,6 +26,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.xtext.cfgdsl.generator.JsonConverter;
 
 /**
  * Generates code from your model files on save.
@@ -647,6 +648,10 @@ public class CfgDslGenerator implements IGenerator {
    * 
    * }
    */
+  public static String compileToJson(final Root it) {
+    return JsonConverter.generate(it);
+  }
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
@@ -654,8 +659,8 @@ public class CfgDslGenerator implements IGenerator {
     final Consumer<Root> _function = new Consumer<Root>() {
       public void accept(final Root it) {
         final String fname = "Mikkel";
-        CharSequence _compileToJava = CfgDslGenerator.compileToJava(it);
-        fsa.generateFile((("MDDPConfigurator/" + fname) + ".java"), _compileToJava);
+        String _compileToJson = CfgDslGenerator.compileToJson(it);
+        fsa.generateFile((("MDDPConfigurator/" + "example") + ".json"), _compileToJson);
       }
     };
     _filter.forEach(_function);
