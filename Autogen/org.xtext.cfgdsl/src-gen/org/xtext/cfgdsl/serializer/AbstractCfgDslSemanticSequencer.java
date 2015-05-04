@@ -253,7 +253,10 @@ public abstract class AbstractCfgDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (name=EString Operator=UnaryOperators expression=[Expression|EString])
+	 *     (
+	 *         (name=EString Operator=UnaryOperators expression=[Expression|EString]) | 
+	 *         (root=EBoolean name=EString Operator=UnaryOperators expression=[Expression|EString])
+	 *     )
 	 */
 	protected void sequence_UnaryConstraint(EObject context, UnaryConstraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
