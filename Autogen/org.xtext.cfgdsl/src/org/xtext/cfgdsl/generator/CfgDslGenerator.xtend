@@ -49,7 +49,7 @@ class CfgDslGenerator implements IGenerator {
 			import ConfiguratorPackage.impl.ConfiguratorPackageFactoryImpl;
 
 
-			public class ParameterHolder {
+			public class ExpressionHolder {
 				
 				private static List<Parameter> parameters;
 				private static List<Expression> expressions;
@@ -82,6 +82,7 @@ class CfgDslGenerator implements IGenerator {
 					
 					ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
 					Map<String, Value> values = new HashMap<String, Value>();
+					HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 					
 					expressions = new ArrayList<Expression>();
 					
@@ -93,6 +94,7 @@ class CfgDslGenerator implements IGenerator {
 						s.setValue("«expr.value»");
 						expressions.add(s);
 						values.put("«expr.name»", s);
+						constraintMap.put("«expr.name»",s);
 					«ENDFOR»
 					
 					IntegerValue i;
@@ -103,6 +105,7 @@ class CfgDslGenerator implements IGenerator {
 						i.setValue(«expr.value»);
 						expressions.add(i);
 						values.put("«expr.name»", i);
+						constraintMap.put("«expr.name»",i);
 					«ENDFOR»
 					
 					BooleanValue b;
@@ -113,6 +116,7 @@ class CfgDslGenerator implements IGenerator {
 						b.setValue(«expr.value»);
 						expressions.add(b);
 						values.put("«expr.name»", b);
+						constraintMap.put("«expr.name»",b);
 					«ENDFOR»
 					
 					Parameter p;
@@ -121,6 +125,7 @@ class CfgDslGenerator implements IGenerator {
 						p.setName("«expr.name»");
 						p.setType(TypeEnum.get("«expr.type»"));
 						expressions.add(p);
+						constraintMap.put("«expr.name»",p);
 					«ENDFOR»
 					
 					Set set;
@@ -131,18 +136,26 @@ class CfgDslGenerator implements IGenerator {
 							set.getHas().add(values.get("«value.name»"));
 						«ENDFOR»
 						expressions.add(set);
+						constraintMap.put("«expr.name»",set);
 					«ENDFOR»
-					
-
-					HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 					
 					
 					BinaryConstraint bc;
+					StringValue r;
+					StringValue l;
 					«FOR expr : it.expressions.filter(typeof(BinaryConstraint))»
 						bc = factory.createBinaryConstraint();
 						bc.setName("«expr.name»");
 						bc.setOperator(BinaryOperators.«expr.operator.toString().toUpperCase»);
 						bc.setRoot(«expr.root»);
+						
+						r = factory.createStringValue();
+						r.setName("«expr.right.name»");
+						l = factory.createStringValue();
+						l.setName("«expr.left.name»");
+						
+						bc.setRight(r);
+						bc.setLeft(l);
 
 						constraintMap.put("«expr.name»", bc);
 						
@@ -158,20 +171,15 @@ class CfgDslGenerator implements IGenerator {
 
 						constraintMap.put("«expr.name»", uc);
 						
+						s = factory.createStringValue();
+						s.setName("«expr.expression.name»")
+						
+						uc.setExpression(s);
+						
 						expressions.add(uc);
 					«ENDFOR»
-					
-					
-					//This part gets ugly, sry brah
-					
-					«FOR expr : it.expressions.filter(typeof(BinaryConstraint))»
-						
-						
-					«ENDFOR»
-					
-					
-					«FOR Entry<String, Expression> entry :  constraintMap» //it.expressions.filter(typeof(UnaryConstraint))»
-					«ENDFOR»
+
+
 					for (Map.Entry<String, Expression> entry : constraintMap.entrySet())
 					{
 						Expression e = entry.getValue();
@@ -180,7 +188,7 @@ class CfgDslGenerator implements IGenerator {
 							
 							localbc.setLeft(constraintMap.get(localbc.getLeft().getName()));
 							localbc.setRight(constraintMap.get(localbc.getRight().getName()));
-						} else {
+						} else if(e instanceof UnaryConstraint) {
 							UnaryConstraint localuc = (UnaryConstraint) e;
 							
 							localuc.setExpression(constraintMap.get(localuc.getExpression().getName()));
