@@ -1,27 +1,30 @@
 {
 	"root": {
 		"expressions": {
+<<<<<<< HEAD
 			"binaryConstraints": [
 					{
 						"name": "e",
-						"operator": "less",
-						"left": "i1",
-						"right": "i2",
+						"operator": "equal",
+						"left": "s1",
+						"right": "s2",
 						"root": "true"
 					}
 			],
 			"values": [
 					{
-						"name": "i1",
-						"value": "10",
-						"type": "IntegerType"
+						"name": "s1",
+						"value": "something",
+						"type": "StringType"
 					},
 					{
-						"name": "i2",
-						"value": "11",
-						"type": "IntegerType"
+						"name": "s2",
+						"value": "something",
+						"type": "StringType"
 					}
 			]
+=======
+>>>>>>> 17b04305daa5c3dbec095c4c041c22bbe9cc449d
 		}
 	}
 }

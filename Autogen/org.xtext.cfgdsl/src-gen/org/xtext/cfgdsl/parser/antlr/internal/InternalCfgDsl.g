@@ -1030,14 +1030,14 @@ ruleUnaryConstraint returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='uc' 
+((	otherlv_0='uc' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getUnaryConstraintAccess().getUcKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getUnaryConstraintAccess().getUcKeyword_0_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getNameEStringParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getNameEStringParserRuleCall_0_1_0()); 
 	    }
 		lv_name_1_0=ruleEString		{
 	        if ($current==null) {
@@ -1055,7 +1055,7 @@ ruleUnaryConstraint returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getOperatorUnaryOperatorsEnumRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getOperatorUnaryOperatorsEnumRuleCall_0_2_0()); 
 	    }
 		lv_Operator_2_0=ruleUnaryOperators		{
 	        if ($current==null) {
@@ -1078,7 +1078,7 @@ ruleUnaryConstraint returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getExpressionExpressionCrossReference_3_0()); 
+	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getExpressionExpressionCrossReference_0_3_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
@@ -1086,6 +1086,80 @@ ruleUnaryConstraint returns [EObject current=null]
 
 )
 ))
+    |(	otherlv_4='uc' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getUnaryConstraintAccess().getUcKeyword_1_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getRootEBooleanParserRuleCall_1_1_0()); 
+	    }
+		lv_root_5_0=ruleEBoolean		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getUnaryConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"root",
+        		lv_root_5_0, 
+        		"EBoolean");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getNameEStringParserRuleCall_1_2_0()); 
+	    }
+		lv_name_6_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getUnaryConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"name",
+        		lv_name_6_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getOperatorUnaryOperatorsEnumRuleCall_1_3_0()); 
+	    }
+		lv_Operator_7_0=ruleUnaryOperators		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getUnaryConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"Operator",
+        		lv_Operator_7_0, 
+        		"UnaryOperators");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getUnaryConstraintRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getUnaryConstraintAccess().getExpressionExpressionCrossReference_1_4_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
 ;
 
 

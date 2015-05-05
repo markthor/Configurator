@@ -1,0 +1,194 @@
+{
+	"root": {
+		"expressions": {
+			"parameter": [
+					{
+						"name": "dieInFront",
+						"type": "BooleanType"
+					},
+					{
+						"name": "color",
+						"type": "StringType"
+					},
+					{
+						"name": "enginePower",
+						"type": "IntegerType"
+					},
+					{
+						"name": "gears",
+						"type": "IntegerType"
+					}
+			],
+			"binaryConstraints": [
+					{
+						"name": "engine1",
+						"operator": "greater",
+						"left": "enginePower",
+						"right": "minEnginePower",
+						"root": "false"
+					},
+					{
+						"name": "engine2",
+						"operator": "less",
+						"left": "enginePower",
+						"right": "maxEnginePower",
+						"root": "false"
+					},
+					{
+						"name": "engine3",
+						"operator": "less",
+						"left": "enginePower",
+						"right": "maxForColor",
+						"root": "false"
+					},
+					{
+						"name": "engine4",
+						"operator": "greater",
+						"left": "enginePower",
+						"right": "maxForColor",
+						"root": "false"
+					},
+					{
+						"name": "gears1",
+						"operator": "greater",
+						"left": "gears",
+						"right": "minGears",
+						"root": "false"
+					},
+					{
+						"name": "gears2",
+						"operator": "less",
+						"left": "gears",
+						"right": "maxGears",
+						"root": "false"
+					},
+					{
+						"name": "isColorful",
+						"operator": "subset",
+						"left": "color",
+						"right": "colorful",
+						"root": "false"
+					},
+					{
+						"name": "colorfulAndLowEngine",
+						"operator": "and",
+						"left": "isColorful",
+						"right": "engine3",
+						"root": "false"
+					},
+					{
+						"name": "blackAndBigEngine",
+						"operator": "and",
+						"left": "isBlack",
+						"right": "engine4",
+						"root": "false"
+					},
+					{
+						"name": "gearsFull",
+						"operator": "and",
+						"left": "gears1",
+						"right": "gears2",
+						"root": "true"
+					},
+					{
+						"name": "engineFull",
+						"operator": "and",
+						"left": "engine1",
+						"right": "engine2",
+						"root": "true"
+					},
+					{
+						"name": "trueToColors",
+						"operator": "or",
+						"left": "colorfulAndLowEngine",
+						"right": "blackAndBigEngine",
+						"root": "true"
+					},
+					{
+						"name": "noDieForColorCar",
+						"operator": "equal",
+						"left": "dieInFront",
+						"right": "isBlack",
+						"root": "true"
+					}
+			],
+			"unaryConstraints": [
+					{
+						"name": "isBlack",
+						"operator": "not",
+						"expression": "isColorful",
+						"root": "false"
+					}
+			],
+			"values": [
+					{
+						"name": "red",
+						"value": "red",
+						"type": "StringType"
+					},
+					{
+						"name": "blue",
+						"value": "blue",
+						"type": "StringType"
+					},
+					{
+						"name": "green",
+						"value": "green",
+						"type": "StringType"
+					},
+					{
+						"name": "black",
+						"value": "black",
+						"type": "StringType"
+					},
+					{
+						"name": "minGears",
+						"value": "5",
+						"type": "IntegerType"
+					},
+					{
+						"name": "maxGears",
+						"value": "17",
+						"type": "IntegerType"
+					},
+					{
+						"name": "minEnginePower",
+						"value": "100",
+						"type": "IntegerType"
+					},
+					{
+						"name": "maxEnginePower",
+						"value": "300",
+						"type": "IntegerType"
+					},
+					{
+						"name": "maxForColor",
+						"value": "200",
+						"type": "IntegerType"
+					}
+			],
+			"sets": [
+					{
+						"name": "colorful",
+						"has": [
+								{
+									"name": "red",
+									"value": "red",
+									"type": "StringType"
+								},
+								{
+									"name": "green",
+									"value": "green",
+									"type": "StringType"
+								},
+								{
+									"name": "blue",
+									"value": "blue",
+									"type": "StringType"
+								}
+						]
+					}
+			]
+		}
+	}
+}

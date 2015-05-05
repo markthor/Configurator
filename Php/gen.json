@@ -1,0 +1,83 @@
+{
+  "root": {
+    "expressions": {
+      "parameter": [
+        {
+          "name": "IntegerParam",
+          "type": "IntegerType"
+        },
+        {
+          "name": "IntegerParam2",
+          "type": "IntegerType"
+        },
+        {
+          "name": "IntegerParam3",
+          "type": "IntegerType"
+        },
+        {
+          "name": "BooleanParam",
+          "type": "BooleanType"
+        },
+        {
+          "name": "StringParam",
+          "type": "StringType"
+        }
+      ],
+      "binaryConstraints": [
+        {
+          "name": "equalExpr",
+          "operator": "equal",
+          "left": "addExpr",
+          "right": "IntegerParam3",
+          "root": "root"
+        },
+        {
+          "name": "addExpr",
+          "operator": "addition",
+          "left": "IntegerParam",
+          "right": "IntegerParam2",
+          "root": "false"
+        }
+      ],
+      "values": [
+        {
+          "name": "intValue",
+          "value": "2",
+          "type": "IntegerType"
+        },
+        {
+          "name": "intValue2",
+          "value": "2",
+          "type": "IntegerType"
+        },
+        {
+          "name": "stringValue",
+          "value": "hi",
+          "type": "StringType"
+        },
+        {
+          "name": "boolValue",
+          "value": "true",
+          "type": "BooleanType"
+        }
+      ],
+      "sets": [
+        {
+          "name": "setOne",
+          "has": [
+            {
+              "name": "intValue",
+              "value": "2",
+              "type": "IntegerType"
+            },
+            {
+              "name": "intValue2",
+              "value": "3",
+              "type": "IntegerType"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
