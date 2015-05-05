@@ -38,111 +38,69 @@ public class ParameterHolder {
 		
 		ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
 		Parameter p;
-		p = factory.createParameter();
-		p.setName("x");
-		p.setType(TypeEnum.get("IntegerType"));
-		parameters.add(p);
-		p = factory.createParameter();
-		p.setName("y");
-		p.setType(TypeEnum.get("IntegerType"));
-		parameters.add(p);
 		
 		return parameters;
 	}
 	
 	public static List<Expression> getExpressions() {
-		if(expressions == null)
-			expressions = getExpressions();
+		if(expressions != null)
+			return expressions;
 		
 		ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
 		Map<String, Value> values = new HashMap<String, Value>();
 		
-		parameters = new ArrayList<Parameter>();
+		expressions = new ArrayList<Expression>();
 		
 		StringValue s;
-		s = factory.createStringValue();
-		s.setName("s1");
-		s.setType(TypeEnum.get("StringType"));
-		s.setValue("something");
-		expressions.add(s);
-		values.put("s1", s);
-		s = factory.createStringValue();
-		s.setName("s2");
-		s.setType(TypeEnum.get("StringType"));
-		s.setValue("somethingElse");
-		expressions.add(s);
-		values.put("s2", s);
 		
 		IntegerValue i;
 		i = factory.createIntegerValue();
-		i.setName("i1");
+		i.setName("five");
 		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(1);
+		i.setValue(5);
 		expressions.add(i);
-		values.put("i1", i);
+		values.put("five", i);
 		i = factory.createIntegerValue();
-		i.setName("i2");
+		i.setName("ten");
 		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(2);
+		i.setValue(10);
 		expressions.add(i);
-		values.put("i2", i);
+		values.put("ten", i);
+		i = factory.createIntegerValue();
+		i.setName("fifty");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(50);
+		expressions.add(i);
+		values.put("fifty", i);
 		
 		BooleanValue b;
-		b = factory.createBooleanValue();
-		b.setName("b1");
-		b.setType(TypeEnum.get("BooleanType"));
-		b.setValue(false);
-		expressions.add(b);
-		values.put("b1", b);
 		
 		Parameter p;
-		p = factory.createParameter();
-		p.setName("x");
-		p.setType(TypeEnum.get("IntegerType"));
-		expressions.add(p);
-		p = factory.createParameter();
-		p.setName("y");
-		p.setType(TypeEnum.get("IntegerType"));
-		expressions.add(p);
 		
 		Set set;
-		set = factory.createSet();
-		set.setName("set1");
-		set.getHas().add(values.get("s1"));
-		set.getHas().add(values.get("s2"));
-		expressions.add(set);
 		
-		//HashMap<Expression, Expression> constraintMap = new HashMap<Expression, Expression>();
-		
+
 		HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 		
 		BinaryConstraint bc;
 		bc = factory.createBinaryConstraint();
-		bc.setName("lessTest");
-		bc.setOperator(BinaryOperators.LESS);
+		bc.setName("fiveTimesTen");
+		bc.setOperator(BinaryOperators.MULTIPLICATION);
 		bc.setRoot(false);
+
+		constraintMap.put("fiveTimesTen", bc);
 		
-		//bc.setLeft(EXPRESSION)
-		//bc.setRight(EXPRESSION)
-		
-		
-		//constraintMap.put(bc, ConfiguratorPackage.impl.BinaryConstraintImpl@4a65c92 (name: lessTest) (operator: less, root: false));
-		constraintMap.put("lessTest", bc);
+		expressions.add(bc);
+		bc = factory.createBinaryConstraint();
+		bc.setName("e");
+		bc.setOperator(BinaryOperators.EQUAL);
+		bc.setRoot(true);
+
+		constraintMap.put("e", bc);
 		
 		expressions.add(bc);
 		
 		UnaryConstraint uc;
-		uc = factory.createUnaryConstraint();
-		uc.setName("notTrue");
-		uc.setOperator(UnaryOperators.NOT);
-		uc.setRoot(false);
-		
-		//uc.setExpression(expression)
-		
-		//unsetConstraints.put(uc, ConfiguratorPackage.impl.UnaryConstraintImpl@726b7b48 (name: notTrue) (Operator: not, root: false));
-		constraintMap.put("notTrue", uc);
-		
-		expressions.add(uc);
 		
 		
 		
@@ -161,23 +119,6 @@ public class ParameterHolder {
 			}
 		}
 		
-		/*
-		
-		BinaryConstraint bc;
-		bc = factory.createBinaryConstraint();
-		bc.setName("lessTest");
-		bc.setOperator(less);
-		bc.setRoot(false);
-		
-		bc.setLeft(EXPRESSION)
-		bc.setLeft(RIGHT)
-		
-		
-		unsetConstraints.put(bc, ConfiguratorPackage.impl.BinaryConstraintImpl@4a65c92 (name: lessTest) (operator: less, root: false));
-		
-		
-		expressions.add(bc);
-		*/
 		return expressions;
 	}
 }

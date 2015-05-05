@@ -5,12 +5,14 @@ package org.xtext.cfgdsl.generator
 
 import ConfiguratorPackage.BinaryConstraint
 import ConfiguratorPackage.BooleanValue
+import ConfiguratorPackage.Expression
 import ConfiguratorPackage.IntegerValue
 import ConfiguratorPackage.Parameter
 import ConfiguratorPackage.Root
 import ConfiguratorPackage.Set
 import ConfiguratorPackage.StringValue
 import ConfiguratorPackage.UnaryConstraint
+import java.util.Map.Entry
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -75,13 +77,13 @@ class CfgDslGenerator implements IGenerator {
 				}
 				
 				public static List<Expression> getExpressions() {
-					if(expressions == null)
-						expressions = getExpressions();
+					if(expressions != null)
+						return expressions;
 					
 					ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
 					Map<String, Value> values = new HashMap<String, Value>();
 					
-					parameters = new ArrayList<Parameter>();
+					expressions = new ArrayList<Expression>();
 					
 					StringValue s;
 					«FOR expr : it.expressions.filter(typeof(StringValue))»
@@ -134,6 +136,7 @@ class CfgDslGenerator implements IGenerator {
 
 					HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 					
+					
 					BinaryConstraint bc;
 					«FOR expr : it.expressions.filter(typeof(BinaryConstraint))»
 						bc = factory.createBinaryConstraint();
@@ -159,7 +162,16 @@ class CfgDslGenerator implements IGenerator {
 					«ENDFOR»
 					
 					
+					//This part gets ugly, sry brah
 					
+					«FOR expr : it.expressions.filter(typeof(BinaryConstraint))»
+						
+						
+					«ENDFOR»
+					
+					
+					«FOR Entry<String, Expression> entry :  constraintMap» //it.expressions.filter(typeof(UnaryConstraint))»
+					«ENDFOR»
 					for (Map.Entry<String, Expression> entry : constraintMap.entrySet())
 					{
 						Expression e = entry.getValue();
