@@ -172,7 +172,7 @@ class CfgDslGenerator implements IGenerator {
 						constraintMap.put("«expr.name»", uc);
 						
 						s = factory.createStringValue();
-						s.setName("«expr.expression.name»")
+						s.setName("«expr.expression.name»");
 						
 						uc.setExpression(s);
 						

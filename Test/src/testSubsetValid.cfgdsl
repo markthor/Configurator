@@ -4,4 +4,4 @@ string green = green
 string black = black
 set colorful = [red, green, blue]
 
-bc true isColorful red subset colorful 
+bc true isColorful red subset colorful

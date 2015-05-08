@@ -58,19 +58,12 @@ public class ExpressionHolder {
 		
 		BooleanValue b;
 		b = factory.createBooleanValue();
-		b.setName("b1");
+		b.setName("fail");
 		b.setType(TypeEnum.get("BooleanType"));
-		b.setValue(true);
+		b.setValue(false);
 		expressions.add(b);
-		values.put("b1", b);
-		constraintMap.put("b1",b);
-		b = factory.createBooleanValue();
-		b.setName("b2");
-		b.setType(TypeEnum.get("BooleanType"));
-		b.setValue(true);
-		expressions.add(b);
-		values.put("b2", b);
-		constraintMap.put("b2",b);
+		values.put("fail", b);
+		constraintMap.put("fail",b);
 		
 		Parameter p;
 		
@@ -80,24 +73,21 @@ public class ExpressionHolder {
 		BinaryConstraint bc;
 		StringValue r;
 		StringValue l;
-		bc = factory.createBinaryConstraint();
-		bc.setName("e");
-		bc.setOperator(BinaryOperators.EQUAL);
-		bc.setRoot(true);
-		
-		r = factory.createStringValue();
-		r.setName("b2");
-		l = factory.createStringValue();
-		l.setName("b1");
-		
-		bc.setRight(r);
-		bc.setLeft(l);
-
-		constraintMap.put("e", bc);
-		
-		expressions.add(bc);
 		
 		UnaryConstraint uc;
+		uc = factory.createUnaryConstraint();
+		uc.setName("testConstraint");
+		uc.setOperator(UnaryOperators.NOT);
+		uc.setRoot(true);
+
+		constraintMap.put("testConstraint", uc);
+		
+		s = factory.createStringValue();
+		s.setName("fail");
+		
+		uc.setExpression(s);
+		
+		expressions.add(uc);
 
 
 		for (Map.Entry<String, Expression> entry : constraintMap.entrySet())

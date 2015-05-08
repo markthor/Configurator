@@ -531,7 +531,7 @@ public class CfgDslGenerator implements IGenerator {
         Expression _expression = expr_7.getExpression();
         String _name_21 = _expression.getName();
         _builder.append(_name_21, "\t\t");
-        _builder.append("\")");
+        _builder.append("\");");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.newLine();
