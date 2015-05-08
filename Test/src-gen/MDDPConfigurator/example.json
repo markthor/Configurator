@@ -1,122 +1,38 @@
 {
 	"root": {
 		"expressions": {
-			"parameter": [
-					{
-						"name": "width",
-						"type": "IntegerType"
-					},
-					{
-						"name": "height",
-						"type": "IntegerType"
-					},
-					{
-						"name": "length",
-						"type": "IntegerType"
-					},
-					{
-						"name": "name",
-						"type": "StringType"
-					},
-					{
-						"name": "convex",
-						"type": "BooleanType"
-					}
-			],
 			"binaryConstraints": [
 					{
-						"name": "nameIsReserved",
-						"operator": "equal",
-						"left": "name",
-						"right": "reservedName",
-						"root": "false"
-					},
-					{
-						"name": "masterVolumeConstraint",
+						"name": "bc1",
 						"operator": "or",
-						"left": "standardVolumeIfNotConvex",
-						"right": "increaseVolumeIfConvex",
+						"left": "uc1",
+						"right": "truth",
 						"root": "true"
-					},
-					{
-						"name": "standardVolumeIfNotConvex",
-						"operator": "and",
-						"left": "notConvex",
-						"right": "volumeConstraint",
-						"root": "false"
-					},
-					{
-						"name": "increaseVolumeIfConvex",
-						"operator": "and",
-						"left": "convex",
-						"right": "doubleVolumeConstraint",
-						"root": "false"
-					},
-					{
-						"name": "volumeConstraint",
-						"operator": "less",
-						"left": "volume",
-						"right": "maxVolume",
-						"root": "false"
-					},
-					{
-						"name": "doubleVolumeConstraint",
-						"operator": "less",
-						"left": "volume",
-						"right": "doubleVolume",
-						"root": "false"
-					},
-					{
-						"name": "doubleVolume",
-						"operator": "multiplication",
-						"left": "maxVolume",
-						"right": "two",
-						"root": "false"
-					},
-					{
-						"name": "groundSurface",
-						"operator": "multiplication",
-						"left": "width",
-						"right": "length",
-						"root": "false"
-					},
-					{
-						"name": "volume",
-						"operator": "multiplication",
-						"left": "groundSurface",
-						"right": "height",
-						"root": "false"
 					}
 			],
 			"unaryConstraints": [
 					{
-						"name": "nameIsNotReserved",
+						"name": "uc1",
 						"operator": "not",
-						"expression": "nameIsReserved",
-						"root": "true"
-					},
-					{
-						"name": "notConvex",
-						"operator": "not",
-						"expression": "convex",
+						"expression": "truth",
 						"root": "false"
 					}
 			],
 			"values": [
 					{
-						"name": "maxVolume",
-						"value": "10000",
+						"name": "truth",
+						"value": "true",
+						"type": "BooleanType"
+					},
+					{
+						"name": "one",
+						"value": "1",
 						"type": "IntegerType"
 					},
 					{
 						"name": "two",
 						"value": "2",
 						"type": "IntegerType"
-					},
-					{
-						"name": "reservedName",
-						"value": "box",
-						"type": "StringType"
 					}
 			]
 		}
