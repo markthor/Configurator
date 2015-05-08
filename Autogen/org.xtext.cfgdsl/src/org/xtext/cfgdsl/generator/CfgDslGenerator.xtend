@@ -201,11 +201,6 @@ class CfgDslGenerator implements IGenerator {
   		'''
 			}
 
-
-
-
-
-
 			/*
 			class Validator {
 				
@@ -246,8 +241,8 @@ class CfgDslGenerator implements IGenerator {
 			forEach [ Root it | 
 				val fname = "Mikkel"
 				// generate Java implementation
-				fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
-				//fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
+				//fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+				fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
 			]
 	}
 }
