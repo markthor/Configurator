@@ -1,0 +1,39 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "fiveTimesTen",
+						"operator": "multiplication",
+						"left": "five",
+						"right": "ten",
+						"root": "false"
+					},
+					{
+						"name": "e",
+						"operator": "equal",
+						"left": "fifty",
+						"right": "fiveTimesTen",
+						"root": "true"
+					}
+			],
+			"values": [
+					{
+						"name": "five",
+						"value": "5",
+						"type": "IntegerType"
+					},
+					{
+						"name": "ten",
+						"value": "10",
+						"type": "IntegerType"
+					},
+					{
+						"name": "fifty",
+						"value": "50",
+						"type": "IntegerType"
+					}
+			]
+		}
+	}
+}

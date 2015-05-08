@@ -83,7 +83,6 @@ public class ExpressionHolder {
 		
 		IntegerValue i;
 		i = factory.createIntegerValue();
-<<<<<<< HEAD
 		i.setName("maxVolume");
 		i.setType(TypeEnum.get("IntegerType"));
 		i.setValue(10000);
@@ -99,37 +98,6 @@ public class ExpressionHolder {
 		constraintMap.put("two",i);
 		
 		BooleanValue b;
-=======
-		i.setName("one");
-		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(1);
-		expressions.add(i);
-		values.put("one", i);
-		
-		BooleanValue b;
-		b = factory.createBooleanValue();
-<<<<<<< HEAD
-		b.setName("fail");
-		b.setType(TypeEnum.get("BooleanType"));
-		b.setValue(false);
-		expressions.add(b);
-		values.put("fail", b);
-=======
-		b.setName("b1");
-		b.setType(TypeEnum.get("BooleanType"));
-		b.setValue(true);
-		expressions.add(b);
-		values.put("b1", b);
-		constraintMap.put("b1",b);
-		b = factory.createBooleanValue();
-		b.setName("b2");
-		b.setType(TypeEnum.get("BooleanType"));
-		b.setValue(true);
-		expressions.add(b);
-		values.put("b2", b);
-		constraintMap.put("b2",b);
->>>>>>> 6c5ceb191f87987d618c6c5531143e41cb7639ba
->>>>>>> d344d7a67ae585d2a4615911e8a21ddf25ccfa77
 		
 		Parameter p;
 		p = factory.createParameter();
@@ -162,24 +130,6 @@ public class ExpressionHolder {
 		
 		
 		BinaryConstraint bc;
-<<<<<<< HEAD
-		bc = factory.createBinaryConstraint();
-		bc.setName("bc1");
-		bc.setOperator(BinaryOperators.EQUAL);
-		bc.setRoot(false);
-
-		constraintMap.put("bc1", bc);
-		
-		expressions.add(bc);
-		bc = factory.createBinaryConstraint();
-		bc.setName("bc2");
-		bc.setOperator(BinaryOperators.AND);
-		bc.setRoot(true);
-
-		constraintMap.put("bc2", bc);
-		
-		expressions.add(bc);
-=======
 		StringValue r;
 		StringValue l;
 		bc = factory.createBinaryConstraint();
@@ -323,12 +273,7 @@ public class ExpressionHolder {
 		bc.setRight(r);
 		bc.setLeft(l);
 
-<<<<<<< HEAD
 		constraintMap.put("volume", bc);
-=======
-		constraintMap.put("e", bc);
->>>>>>> 6c5ceb191f87987d618c6c5531143e41cb7639ba
->>>>>>> d344d7a67ae585d2a4615911e8a21ddf25ccfa77
 		
 		expressions.add(bc);
 		

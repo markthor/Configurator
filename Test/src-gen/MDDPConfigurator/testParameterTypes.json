@@ -1,0 +1,20 @@
+{
+	"root": {
+		"expressions": {
+			"parameter": [
+					{
+						"name": "switch",
+						"type": "BooleanType"
+					},
+					{
+						"name": "number",
+						"type": "IntegerType"
+					},
+					{
+						"name": "text",
+						"type": "StringType"
+					}
+			]
+		}
+	}
+}

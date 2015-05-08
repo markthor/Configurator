@@ -17,15 +17,19 @@ import ConfiguratorPackage.UnaryConstraint;
 import ConfiguratorPackage.UnaryOperators;
 import ConfiguratorPackage.Value;
 import com.google.common.collect.Iterables;
-import java.util.function.Consumer;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.xtext.cfgdsl.generator.JsonConverter;
 
 /**
@@ -600,36 +604,6 @@ public class CfgDslGenerator implements IGenerator {
     return _builder;
   }
   
-  /**
-   * class Validator {
-   * 
-   * public static boolean validate(List<Assignment> assignments) {
-   * boolean valid = true;
-   * Map<String, Assignment> map = new HashMap<String, Assignment>();
-   * 
-   * // Check the types of the assignments are well typed
-   * for(Assignment a : assignments) {
-   * if(a.getValue() instanceof StringValue)
-   * valid = valid && (a.getParameter().getType().equals(((StringValue)a.getValue()).getType()));
-   * if(a.getValue() instanceof IntegerValue)
-   * valid = valid && (a.getParameter().getType().equals(((IntegerValue)a.getValue()).getType()));
-   * if(a.getValue() instanceof BooleanValue)
-   * valid = valid && (a.getParameter().getType().equals(((BooleanValue)a.getValue()).getType()));
-   * 
-   * map.put(a.getParameter().getName(), a);
-   * }
-   * if(!valid)
-   * return false;
-   * 
-   * ...Start the validation
-   * 
-   * return true;
-   * }
-   * 
-   * 
-   * 
-   * }
-   */
   public static String compileToJson(final Root it) {
     return JsonConverter.generate(it);
   }
@@ -638,15 +612,38 @@ public class CfgDslGenerator implements IGenerator {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
     Iterable<Root> _filter = Iterables.<Root>filter(_iterable, Root.class);
-    final Consumer<Root> _function = new Consumer<Root>() {
-      public void accept(final Root it) {
+    final Procedure1<Root> _function = new Procedure1<Root>() {
+      public void apply(final Root it) {
         final String fname = "Mikkel";
+        String _nameFromResource = CfgDslGenerator.getNameFromResource(resource);
+        String _plus = ("MDDPConfigurator/" + _nameFromResource);
+        String _plus_1 = (_plus + ".java");
         CharSequence _compileToJava = CfgDslGenerator.compileToJava(it);
-        fsa.generateFile((("MDDPConfigurator/" + fname) + ".java"), _compileToJava);
+        fsa.generateFile(_plus_1, _compileToJava);
+        String _nameFromResource_1 = CfgDslGenerator.getNameFromResource(resource);
+        String _plus_2 = ("MDDPConfigurator/" + _nameFromResource_1);
+        String _plus_3 = (_plus_2 + ".json");
         String _compileToJson = CfgDslGenerator.compileToJson(it);
-        fsa.generateFile((("MDDPConfigurator/" + "example") + ".json"), _compileToJson);
+        fsa.generateFile(_plus_3, _compileToJson);
       }
     };
-    _filter.forEach(_function);
+    IterableExtensions.<Root>forEach(_filter, _function);
+  }
+  
+  public static String getNameFromResource(final Resource r) {
+    String _xblockexpression = null;
+    {
+      URI _uRI = r.getURI();
+      String _string = _uRI.toString();
+      String[] _split = _string.split(":");
+      final String purePath = _split[1];
+      final Path path = Paths.get(purePath);
+      int _nameCount = path.getNameCount();
+      int _minus = (_nameCount - 1);
+      final Path child = path.getName(_minus);
+      String _string_1 = child.toString();
+      _xblockexpression = _string_1.replaceFirst("[.][^.]+$", "");
+    }
+    return _xblockexpression;
   }
 }

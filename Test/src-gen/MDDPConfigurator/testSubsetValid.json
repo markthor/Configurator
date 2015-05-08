@@ -1,0 +1,59 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "isColorful",
+						"operator": "subset",
+						"left": "red",
+						"right": "colorful",
+						"root": "true"
+					}
+			],
+			"values": [
+					{
+						"name": "red",
+						"value": "red",
+						"type": "StringType"
+					},
+					{
+						"name": "blue",
+						"value": "blue",
+						"type": "StringType"
+					},
+					{
+						"name": "green",
+						"value": "green",
+						"type": "StringType"
+					},
+					{
+						"name": "black",
+						"value": "black",
+						"type": "StringType"
+					}
+			],
+			"sets": [
+					{
+						"name": "colorful",
+						"has": [
+								{
+									"name": "red",
+									"value": "red",
+									"type": "StringType"
+								},
+								{
+									"name": "green",
+									"value": "green",
+									"type": "StringType"
+								},
+								{
+									"name": "blue",
+									"value": "blue",
+									"type": "StringType"
+								}
+						]
+					}
+			]
+		}
+	}
+}

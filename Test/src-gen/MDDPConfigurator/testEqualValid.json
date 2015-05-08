@@ -1,0 +1,78 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "stringEqual",
+						"operator": "equal",
+						"left": "s1",
+						"right": "s2",
+						"root": "true"
+					},
+					{
+						"name": "trueEqualTrue",
+						"operator": "equal",
+						"left": "b1",
+						"right": "b2",
+						"root": "true"
+					},
+					{
+						"name": "falseEqualFalse",
+						"operator": "equal",
+						"left": "b3",
+						"right": "b4",
+						"root": "true"
+					},
+					{
+						"name": "tenEqualTen",
+						"operator": "equal",
+						"left": "i1",
+						"right": "i2",
+						"root": "false"
+					}
+			],
+			"values": [
+					{
+						"name": "s1",
+						"value": "asdlkj2lk323l2aasd3k",
+						"type": "StringType"
+					},
+					{
+						"name": "s2",
+						"value": "asdlkj2lk323l2aasd3k",
+						"type": "StringType"
+					},
+					{
+						"name": "b1",
+						"value": "true",
+						"type": "BooleanType"
+					},
+					{
+						"name": "b2",
+						"value": "true",
+						"type": "BooleanType"
+					},
+					{
+						"name": "b3",
+						"value": "false",
+						"type": "BooleanType"
+					},
+					{
+						"name": "b4",
+						"value": "false",
+						"type": "BooleanType"
+					},
+					{
+						"name": "i1",
+						"value": "10",
+						"type": "IntegerType"
+					},
+					{
+						"name": "i2",
+						"value": "10",
+						"type": "IntegerType"
+					}
+			]
+		}
+	}
+}

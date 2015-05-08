@@ -1,0 +1,27 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "e",
+						"operator": "less",
+						"left": "i1",
+						"right": "i2",
+						"root": "true"
+					}
+			],
+			"values": [
+					{
+						"name": "i1",
+						"value": "11",
+						"type": "IntegerType"
+					},
+					{
+						"name": "i2",
+						"value": "10",
+						"type": "IntegerType"
+					}
+			]
+		}
+	}
+}
