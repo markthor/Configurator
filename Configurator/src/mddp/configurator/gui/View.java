@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-import mddp.configurator.logic.ParameterHolder;
+import mddp.configurator.logic.ExpressionHolder;
 import mddp.configurator.logic.Validator;
 import mddp.configurator.model.AssignmentI;
 import mddp.configurator.model.BooleanValueI;
@@ -82,7 +82,7 @@ public class View {
         parameterPanel.setLayout(new BoxLayout(parameterPanel, BoxLayout.PAGE_AXIS));
         
         // Get the parameters to display
-        List<Parameter> parameters = ParameterHolder.getParameters();
+        List<Parameter> parameters = ExpressionHolder.getParameters();
         
         // Create the parameters components
         for(Parameter p : parameters) {

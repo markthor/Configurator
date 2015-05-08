@@ -5,12 +5,14 @@ package org.xtext.cfgdsl.generator
 
 import ConfiguratorPackage.BinaryConstraint
 import ConfiguratorPackage.BooleanValue
+import ConfiguratorPackage.Expression
 import ConfiguratorPackage.IntegerValue
 import ConfiguratorPackage.Parameter
 import ConfiguratorPackage.Root
 import ConfiguratorPackage.Set
 import ConfiguratorPackage.StringValue
 import ConfiguratorPackage.UnaryConstraint
+import java.util.Map.Entry
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -47,7 +49,7 @@ class CfgDslGenerator implements IGenerator {
 			import ConfiguratorPackage.impl.ConfiguratorPackageFactoryImpl;
 
 
-			public class ParameterHolder {
+			public class ExpressionHolder {
 				
 				private static List<Parameter> parameters;
 				private static List<Expression> expressions;
@@ -75,13 +77,14 @@ class CfgDslGenerator implements IGenerator {
 				}
 				
 				public static List<Expression> getExpressions() {
-					if(expressions == null)
-						expressions = getExpressions();
+					if(expressions != null)
+						return expressions;
 					
 					ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
 					Map<String, Value> values = new HashMap<String, Value>();
+					HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 					
-					parameters = new ArrayList<Parameter>();
+					expressions = new ArrayList<Expression>();
 					
 					StringValue s;
 					«FOR expr : it.expressions.filter(typeof(StringValue))»
@@ -91,6 +94,7 @@ class CfgDslGenerator implements IGenerator {
 						s.setValue("«expr.value»");
 						expressions.add(s);
 						values.put("«expr.name»", s);
+						constraintMap.put("«expr.name»",s);
 					«ENDFOR»
 					
 					IntegerValue i;
@@ -101,6 +105,7 @@ class CfgDslGenerator implements IGenerator {
 						i.setValue(«expr.value»);
 						expressions.add(i);
 						values.put("«expr.name»", i);
+						constraintMap.put("«expr.name»",i);
 					«ENDFOR»
 					
 					BooleanValue b;
@@ -111,6 +116,7 @@ class CfgDslGenerator implements IGenerator {
 						b.setValue(«expr.value»);
 						expressions.add(b);
 						values.put("«expr.name»", b);
+						constraintMap.put("«expr.name»",b);
 					«ENDFOR»
 					
 					Parameter p;
@@ -119,6 +125,7 @@ class CfgDslGenerator implements IGenerator {
 						p.setName("«expr.name»");
 						p.setType(TypeEnum.get("«expr.type»"));
 						expressions.add(p);
+						constraintMap.put("«expr.name»",p);
 					«ENDFOR»
 					
 					Set set;
@@ -129,17 +136,26 @@ class CfgDslGenerator implements IGenerator {
 							set.getHas().add(values.get("«value.name»"));
 						«ENDFOR»
 						expressions.add(set);
+						constraintMap.put("«expr.name»",set);
 					«ENDFOR»
 					
-
-					HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 					
 					BinaryConstraint bc;
+					StringValue r;
+					StringValue l;
 					«FOR expr : it.expressions.filter(typeof(BinaryConstraint))»
 						bc = factory.createBinaryConstraint();
 						bc.setName("«expr.name»");
 						bc.setOperator(BinaryOperators.«expr.operator.toString().toUpperCase»);
 						bc.setRoot(«expr.root»);
+						
+						r = factory.createStringValue();
+						r.setName("«expr.right.name»");
+						l = factory.createStringValue();
+						l.setName("«expr.left.name»");
+						
+						bc.setRight(r);
+						bc.setLeft(l);
 
 						constraintMap.put("«expr.name»", bc);
 						
@@ -155,11 +171,15 @@ class CfgDslGenerator implements IGenerator {
 
 						constraintMap.put("«expr.name»", uc);
 						
+						s = factory.createStringValue();
+						s.setName("«expr.expression.name»")
+						
+						uc.setExpression(s);
+						
 						expressions.add(uc);
 					«ENDFOR»
-					
-					
-					
+
+
 					for (Map.Entry<String, Expression> entry : constraintMap.entrySet())
 					{
 						Expression e = entry.getValue();
@@ -168,7 +188,7 @@ class CfgDslGenerator implements IGenerator {
 							
 							localbc.setLeft(constraintMap.get(localbc.getLeft().getName()));
 							localbc.setRight(constraintMap.get(localbc.getRight().getName()));
-						} else {
+						} else if(e instanceof UnaryConstraint) {
 							UnaryConstraint localuc = (UnaryConstraint) e;
 							
 							localuc.setExpression(constraintMap.get(localuc.getExpression().getName()));
@@ -180,11 +200,6 @@ class CfgDslGenerator implements IGenerator {
 			}
   		'''
 			}
-
-
-
-
-
 
 			/*
 			class Validator {
@@ -226,8 +241,8 @@ class CfgDslGenerator implements IGenerator {
 			forEach [ Root it | 
 				val fname = "Mikkel"
 				// generate Java implementation
-				fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
-				//fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
+				//fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+				fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
 			]
 	}
 }

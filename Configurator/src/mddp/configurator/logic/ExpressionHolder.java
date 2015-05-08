@@ -55,22 +55,9 @@ public class ExpressionHolder {
 		StringValue s;
 		
 		IntegerValue i;
-		i = factory.createIntegerValue();
-		i.setName("one");
-		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(1);
-		expressions.add(i);
-		values.put("one", i);
 		
 		BooleanValue b;
 		b = factory.createBooleanValue();
-<<<<<<< HEAD
-		b.setName("fail");
-		b.setType(TypeEnum.get("BooleanType"));
-		b.setValue(false);
-		expressions.add(b);
-		values.put("fail", b);
-=======
 		b.setName("b1");
 		b.setType(TypeEnum.get("BooleanType"));
 		b.setValue(true);
@@ -84,7 +71,6 @@ public class ExpressionHolder {
 		expressions.add(b);
 		values.put("b2", b);
 		constraintMap.put("b2",b);
->>>>>>> 6c5ceb191f87987d618c6c5531143e41cb7639ba
 		
 		Parameter p;
 		
@@ -92,24 +78,6 @@ public class ExpressionHolder {
 		
 		
 		BinaryConstraint bc;
-<<<<<<< HEAD
-		bc = factory.createBinaryConstraint();
-		bc.setName("bc1");
-		bc.setOperator(BinaryOperators.EQUAL);
-		bc.setRoot(false);
-
-		constraintMap.put("bc1", bc);
-		
-		expressions.add(bc);
-		bc = factory.createBinaryConstraint();
-		bc.setName("bc2");
-		bc.setOperator(BinaryOperators.AND);
-		bc.setRoot(true);
-
-		constraintMap.put("bc2", bc);
-		
-		expressions.add(bc);
-=======
 		StringValue r;
 		StringValue l;
 		bc = factory.createBinaryConstraint();
@@ -126,7 +94,6 @@ public class ExpressionHolder {
 		bc.setLeft(l);
 
 		constraintMap.put("e", bc);
->>>>>>> 6c5ceb191f87987d618c6c5531143e41cb7639ba
 		
 		expressions.add(bc);
 		

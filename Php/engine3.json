@@ -1,0 +1,21 @@
+{
+  "root": {
+    "expressions": {
+      "unaryConstraints": [
+        {
+          "name": "testConstraint",
+          "operator": "not",
+          "expression": "fail",
+          "root": "true"
+        }
+      ],
+      "values": [
+        {
+          "name": "fail",
+          "value": "false",
+          "type": "BooleanType"
+        }
+      ]
+    }
+  }
+}

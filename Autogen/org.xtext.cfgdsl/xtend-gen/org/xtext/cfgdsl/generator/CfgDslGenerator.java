@@ -80,7 +80,7 @@ public class CfgDslGenerator implements IGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.newLine();
-    _builder.append("public class ParameterHolder {");
+    _builder.append("public class ExpressionHolder {");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -162,10 +162,10 @@ public class CfgDslGenerator implements IGenerator {
     _builder.append("public static List<Expression> getExpressions() {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("if(expressions == null)");
+    _builder.append("if(expressions != null)");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("expressions = getExpressions();");
+    _builder.append("return expressions;");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();
@@ -176,9 +176,12 @@ public class CfgDslGenerator implements IGenerator {
     _builder.append("Map<String, Value> values = new HashMap<String, Value>();");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("parameters = new ArrayList<Parameter>();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("expressions = new ArrayList<Expression>();");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();
@@ -219,6 +222,12 @@ public class CfgDslGenerator implements IGenerator {
         _builder.append(_name_2, "\t\t");
         _builder.append("\", s);");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("constraintMap.put(\"");
+        String _name_3 = expr_1.getName();
+        _builder.append(_name_3, "\t\t");
+        _builder.append("\",s);");
+        _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("\t\t");
@@ -235,8 +244,8 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("i.setName(\"");
-        String _name_3 = expr_2.getName();
-        _builder.append(_name_3, "\t\t");
+        String _name_4 = expr_2.getName();
+        _builder.append(_name_4, "\t\t");
         _builder.append("\");");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
@@ -256,9 +265,15 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("values.put(\"");
-        String _name_4 = expr_2.getName();
-        _builder.append(_name_4, "\t\t");
+        String _name_5 = expr_2.getName();
+        _builder.append(_name_5, "\t\t");
         _builder.append("\", i);");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("constraintMap.put(\"");
+        String _name_6 = expr_2.getName();
+        _builder.append(_name_6, "\t\t");
+        _builder.append("\",i);");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -276,8 +291,8 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("b.setName(\"");
-        String _name_5 = expr_3.getName();
-        _builder.append(_name_5, "\t\t");
+        String _name_7 = expr_3.getName();
+        _builder.append(_name_7, "\t\t");
         _builder.append("\");");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
@@ -297,9 +312,15 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("values.put(\"");
-        String _name_6 = expr_3.getName();
-        _builder.append(_name_6, "\t\t");
+        String _name_8 = expr_3.getName();
+        _builder.append(_name_8, "\t\t");
         _builder.append("\", b);");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("constraintMap.put(\"");
+        String _name_9 = expr_3.getName();
+        _builder.append(_name_9, "\t\t");
+        _builder.append("\",b);");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -317,8 +338,8 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("p.setName(\"");
-        String _name_7 = expr_4.getName();
-        _builder.append(_name_7, "\t\t");
+        String _name_10 = expr_4.getName();
+        _builder.append(_name_10, "\t\t");
         _builder.append("\");");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
@@ -330,6 +351,12 @@ public class CfgDslGenerator implements IGenerator {
         _builder.append("\t\t");
         _builder.append("expressions.add(p);");
         _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("constraintMap.put(\"");
+        String _name_11 = expr_4.getName();
+        _builder.append(_name_11, "\t\t");
+        _builder.append("\",p);");
+        _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("\t\t");
@@ -346,8 +373,8 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("set.setName(\"");
-        String _name_8 = expr_5.getName();
-        _builder.append(_name_8, "\t\t");
+        String _name_12 = expr_5.getName();
+        _builder.append(_name_12, "\t\t");
         _builder.append("\");");
         _builder.newLineIfNotEmpty();
         {
@@ -355,8 +382,8 @@ public class CfgDslGenerator implements IGenerator {
           for(final Value value : _has) {
             _builder.append("\t\t");
             _builder.append("set.getHas().add(values.get(\"");
-            String _name_9 = value.getName();
-            _builder.append(_name_9, "\t\t");
+            String _name_13 = value.getName();
+            _builder.append(_name_13, "\t\t");
             _builder.append("\"));");
             _builder.newLineIfNotEmpty();
           }
@@ -364,18 +391,26 @@ public class CfgDslGenerator implements IGenerator {
         _builder.append("\t\t");
         _builder.append("expressions.add(set);");
         _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("constraintMap.put(\"");
+        String _name_14 = expr_5.getName();
+        _builder.append(_name_14, "\t\t");
+        _builder.append("\",set);");
+        _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("\t\t");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("BinaryConstraint bc;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("StringValue r;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("StringValue l;");
     _builder.newLine();
     {
       EList<Expression> _expressions_6 = it.getExpressions();
@@ -386,8 +421,8 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("bc.setName(\"");
-        String _name_10 = expr_6.getName();
-        _builder.append(_name_10, "\t\t");
+        String _name_15 = expr_6.getName();
+        _builder.append(_name_15, "\t\t");
         _builder.append("\");");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
@@ -404,11 +439,41 @@ public class CfgDslGenerator implements IGenerator {
         _builder.append(_isRoot, "\t\t");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("r = factory.createStringValue();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("r.setName(\"");
+        Expression _right = expr_6.getRight();
+        String _name_16 = _right.getName();
+        _builder.append(_name_16, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("l = factory.createStringValue();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("l.setName(\"");
+        Expression _left = expr_6.getLeft();
+        String _name_17 = _left.getName();
+        _builder.append(_name_17, "\t\t");
+        _builder.append("\");");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("bc.setRight(r);");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("bc.setLeft(l);");
+        _builder.newLine();
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("constraintMap.put(\"");
-        String _name_11 = expr_6.getName();
-        _builder.append(_name_11, "\t\t");
+        String _name_18 = expr_6.getName();
+        _builder.append(_name_18, "\t\t");
         _builder.append("\", bc);");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
@@ -432,8 +497,8 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("uc.setName(\"");
-        String _name_12 = expr_7.getName();
-        _builder.append(_name_12, "\t\t");
+        String _name_19 = expr_7.getName();
+        _builder.append(_name_19, "\t\t");
         _builder.append("\");");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
@@ -453,10 +518,27 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("constraintMap.put(\"");
-        String _name_13 = expr_7.getName();
-        _builder.append(_name_13, "\t\t");
+        String _name_20 = expr_7.getName();
+        _builder.append(_name_20, "\t\t");
         _builder.append("\", uc);");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("s = factory.createStringValue();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("s.setName(\"");
+        Expression _expression = expr_7.getExpression();
+        String _name_21 = _expression.getName();
+        _builder.append(_name_21, "\t\t");
+        _builder.append("\")");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("uc.setExpression(s);");
+        _builder.newLine();
         _builder.append("\t\t");
         _builder.newLine();
         _builder.append("\t\t");
@@ -464,11 +546,7 @@ public class CfgDslGenerator implements IGenerator {
         _builder.newLine();
       }
     }
-    _builder.append("\t\t");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("for (Map.Entry<String, Expression> entry : constraintMap.entrySet())");
@@ -494,7 +572,7 @@ public class CfgDslGenerator implements IGenerator {
     _builder.append("localbc.setRight(constraintMap.get(localbc.getRight().getName()));");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("} else {");
+    _builder.append("} else if(e instanceof UnaryConstraint) {");
     _builder.newLine();
     _builder.append("\t\t\t\t");
     _builder.append("UnaryConstraint localuc = (UnaryConstraint) e;");
@@ -564,8 +642,8 @@ public class CfgDslGenerator implements IGenerator {
     final Procedure1<Root> _function = new Procedure1<Root>() {
       public void apply(final Root it) {
         final String fname = "Mikkel";
-        CharSequence _compileToJava = CfgDslGenerator.compileToJava(it);
-        fsa.generateFile((("MDDPConfigurator/" + fname) + ".java"), _compileToJava);
+        String _compileToJson = CfgDslGenerator.compileToJson(it);
+        fsa.generateFile((("MDDPConfigurator/" + "example") + ".json"), _compileToJson);
       }
     };
     IterableExtensions.<Root>forEach(_filter, _function);
