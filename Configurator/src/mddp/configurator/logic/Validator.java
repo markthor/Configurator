@@ -101,7 +101,6 @@ public class Validator {
 				StringValue l = (StringValue) left;
 				StringValue r = (StringValue) right;
 				b.setValue(l.getValue() == r.getValue());
-
 			} else
 				throw new RuntimeException();
 			return b;

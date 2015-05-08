@@ -241,7 +241,7 @@ class CfgDslGenerator implements IGenerator {
 			forEach [ Root it | 
 				val fname = "Mikkel"
 				// generate Java implementation
-				//fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
+				fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
 				fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
 			]
 	}
