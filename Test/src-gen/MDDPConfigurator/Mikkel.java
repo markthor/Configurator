@@ -54,8 +54,20 @@ public class ParameterHolder {
 		StringValue s;
 		
 		IntegerValue i;
+		i = factory.createIntegerValue();
+		i.setName("one");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(1);
+		expressions.add(i);
+		values.put("one", i);
 		
 		BooleanValue b;
+		b = factory.createBooleanValue();
+		b.setName("fail");
+		b.setType(TypeEnum.get("BooleanType"));
+		b.setValue(false);
+		expressions.add(b);
+		values.put("fail", b);
 		
 		Parameter p;
 		
@@ -65,6 +77,22 @@ public class ParameterHolder {
 		HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 		
 		BinaryConstraint bc;
+		bc = factory.createBinaryConstraint();
+		bc.setName("bc1");
+		bc.setOperator(BinaryOperators.EQUAL);
+		bc.setRoot(false);
+
+		constraintMap.put("bc1", bc);
+		
+		expressions.add(bc);
+		bc = factory.createBinaryConstraint();
+		bc.setName("bc2");
+		bc.setOperator(BinaryOperators.AND);
+		bc.setRoot(true);
+
+		constraintMap.put("bc2", bc);
+		
+		expressions.add(bc);
 		
 		UnaryConstraint uc;
 		
