@@ -21,7 +21,7 @@ import ConfiguratorPackage.Value;
 import ConfiguratorPackage.impl.ConfiguratorPackageFactoryImpl;
 
 
-public class ParameterHolder {
+public class ExpressionHolder {
 	
 	private static List<Parameter> parameters;
 	private static List<Expression> expressions;
@@ -48,62 +48,58 @@ public class ParameterHolder {
 		
 		ConfiguratorPackageFactory factory = ConfiguratorPackageFactoryImpl.init();
 		Map<String, Value> values = new HashMap<String, Value>();
+		HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 		
 		expressions = new ArrayList<Expression>();
 		
 		StringValue s;
 		
 		IntegerValue i;
-		i = factory.createIntegerValue();
-		i.setName("five");
-		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(5);
-		expressions.add(i);
-		values.put("five", i);
-		i = factory.createIntegerValue();
-		i.setName("ten");
-		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(10);
-		expressions.add(i);
-		values.put("ten", i);
-		i = factory.createIntegerValue();
-		i.setName("fifty");
-		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(50);
-		expressions.add(i);
-		values.put("fifty", i);
 		
 		BooleanValue b;
+		b = factory.createBooleanValue();
+		b.setName("b1");
+		b.setType(TypeEnum.get("BooleanType"));
+		b.setValue(true);
+		expressions.add(b);
+		values.put("b1", b);
+		constraintMap.put("b1",b);
+		b = factory.createBooleanValue();
+		b.setName("b2");
+		b.setType(TypeEnum.get("BooleanType"));
+		b.setValue(true);
+		expressions.add(b);
+		values.put("b2", b);
+		constraintMap.put("b2",b);
 		
 		Parameter p;
 		
 		Set set;
 		
-
-		HashMap<String, Expression> constraintMap = new HashMap<String, Expression>();
 		
 		BinaryConstraint bc;
-		bc = factory.createBinaryConstraint();
-		bc.setName("fiveTimesTen");
-		bc.setOperator(BinaryOperators.MULTIPLICATION);
-		bc.setRoot(false);
-
-		constraintMap.put("fiveTimesTen", bc);
-		
-		expressions.add(bc);
+		StringValue r;
+		StringValue l;
 		bc = factory.createBinaryConstraint();
 		bc.setName("e");
 		bc.setOperator(BinaryOperators.EQUAL);
 		bc.setRoot(true);
+		
+		r = factory.createStringValue();
+		r.setName("b2");
+		l = factory.createStringValue();
+		l.setName("b1");
+		
+		bc.setRight(r);
+		bc.setLeft(l);
 
 		constraintMap.put("e", bc);
 		
 		expressions.add(bc);
 		
 		UnaryConstraint uc;
-		
-		
-		
+
+
 		for (Map.Entry<String, Expression> entry : constraintMap.entrySet())
 		{
 			Expression e = entry.getValue();
@@ -112,7 +108,7 @@ public class ParameterHolder {
 				
 				localbc.setLeft(constraintMap.get(localbc.getLeft().getName()));
 				localbc.setRight(constraintMap.get(localbc.getRight().getName()));
-			} else {
+			} else if(e instanceof UnaryConstraint) {
 				UnaryConstraint localuc = (UnaryConstraint) e;
 				
 				localuc.setExpression(constraintMap.get(localuc.getExpression().getName()));

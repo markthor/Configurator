@@ -41,13 +41,35 @@ public class Validator {
 		if(!valid)
 			return false;
 		
-		//...
+		List<Expression> expressions = ExpressionHolder.getExpressions();
+		
+		for (Expression e : expressions) {
+			if(e instanceof BinaryConstraint){
+				Expression res = validate((BinaryConstraint) e, map);
+				if(res instanceof BooleanValue){
+					BooleanValue bv = (BooleanValue)res;
+					return bv.isValue();
+				} else{
+					throw new RuntimeException("");
+					//return false;
+				}
+			} else if(e instanceof UnaryConstraint){
+				Expression res = validate((UnaryConstraint) e, map);
+				if(res instanceof BooleanValue){
+					BooleanValue bv = (BooleanValue)res;
+					return bv.isValue();
+				} else{
+					throw new RuntimeException("");
+					//return false;
+				}
+			}
+		}
 		
 		return true;
 	}
 	
 	
-	public Expression validate(BinaryConstraint bc, Map<String, Assignment> map){
+	public static Expression validate(BinaryConstraint bc, Map<String, Assignment> map){
 		Expression left = getExpr(bc.getLeft(), map);
 		Expression right = getExpr(bc.getRight(), map);
 		
@@ -110,7 +132,7 @@ public class Validator {
 	}
 	
 	
-	private Expression getExpr(Expression expr, Map<String, Assignment> map) {
+	private static Expression getExpr(Expression expr, Map<String, Assignment> map) {
 		Expression e;
 		if(expr instanceof BinaryConstraint) {
 			BinaryConstraint bc = (BinaryConstraint) expr;
@@ -128,7 +150,7 @@ public class Validator {
 		return e;
 	}
 	
-	public BooleanValue validate(UnaryConstraint uc, Map<String, Assignment> map){
+	public static BooleanValue validate(UnaryConstraint uc, Map<String, Assignment> map){
 		ConfiguratorPackageFactory config = ConfiguratorPackageFactoryImpl.init();
 		BooleanValue b = config.createBooleanValue();
 		
