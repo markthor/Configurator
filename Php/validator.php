@@ -36,7 +36,7 @@ class validator {
 
                     return false;
                 }
-                if ($param->type == "BooleanType" && $this->boolval($this->post[$param->name]) == null) {
+                if ($param->type == "BooleanType" && $this->boolval($this->post[$param->name]) === null) {
                     echo $this->post[$param->name] . " is not a boolean value <br/>";
 
                     return false;
@@ -58,7 +58,6 @@ class validator {
             foreach ($this->json->root->expressions->binaryConstraints as $bc) {
                 if ($this->boolval($bc->root)) {
                     $res = $this->validateBinary($bc);
-                    var_dump($res);
                     if (!$res)
                         return false;
                     else if($res->type == "BooleanType" && $res->value == false)
@@ -70,7 +69,6 @@ class validator {
             foreach ($this->json->root->expressions->unaryConstraints as $uc) {
                 if ($this->boolval($uc->root)) {
                     $res = $this->validateUnary($uc);
-                    var_dump($res);
                     if (!$res) {
                         return false;
                     }
@@ -84,27 +82,19 @@ class validator {
 
     private function validateBinary($binConstraint){
         $left = $this->getExpr($binConstraint->left)["element"];
-        echo"Dumping left side:";
-        var_dump($left);
         $leftType = $this->getExpr($binConstraint->left)["type"];
-        echo"Left type:";
-        var_dump($leftType);
         $right = $this->getExpr($binConstraint->right)["element"];
-        echo "Dumping right side:";
-        var_dump($right);
         $rightType = $this->getExpr($binConstraint->right)["type"];
-        echo"Right type:";
-        var_dump($rightType);
-
-        echo"Dumping constraint";
-        var_dump($binConstraint);
 
         $obj = new stdClass();
         $obj->name = "";
         switch($binConstraint->operator) {
             case "less":
                 if($leftType == "IntegerType" && $rightType == "IntegerType") {
-                    $obj->value = $left->value < $right->value;
+                    $leftValue = (int) $left->value;
+                    $rightValue = (int) $right->value;
+                    $res = $leftValue < $rightValue;
+                    $obj->value = $res;
                     $obj->type = "BooleanType";
                     return $obj;
                 }
@@ -113,7 +103,7 @@ class validator {
                 return $obj;
             case "greater":
                 if($leftType == "IntegerType" && $rightType == "IntegerType") {
-                    $obj->value = $left->value > $right->value;
+                    $obj->value = (int) $left->value > (int) $right->value;
                     $obj->type = "BooleanType";
                     return $obj;
                 }
@@ -121,12 +111,14 @@ class validator {
                 $obj->type = "BooleanType";
                 return $obj;
             case "equal":
-                $obj->value = $left->value == $right->value;
+                $obj->value = 0 == strcmp($left->value, $right->value);
                 $obj->type = "BooleanType";
                 return $obj;
             case "addition":
                 if($leftType == "IntegerType" && $rightType == "IntegerType" && $binConstraint->root == "false") {
-                    $obj->value = $left->value + $right->value;
+                    $leftValue = (int) $left->value;
+                    $rightValue = (int) $right->value;
+                    $obj->value = $leftValue + $rightValue;
                     $obj->type = "IntegerType";
                     return $obj;
                 }
@@ -136,7 +128,9 @@ class validator {
                 return $obj;
             case "multiplication":
                 if($leftType == "IntegerType" && $rightType == "IntegerType" && $binConstraint->root == "false") {
-                    $obj->value = $left->value * $right->value;
+                    $leftValue = (int) $left->value;
+                    $rightValue = (int) $right->value;
+                    $obj->value = $leftValue * $rightValue;
                     $obj->type = "IntegerType";
                     return $obj;
                 }
@@ -165,11 +159,8 @@ class validator {
                 $obj->type = "BooleanType";
                 return $obj;
             case "or":
-                echo "In or <br/>";
                 if($leftType == "BooleanType" && $rightType == "BooleanType") {
-                    echo "Left: " . $this->boolval($left->value) . " || right " . $this->boolval($right->value);
                     $obj->value = $this->boolval($left->value) || $this->boolval($right->value);
-                    var_dump($obj->value);
                     $obj->type = "BooleanType";
                     return $obj;
                 }
@@ -188,25 +179,39 @@ class validator {
     private function validateUnary($unaryConstraint)
     {
         $left = $this->getExpr($unaryConstraint->expression)["element"];
-        echo"Dumping left unary: <br/>";
-        var_dump($left);
         $leftType = $this->getExpr($unaryConstraint->expression)["type"];
-        echo"Left type: <br/>";
-        var_dump($leftType);
+        $obj = new stdClass();
+        $obj->name = "";
         switch($leftType) {
             case "BinaryConstraint" :
                 $res = $this->validateBinary($left);
-                $res->value = !$res->value;
-                return $res;
+                if($this->boolval($res->value))
+                    $res->value = false;
+                else
+                    $res->value = true;
+                $obj->value = $res->value;
+                $obj->type = "BooleanType";
+                return $obj;
             case "UnaryConstraint" :
                 $res = $this->validateUnary($left);
-                $res->value = !$res->value;
-                return $res;
+                if($this->boolval($res->value))
+                    $res->value = false;
+                else
+                    $res->value = true;
+                $obj->value = $res->value;
+                $obj->type = "BooleanType";
+                return $obj;
             case "BooleanType" :
-                $left->value = ! $this->boolval($left->value);
-                return $left;
+                if($this->boolval($left->value) == false) {
+                    $left->value = true;
+                }
+                else
+                    $left->value = false;
+                $obj->value = $left->value;
+                $obj->type = "BooleanType";
+                return $obj;
         }
-
+        echo"<h1>validateUnary method failed...  LeftType was: $leftType </h1>";
     }
 
     private function getExpr($exprName){
@@ -229,7 +234,6 @@ class validator {
         }
         if(isset($expressions->unaryConstraints)) {
             foreach ($expressions->unaryConstraints as $uc) {
-                //echo"Unary constraint: " . $uc->name . " expr name: " . $exprName . "<br/>";
                 if ($uc->name == $exprName) {
                     $ret["type"] = "UnaryConstraint";
                     $ret["element"] = $uc;
@@ -269,7 +273,8 @@ class validator {
 
                         return $ret;
                     }
-                    if ($this->boolval($value)) {
+
+                    if ($this->boolval($value) !== null) {
                         $obj = new stdClass();
                         $obj->value = $value;
                         $obj->name = $param->name;
@@ -307,32 +312,14 @@ class validator {
 
     private function boolval($in) {
         $res = null;
-        if(strcmp($in, 'false') || $in == false)
+        if(strcmp($in, 'false') == 0 || $in == false)
             return false;
-        if(strcmp($in, 'true') || $in == true)
+        if(strcmp($in, 'true') == 0 || $in == true)
             return true;
+        echo "<h1>Boolval failed.... </h1>";
         return $res;
     }
 
-//    private function boolval($in, $strict=false) {
-//        $out = null;
-//        // if not strict, we only have to check if something is false
-//        if (in_array($in,array('false', 'False', 'FALSE', 'no', 'No', 'n', 'N', '0', 'off',
-//            'Off', 'OFF', false, 0, null), true)) {
-//            $out = false;
-//        } else if ($strict) {
-//            // if strict, check the equivalent true values
-//            if (in_array($in,array('true', 'True', 'TRUE', 'yes', 'Yes', 'y', 'Y', '1',
-//                'on', 'On', 'ON', true, 1), true)) {
-//                $out = true;
-//            }
-//        } else {
-//            // not strict? let the regular php bool check figure it out (will
-//            //     largely default to true)
-//            $out = ($in?true:false);
-//        }
-//        return $out;
-//    }
 }
 
 ?>
