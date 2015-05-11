@@ -3,36 +3,55 @@
 		"expressions": {
 			"binaryConstraints": [
 					{
-						"name": "bc1",
-						"operator": "or",
-						"left": "uc1",
-						"right": "truth",
+						"name": "isColorful",
+						"operator": "subset",
+						"left": "black",
+						"right": "colorful",
 						"root": "true"
-					}
-			],
-			"unaryConstraints": [
-					{
-						"name": "uc1",
-						"operator": "not",
-						"expression": "truth",
-						"root": "false"
 					}
 			],
 			"values": [
 					{
-						"name": "truth",
-						"value": "true",
-						"type": "BooleanType"
+						"name": "red",
+						"value": "red",
+						"type": "StringType"
 					},
 					{
-						"name": "one",
-						"value": "1",
-						"type": "IntegerType"
+						"name": "blue",
+						"value": "blue",
+						"type": "StringType"
 					},
 					{
-						"name": "two",
-						"value": "2",
-						"type": "IntegerType"
+						"name": "green",
+						"value": "green",
+						"type": "StringType"
+					},
+					{
+						"name": "black",
+						"value": "black",
+						"type": "StringType"
+					}
+			],
+			"sets": [
+					{
+						"name": "colorful",
+						"has": [
+								{
+									"name": "red",
+									"value": "red",
+									"type": "StringType"
+								},
+								{
+									"name": "green",
+									"value": "green",
+									"type": "StringType"
+								},
+								{
+									"name": "blue",
+									"value": "blue",
+									"type": "StringType"
+								}
+						]
 					}
 			]
 		}

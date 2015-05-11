@@ -600,36 +600,6 @@ public class CfgDslGenerator implements IGenerator {
     return _builder;
   }
   
-  /**
-   * class Validator {
-   * 
-   * public static boolean validate(List<Assignment> assignments) {
-   * boolean valid = true;
-   * Map<String, Assignment> map = new HashMap<String, Assignment>();
-   * 
-   * // Check the types of the assignments are well typed
-   * for(Assignment a : assignments) {
-   * if(a.getValue() instanceof StringValue)
-   * valid = valid && (a.getParameter().getType().equals(((StringValue)a.getValue()).getType()));
-   * if(a.getValue() instanceof IntegerValue)
-   * valid = valid && (a.getParameter().getType().equals(((IntegerValue)a.getValue()).getType()));
-   * if(a.getValue() instanceof BooleanValue)
-   * valid = valid && (a.getParameter().getType().equals(((BooleanValue)a.getValue()).getType()));
-   * 
-   * map.put(a.getParameter().getName(), a);
-   * }
-   * if(!valid)
-   * return false;
-   * 
-   * ...Start the validation
-   * 
-   * return true;
-   * }
-   * 
-   * 
-   * 
-   * }
-   */
   public static String compileToJson(final Root it) {
     return JsonConverter.generate(it);
   }

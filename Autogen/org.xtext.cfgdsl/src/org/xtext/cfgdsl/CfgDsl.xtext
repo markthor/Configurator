@@ -41,6 +41,9 @@ IntegerValue returns IntegerValue:
 BooleanValue returns BooleanValue:
 	type=TypeEnum name=EString '=' value=EBoolean;
 
+Integer returns Expression:
+	StringValue;
+	
 EInt returns ecore::EInt:
 	'-'? INT;
 
@@ -49,7 +52,7 @@ EBoolean returns ecore::EBoolean:
 
 BinaryConstraint returns BinaryConstraint:
 	'bc' name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString] | 
-	'bc' root=EBoolean name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString];
+	'bc' root=EBoolean name=EString left=[Expression|EString] operator=BinaryOperators right=[Expression|EString|Integer];
 
 Set returns Set:
 	'set' name=EString '=' ('[' has+=[Value|EString] ( "," has+=[Value|EString])* ']' )?;
