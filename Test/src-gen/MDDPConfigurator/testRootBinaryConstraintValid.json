@@ -1,0 +1,39 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "bc1",
+						"operator": "equal",
+						"left": "one",
+						"right": "two",
+						"root": "false"
+					},
+					{
+						"name": "bc2",
+						"operator": "or",
+						"left": "bc1",
+						"right": "truth",
+						"root": "true"
+					}
+			],
+			"values": [
+					{
+						"name": "truth",
+						"value": "true",
+						"type": "BooleanType"
+					},
+					{
+						"name": "one",
+						"value": "1",
+						"type": "IntegerType"
+					},
+					{
+						"name": "two",
+						"value": "2",
+						"type": "IntegerType"
+					}
+			]
+		}
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "tenPlusTen",
+						"operator": "addition",
+						"left": "ten",
+						"right": "anotherTen",
+						"root": "false"
+					},
+					{
+						"name": "e",
+						"operator": "equal",
+						"left": "twenty",
+						"right": "tenPlusTen",
+						"root": "true"
+					}
+			],
+			"values": [
+					{
+						"name": "ten",
+						"value": "10",
+						"type": "IntegerType"
+					},
+					{
+						"name": "anotherTen",
+						"value": "10",
+						"type": "IntegerType"
+					},
+					{
+						"name": "twenty",
+						"value": "20",
+						"type": "IntegerType"
+					}
+			]
+		}
+	}
+}

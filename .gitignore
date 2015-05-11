@@ -14,3 +14,7 @@ hs_err_pid*
 META-INF/MANIFEST.MF
 /bin/
 
+Autogen/org.xtext.cfgdsl/.settings/
+Autogen/org.xtext.cfgdsl/target/classes/org/xtext/cfgdsl/validation/.Main.java._trace
+Autogen/org.xtext.cfgdsl/target/
+Autogen/org.xtext.cfgdsl/plugin.xml

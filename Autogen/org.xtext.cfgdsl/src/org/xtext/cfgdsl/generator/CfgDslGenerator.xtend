@@ -5,14 +5,13 @@ package org.xtext.cfgdsl.generator
 
 import ConfiguratorPackage.BinaryConstraint
 import ConfiguratorPackage.BooleanValue
-import ConfiguratorPackage.Expression
 import ConfiguratorPackage.IntegerValue
 import ConfiguratorPackage.Parameter
 import ConfiguratorPackage.Root
 import ConfiguratorPackage.Set
 import ConfiguratorPackage.StringValue
 import ConfiguratorPackage.UnaryConstraint
-import java.util.Map.Entry
+import java.nio.file.Paths
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -211,8 +210,15 @@ class CfgDslGenerator implements IGenerator {
 			forEach [ Root it | 
 				val fname = "Mikkel"
 				// generate Java implementation
-				fsa.generateFile("MDDPConfigurator/" + fname + ".java", it.compileToJava)
-				fsa.generateFile("MDDPConfigurator/" + "example" + ".json", it.compileToJson)
+				fsa.generateFile("MDDPConfigurator/" + getNameFromResource(resource) + ".java", it.compileToJava)
+				fsa.generateFile("MDDPConfigurator/" + getNameFromResource(resource) + ".json", it.compileToJson)
 			]
+	}
+	
+	def static String getNameFromResource(Resource r) {
+		val purePath = r.getURI().toString().split(":").get(1)
+		val path = Paths.get(purePath)
+		val child = path.getName(path.getNameCount()-1)
+		child.toString().replaceFirst("[.][^.]+$", "")
 	}
 }

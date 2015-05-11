@@ -1,0 +1,27 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "e",
+						"operator": "equal",
+						"left": "b1",
+						"right": "b2",
+						"root": "true"
+					}
+			],
+			"values": [
+					{
+						"name": "b1",
+						"value": "true",
+						"type": "BooleanType"
+					},
+					{
+						"name": "b2",
+						"value": "false",
+						"type": "BooleanType"
+					}
+			]
+		}
+	}
+}
