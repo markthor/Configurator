@@ -1,0 +1,12 @@
+int tenThousand = 10000
+int thousand = 1000
+int hundred = 100
+int ten = 10
+
+bc mul1 ten * ten
+bc mul2 ten * hundred
+bc add1 mul1 + mul2
+bc testMul add1 * add1
+bc true testGreater tenThousand > add1
+bc true testLess mul1 < thousand
+bc true testEqual mul1 == hundred

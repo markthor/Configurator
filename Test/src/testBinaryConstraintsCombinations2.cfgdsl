@@ -1,0 +1,45 @@
+int wheelSize
+int wheelSpeed
+int kasseteSpeed
+int frameSize
+string bikeType
+
+string racer = "racer"
+string tt = "tt"
+string cx = "cx"
+string track = "track"
+string bmx = "bmx"
+int one = 1
+int racerDiameter1 = 650
+int racerDiameter2 = 700
+int BMXMaxSize = 30
+
+bc true matchingSpeed wheelSpeed == kasseteSpeed
+bc true masterType isRacerTTCXOrTrack || isBMX
+
+bc true BMXWithProperFrame isNotBMX || racerDiameter
+bc BMXFrame frameSize < BMXMaxSize
+
+bc true racerWithProperDiameter isNotRacer || racerDiameter
+bc racerDiameter racerDiameterBC1 || racerDiameterBC2
+bc racerDiameterBC1 wheelSize == racerDiameter1
+bc racerDiameterBC2 wheelSize == racerDiameter2
+
+bc true oneSpeedTrackOrBMX singleSpeedComposition || isNotBMXOrTrack
+bc singleSpeedBMX isBMX && singleSpeed
+bc singleSpeedTrack isTrack && singleSpeed
+bc singleSpeedComposition singleSpeedBMX || singleSpeedTrack
+bc singleSpeed wheelSpeed == one
+
+bc isRacerTTCXOrTrack isRacerOrTT || isCXOrTrack
+bc isRacerOrTT isRacer || isTT
+bc isCXOrTrack isCX || isTrack
+bc isBMXOrTrack isBMX || isTrack
+bc isRacer bikeType == racer
+bc isTT bikeType == tt
+bc isCX bikeType == cx
+bc isTrack bikeType == track
+bc isBMX bikeType == bmx
+uc isNotBMXOrTrack ! isBMXOrTrack
+uc isNotRacer ! isRacer
+uc isNotBMX ! isBMX

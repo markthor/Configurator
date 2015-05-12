@@ -1,0 +1,251 @@
+{
+	"root": {
+		"expressions": {
+			"parameter": [
+					{
+						"name": "wheelSize",
+						"type": "IntegerType"
+					},
+					{
+						"name": "wheelSpeed",
+						"type": "IntegerType"
+					},
+					{
+						"name": "kasseteSpeed",
+						"type": "IntegerType"
+					},
+					{
+						"name": "frameSize",
+						"type": "IntegerType"
+					},
+					{
+						"name": "bikeType",
+						"type": "StringType"
+					}
+			],
+			"binaryConstraints": [
+					{
+						"name": "matchingSpeed",
+						"operator": "equal",
+						"left": "wheelSpeed",
+						"right": "kasseteSpeed",
+						"root": "true"
+					},
+					{
+						"name": "masterType",
+						"operator": "or",
+						"left": "isRacerTTCXOrTrack",
+						"right": "isBMX",
+						"root": "true"
+					},
+					{
+						"name": "BMXWithProperFrame",
+						"operator": "or",
+						"left": "isNotBMX",
+						"right": "racerDiameter",
+						"root": "true"
+					},
+					{
+						"name": "BMXFrame",
+						"operator": "less",
+						"left": "frameSize",
+						"right": "BMXMaxSize",
+						"root": "false"
+					},
+					{
+						"name": "racerWithProperDiameter",
+						"operator": "or",
+						"left": "isNotRacer",
+						"right": "racerDiameter",
+						"root": "true"
+					},
+					{
+						"name": "racerDiameter",
+						"operator": "or",
+						"left": "racerDiameterBC1",
+						"right": "racerDiameterBC2",
+						"root": "false"
+					},
+					{
+						"name": "racerDiameterBC1",
+						"operator": "equal",
+						"left": "wheelSize",
+						"right": "racerDiameter1",
+						"root": "false"
+					},
+					{
+						"name": "racerDiameterBC2",
+						"operator": "equal",
+						"left": "wheelSize",
+						"right": "racerDiameter2",
+						"root": "false"
+					},
+					{
+						"name": "oneSpeedTrackOrBMX",
+						"operator": "or",
+						"left": "singleSpeedComposition",
+						"right": "isNotBMXOrTrack",
+						"root": "true"
+					},
+					{
+						"name": "singleSpeedBMX",
+						"operator": "and",
+						"left": "isBMX",
+						"right": "singleSpeed",
+						"root": "false"
+					},
+					{
+						"name": "singleSpeedTrack",
+						"operator": "and",
+						"left": "isTrack",
+						"right": "singleSpeed",
+						"root": "false"
+					},
+					{
+						"name": "singleSpeedComposition",
+						"operator": "or",
+						"left": "singleSpeedBMX",
+						"right": "singleSpeedTrack",
+						"root": "false"
+					},
+					{
+						"name": "singleSpeed",
+						"operator": "equal",
+						"left": "wheelSpeed",
+						"right": "one",
+						"root": "false"
+					},
+					{
+						"name": "isRacerTTCXOrTrack",
+						"operator": "or",
+						"left": "isRacerOrTT",
+						"right": "isCXOrTrack",
+						"root": "false"
+					},
+					{
+						"name": "isRacerOrTT",
+						"operator": "or",
+						"left": "isRacer",
+						"right": "isTT",
+						"root": "false"
+					},
+					{
+						"name": "isCXOrTrack",
+						"operator": "or",
+						"left": "isCX",
+						"right": "isTrack",
+						"root": "false"
+					},
+					{
+						"name": "isBMXOrTrack",
+						"operator": "or",
+						"left": "isBMX",
+						"right": "isTrack",
+						"root": "false"
+					},
+					{
+						"name": "isRacer",
+						"operator": "equal",
+						"left": "bikeType",
+						"right": "racer",
+						"root": "false"
+					},
+					{
+						"name": "isTT",
+						"operator": "equal",
+						"left": "bikeType",
+						"right": "tt",
+						"root": "false"
+					},
+					{
+						"name": "isCX",
+						"operator": "equal",
+						"left": "bikeType",
+						"right": "cx",
+						"root": "false"
+					},
+					{
+						"name": "isTrack",
+						"operator": "equal",
+						"left": "bikeType",
+						"right": "track",
+						"root": "false"
+					},
+					{
+						"name": "isBMX",
+						"operator": "equal",
+						"left": "bikeType",
+						"right": "bmx",
+						"root": "false"
+					}
+			],
+			"unaryConstraints": [
+					{
+						"name": "isNotBMXOrTrack",
+						"operator": "not",
+						"expression": "isBMXOrTrack",
+						"root": "false"
+					},
+					{
+						"name": "isNotRacer",
+						"operator": "not",
+						"expression": "isRacer",
+						"root": "false"
+					},
+					{
+						"name": "isNotBMX",
+						"operator": "not",
+						"expression": "isBMX",
+						"root": "false"
+					}
+			],
+			"values": [
+					{
+						"name": "racer",
+						"value": "racer",
+						"type": "StringType"
+					},
+					{
+						"name": "tt",
+						"value": "tt",
+						"type": "StringType"
+					},
+					{
+						"name": "cx",
+						"value": "cx",
+						"type": "StringType"
+					},
+					{
+						"name": "track",
+						"value": "track",
+						"type": "StringType"
+					},
+					{
+						"name": "bmx",
+						"value": "bmx",
+						"type": "StringType"
+					},
+					{
+						"name": "one",
+						"value": "1",
+						"type": "IntegerType"
+					},
+					{
+						"name": "racerDiameter1",
+						"value": "650",
+						"type": "IntegerType"
+					},
+					{
+						"name": "racerDiameter2",
+						"value": "700",
+						"type": "IntegerType"
+					},
+					{
+						"name": "BMXMaxSize",
+						"value": "30",
+						"type": "IntegerType"
+					}
+			]
+		}
+	}
+}
