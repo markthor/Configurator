@@ -1,0 +1,40 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "bc1",
+						"operator": "and",
+						"left": "uc1",
+						"right": "fail",
+						"root": "true"
+					}
+			],
+			"unaryConstraints": [
+					{
+						"name": "uc1",
+						"operator": "not",
+						"expression": "fail",
+						"root": "false"
+					}
+			],
+			"values": [
+					{
+						"name": "fail",
+						"value": "false",
+						"type": "BooleanType"
+					},
+					{
+						"name": "one",
+						"value": "1",
+						"type": "IntegerType"
+					},
+					{
+						"name": "two",
+						"value": "2",
+						"type": "IntegerType"
+					}
+			]
+		}
+	}
+}

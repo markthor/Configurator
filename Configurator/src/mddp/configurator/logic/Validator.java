@@ -14,6 +14,7 @@ import ConfiguratorPackage.Parameter;
 import ConfiguratorPackage.Set;
 import ConfiguratorPackage.StringValue;
 import ConfiguratorPackage.UnaryConstraint;
+import ConfiguratorPackage.UnaryOperators;
 import ConfiguratorPackage.Value;
 import ConfiguratorPackage.impl.ConfiguratorPackageFactoryImpl;
 
@@ -196,17 +197,31 @@ public class Validator {
 		BooleanValue b = config.createBooleanValue();
 
 		Expression expr = uc.getExpression();
-
+		if(expr instanceof Parameter){
+			Parameter p = (Parameter) expr;
+			
+			Assignment a = map.get(p.getName());
+			expr = a.getValue();
+		}
+		
+		//Extract value from the expression
 		if (expr instanceof BinaryConstraint) {
 			BinaryConstraint bc = (BinaryConstraint) expr;
 			BooleanValue value = (BooleanValue) validate(bc, map);
-			b.setValue(!(value.isValue()));
+			b.setValue(value.isValue());
 		} else if (expr instanceof UnaryConstraint) {
 			BooleanValue value = validate((UnaryConstraint) expr, map);
-			b.setValue(!(value.isValue()));
+			b.setValue(value.isValue());
 		} else if (expr instanceof BooleanValue) {
 			BooleanValue value = (BooleanValue) expr;
-			b.setValue(!(value.isValue()));
+			b.setValue(value.isValue());
+		} else {
+			throw new RuntimeException("Unary validation fail");
+		}
+		
+		//Perform unary operator on the value
+		switch(uc.getOperator()){
+			case NOT: b.setValue(!(b.isValue()));
 		}
 		return b;
 	}

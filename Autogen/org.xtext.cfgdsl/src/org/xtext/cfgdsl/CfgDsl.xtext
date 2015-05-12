@@ -41,6 +41,9 @@ IntegerValue returns IntegerValue:
 BooleanValue returns BooleanValue:
 	type=TypeEnum name=EString '=' value=EBoolean;
 
+Integer returns Expression:
+	StringValue;
+	
 EInt returns ecore::EInt:
 	'-'? INT;
 
