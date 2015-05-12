@@ -19,7 +19,6 @@ import ConfiguratorPackage.Value;
 import com.google.common.collect.Iterables;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -28,7 +27,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.xtext.cfgdsl.generator.JsonConverter;
 
 /**
@@ -611,8 +612,8 @@ public class CfgDslGenerator implements IGenerator {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
     Iterable<Root> _filter = Iterables.<Root>filter(_iterable, Root.class);
-    final Consumer<Root> _function = new Consumer<Root>() {
-      public void accept(final Root it) {
+    final Procedure1<Root> _function = new Procedure1<Root>() {
+      public void apply(final Root it) {
         final String fname = "Mikkel";
         String _nameFromResource = CfgDslGenerator.getNameFromResource(resource);
         String _plus = ("MDDPConfigurator/" + _nameFromResource);
@@ -626,7 +627,7 @@ public class CfgDslGenerator implements IGenerator {
         fsa.generateFile(_plus_3, _compileToJson);
       }
     };
-    _filter.forEach(_function);
+    IterableExtensions.<Root>forEach(_filter, _function);
   }
   
   public static String getNameFromResource(final Resource r) {
