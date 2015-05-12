@@ -43,11 +43,7 @@ public class ExpressionHolder {
 		p.setType(TypeEnum.get("IntegerType"));
 		parameters.add(p);
 		p = factory.createParameter();
-		p.setName("wheelSpeed");
-		p.setType(TypeEnum.get("IntegerType"));
-		parameters.add(p);
-		p = factory.createParameter();
-		p.setName("kasseteSpeed");
+		p.setName("cassetteSpeed");
 		p.setType(TypeEnum.get("IntegerType"));
 		parameters.add(p);
 		p = factory.createParameter();
@@ -111,13 +107,6 @@ public class ExpressionHolder {
 		
 		IntegerValue i;
 		i = factory.createIntegerValue();
-		i.setName("one");
-		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(1);
-		expressions.add(i);
-		values.put("one", i);
-		constraintMap.put("one",i);
-		i = factory.createIntegerValue();
 		i.setName("racerDiameter1");
 		i.setType(TypeEnum.get("IntegerType"));
 		i.setValue(650);
@@ -132,12 +121,124 @@ public class ExpressionHolder {
 		values.put("racerDiameter2", i);
 		constraintMap.put("racerDiameter2",i);
 		i = factory.createIntegerValue();
-		i.setName("BMXMaxSize");
+		i.setName("BMXMaxFrameSizePlusOne");
 		i.setType(TypeEnum.get("IntegerType"));
-		i.setValue(30);
+		i.setValue(50);
 		expressions.add(i);
-		values.put("BMXMaxSize", i);
-		constraintMap.put("BMXMaxSize",i);
+		values.put("BMXMaxFrameSizePlusOne", i);
+		constraintMap.put("BMXMaxFrameSizePlusOne",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize48");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(48);
+		expressions.add(i);
+		values.put("frameSize48", i);
+		constraintMap.put("frameSize48",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize50");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(50);
+		expressions.add(i);
+		values.put("frameSize50", i);
+		constraintMap.put("frameSize50",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize52");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(52);
+		expressions.add(i);
+		values.put("frameSize52", i);
+		constraintMap.put("frameSize52",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize54");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(54);
+		expressions.add(i);
+		values.put("frameSize54", i);
+		constraintMap.put("frameSize54",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize55");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(55);
+		expressions.add(i);
+		values.put("frameSize55", i);
+		constraintMap.put("frameSize55",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize56");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(56);
+		expressions.add(i);
+		values.put("frameSize56", i);
+		constraintMap.put("frameSize56",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize58");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(58);
+		expressions.add(i);
+		values.put("frameSize58", i);
+		constraintMap.put("frameSize58",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize60");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(60);
+		expressions.add(i);
+		values.put("frameSize60", i);
+		constraintMap.put("frameSize60",i);
+		i = factory.createIntegerValue();
+		i.setName("frameSize62");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(62);
+		expressions.add(i);
+		values.put("frameSize62", i);
+		constraintMap.put("frameSize62",i);
+		i = factory.createIntegerValue();
+		i.setName("cassetteSpeed1");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(1);
+		expressions.add(i);
+		values.put("cassetteSpeed1", i);
+		constraintMap.put("cassetteSpeed1",i);
+		i = factory.createIntegerValue();
+		i.setName("cassetteSpeed6");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(6);
+		expressions.add(i);
+		values.put("cassetteSpeed6", i);
+		constraintMap.put("cassetteSpeed6",i);
+		i = factory.createIntegerValue();
+		i.setName("cassetteSpeed7");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(7);
+		expressions.add(i);
+		values.put("cassetteSpeed7", i);
+		constraintMap.put("cassetteSpeed7",i);
+		i = factory.createIntegerValue();
+		i.setName("cassetteSpeed8");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(8);
+		expressions.add(i);
+		values.put("cassetteSpeed8", i);
+		constraintMap.put("cassetteSpeed8",i);
+		i = factory.createIntegerValue();
+		i.setName("cassetteSpeed9");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(9);
+		expressions.add(i);
+		values.put("cassetteSpeed9", i);
+		constraintMap.put("cassetteSpeed9",i);
+		i = factory.createIntegerValue();
+		i.setName("cassetteSpeed10");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(10);
+		expressions.add(i);
+		values.put("cassetteSpeed10", i);
+		constraintMap.put("cassetteSpeed10",i);
+		i = factory.createIntegerValue();
+		i.setName("cassetteSpeed11");
+		i.setType(TypeEnum.get("IntegerType"));
+		i.setValue(11);
+		expressions.add(i);
+		values.put("cassetteSpeed11", i);
+		constraintMap.put("cassetteSpeed11",i);
 		
 		BooleanValue b;
 		
@@ -148,15 +249,10 @@ public class ExpressionHolder {
 		expressions.add(p);
 		constraintMap.put("wheelSize",p);
 		p = factory.createParameter();
-		p.setName("wheelSpeed");
+		p.setName("cassetteSpeed");
 		p.setType(TypeEnum.get("IntegerType"));
 		expressions.add(p);
-		constraintMap.put("wheelSpeed",p);
-		p = factory.createParameter();
-		p.setName("kasseteSpeed");
-		p.setType(TypeEnum.get("IntegerType"));
-		expressions.add(p);
-		constraintMap.put("kasseteSpeed",p);
+		constraintMap.put("cassetteSpeed",p);
 		p = factory.createParameter();
 		p.setName("frameSize");
 		p.setType(TypeEnum.get("IntegerType"));
@@ -169,25 +265,81 @@ public class ExpressionHolder {
 		constraintMap.put("bikeType",p);
 		
 		Set set;
+		set = factory.createSet();
+		set.setName("cassetteSpeeds");
+		set.getHas().add(values.get("cassetteSpeed1"));
+		set.getHas().add(values.get("cassetteSpeed6"));
+		set.getHas().add(values.get("cassetteSpeed7"));
+		set.getHas().add(values.get("cassetteSpeed8"));
+		set.getHas().add(values.get("cassetteSpeed9"));
+		set.getHas().add(values.get("cassetteSpeed10"));
+		set.getHas().add(values.get("cassetteSpeed11"));
+		expressions.add(set);
+		constraintMap.put("cassetteSpeeds",set);
+		set = factory.createSet();
+		set.setName("frameSizes");
+		set.getHas().add(values.get("frameSize48"));
+		set.getHas().add(values.get("frameSize50"));
+		set.getHas().add(values.get("frameSize52"));
+		set.getHas().add(values.get("frameSize54"));
+		set.getHas().add(values.get("frameSize55"));
+		set.getHas().add(values.get("frameSize56"));
+		set.getHas().add(values.get("frameSize58"));
+		set.getHas().add(values.get("frameSize60"));
+		set.getHas().add(values.get("frameSize62"));
+		expressions.add(set);
+		constraintMap.put("frameSizes",set);
 		
 		
 		BinaryConstraint bc;
 		StringValue r;
 		StringValue l;
 		bc = factory.createBinaryConstraint();
-		bc.setName("matchingSpeed");
-		bc.setOperator(BinaryOperators.EQUAL);
+		bc.setName("frameSizeAndCassetteSpeedValid");
+		bc.setOperator(BinaryOperators.AND);
 		bc.setRoot(true);
 		
 		r = factory.createStringValue();
-		r.setName("kasseteSpeed");
+		r.setName("cassetteSpeedIsValid");
 		l = factory.createStringValue();
-		l.setName("wheelSpeed");
+		l.setName("frameSizeIsValid");
 		
 		bc.setRight(r);
 		bc.setLeft(l);
 
-		constraintMap.put("matchingSpeed", bc);
+		constraintMap.put("frameSizeAndCassetteSpeedValid", bc);
+		
+		expressions.add(bc);
+		bc = factory.createBinaryConstraint();
+		bc.setName("frameSizeIsValid");
+		bc.setOperator(BinaryOperators.SUBSET);
+		bc.setRoot(false);
+		
+		r = factory.createStringValue();
+		r.setName("frameSizes");
+		l = factory.createStringValue();
+		l.setName("frameSize");
+		
+		bc.setRight(r);
+		bc.setLeft(l);
+
+		constraintMap.put("frameSizeIsValid", bc);
+		
+		expressions.add(bc);
+		bc = factory.createBinaryConstraint();
+		bc.setName("cassetteSpeedIsValid");
+		bc.setOperator(BinaryOperators.SUBSET);
+		bc.setRoot(false);
+		
+		r = factory.createStringValue();
+		r.setName("cassetteSpeeds");
+		l = factory.createStringValue();
+		l.setName("cassetteSpeed");
+		
+		bc.setRight(r);
+		bc.setLeft(l);
+
+		constraintMap.put("cassetteSpeedIsValid", bc);
 		
 		expressions.add(bc);
 		bc = factory.createBinaryConstraint();
@@ -204,6 +356,22 @@ public class ExpressionHolder {
 		bc.setLeft(l);
 
 		constraintMap.put("masterType", bc);
+		
+		expressions.add(bc);
+		bc = factory.createBinaryConstraint();
+		bc.setName("isNotTTOrIsNotSingleSpeed");
+		bc.setOperator(BinaryOperators.OR);
+		bc.setRoot(true);
+		
+		r = factory.createStringValue();
+		r.setName("notSingleSpeed");
+		l = factory.createStringValue();
+		l.setName("isNotTT");
+		
+		bc.setRight(r);
+		bc.setLeft(l);
+
+		constraintMap.put("isNotTTOrIsNotSingleSpeed", bc);
 		
 		expressions.add(bc);
 		bc = factory.createBinaryConstraint();
@@ -228,7 +396,7 @@ public class ExpressionHolder {
 		bc.setRoot(false);
 		
 		r = factory.createStringValue();
-		r.setName("BMXMaxSize");
+		r.setName("BMXMaxFrameSizePlusOne");
 		l = factory.createStringValue();
 		l.setName("frameSize");
 		
@@ -303,7 +471,7 @@ public class ExpressionHolder {
 		
 		expressions.add(bc);
 		bc = factory.createBinaryConstraint();
-		bc.setName("oneSpeedTrackOrBMX");
+		bc.setName("singleSpeedTrackOrBMX");
 		bc.setOperator(BinaryOperators.OR);
 		bc.setRoot(true);
 		
@@ -315,7 +483,7 @@ public class ExpressionHolder {
 		bc.setRight(r);
 		bc.setLeft(l);
 
-		constraintMap.put("oneSpeedTrackOrBMX", bc);
+		constraintMap.put("singleSpeedTrackOrBMX", bc);
 		
 		expressions.add(bc);
 		bc = factory.createBinaryConstraint();
@@ -372,9 +540,9 @@ public class ExpressionHolder {
 		bc.setRoot(false);
 		
 		r = factory.createStringValue();
-		r.setName("one");
+		r.setName("cassetteSpeed1");
 		l = factory.createStringValue();
-		l.setName("wheelSpeed");
+		l.setName("cassetteSpeed");
 		
 		bc.setRight(r);
 		bc.setLeft(l);
@@ -529,6 +697,19 @@ public class ExpressionHolder {
 		
 		UnaryConstraint uc;
 		uc = factory.createUnaryConstraint();
+		uc.setName("notSingleSpeed");
+		uc.setOperator(UnaryOperators.NOT);
+		uc.setRoot(false);
+
+		constraintMap.put("notSingleSpeed", uc);
+		
+		s = factory.createStringValue();
+		s.setName("singleSpeed");
+		
+		uc.setExpression(s);
+		
+		expressions.add(uc);
+		uc = factory.createUnaryConstraint();
 		uc.setName("isNotBMXOrTrack");
 		uc.setOperator(UnaryOperators.NOT);
 		uc.setRoot(false);
@@ -563,6 +744,19 @@ public class ExpressionHolder {
 		
 		s = factory.createStringValue();
 		s.setName("isBMX");
+		
+		uc.setExpression(s);
+		
+		expressions.add(uc);
+		uc = factory.createUnaryConstraint();
+		uc.setName("isNotTT");
+		uc.setOperator(UnaryOperators.NOT);
+		uc.setRoot(false);
+
+		constraintMap.put("isNotTT", uc);
+		
+		s = factory.createStringValue();
+		s.setName("isTT");
 		
 		uc.setExpression(s);
 		
