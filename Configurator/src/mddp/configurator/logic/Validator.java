@@ -45,15 +45,20 @@ public class Validator {
 			return false;
 
 		List<Expression> expressions = ExpressionHolder.getExpressions();
-
+		
+		Boolean result = false;
 		for (Expression e : expressions) {
 			if (e instanceof BinaryConstraint) {
 				BinaryConstraint b = (BinaryConstraint) e;
 				if (b.isRoot()) {
-					Expression res = validate((BinaryConstraint) e, map);
+					Expression res = validate(b, map);
 					if (res instanceof BooleanValue) {
 						BooleanValue bv = (BooleanValue) res;
-						return bv.isValue();
+						
+						if(bv.isValue())
+							result = true;
+						else 
+							return false;
 					} else {
 						throw new RuntimeException("");
 						// return false;
@@ -62,10 +67,13 @@ public class Validator {
 			} else if (e instanceof UnaryConstraint) {
 				UnaryConstraint u = (UnaryConstraint) e;
 				if (u.isRoot()) {
-					Expression res = validate((UnaryConstraint) e, map);
+					Expression res = validate(u, map);
 					if (res instanceof BooleanValue) {
 						BooleanValue bv = (BooleanValue) res;
-						return bv.isValue();
+						if(bv.isValue())
+							result = true;
+						else 
+							return false;
 					} else {
 						throw new RuntimeException("");
 						// return false;
@@ -74,7 +82,7 @@ public class Validator {
 			}
 		}
 
-		return true;
+		return result;
 	}
 
 	public static Expression validate(BinaryConstraint bc,
@@ -101,7 +109,7 @@ public class Validator {
 					&& right instanceof StringValue) {
 				StringValue l = (StringValue) left;
 				StringValue r = (StringValue) right;
-				b.setValue(l.getValue() == r.getValue());
+				b.setValue(l.getValue().equals(r.getValue()));
 			} else
 				throw new RuntimeException();
 			return b;
