@@ -140,7 +140,14 @@ class validator {
                 return $obj;
             case "subset":
                 if($rightType == "set") {
-                    $obj->value = in_array($left, $right->has);
+                    var_dump($left);
+                    var_dump($right->has);
+                    $res = false;
+                    foreach($right->has as $val) {
+                        if(strcmp($val->value, $left->value) == 0)
+                            $res = true;
+                    }
+                    $obj->value = $res;
                     $obj->type = "BooleanType";
                     return $obj;
                 }
