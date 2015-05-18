@@ -59,7 +59,7 @@
 						"name": "BMXWithProperFrame",
 						"operator": "or",
 						"left": "isNotBMX",
-						"right": "racerDiameter",
+						"right": "BMXFrame",
 						"root": "true"
 					},
 					{

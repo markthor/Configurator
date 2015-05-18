@@ -1,0 +1,39 @@
+int weight
+int length
+int height
+
+string material
+
+string wood = "wood"
+string metal = "metal"
+string stone = "stone"
+
+set materials = [wood, metal, stone]
+
+int woodDensity = 80
+int metalDensity = 500
+int stoneDensity = 350
+
+bc true isValidMaterial material subset materials
+
+bc true correctWeightIfWood isNotWood || correctWeightWood
+bc correctWeightWood calculatedWeightWood == weight
+bc calculatedWeightWood area * woodDensity
+
+bc true correctWeightIfMetal isNotMetal || correctWeightMetal
+bc correctWeightMetal calculatedWeightMetal == weight
+bc calculatedWeightMetal area * metalDensity
+
+bc true correctWeightIfStone isNotStone || correctWeightStone
+bc correctWeightStone calculatedWeightStone == weight
+bc calculatedWeightStone area * stoneDensity
+
+bc area length * height
+
+bc isWood material == wood
+bc isMetal material == metal
+bc isStone material == stone
+
+uc isNotWood ! isWood
+uc isNotMetal ! isMetal
+uc isNotStone ! isStone

@@ -1,0 +1,70 @@
+{
+	"root": {
+		"expressions": {
+			"parameter": [
+					{
+						"name": "color",
+						"type": "StringType"
+					}
+			],
+			"binaryConstraints": [
+					{
+						"name": "isAValidColor",
+						"operator": "subset",
+						"left": "color",
+						"right": "colors",
+						"root": "true"
+					}
+			],
+			"values": [
+					{
+						"name": "black",
+						"value": "black",
+						"type": "StringType"
+					},
+					{
+						"name": "yellow",
+						"value": "yellow",
+						"type": "StringType"
+					},
+					{
+						"name": "green",
+						"value": "green",
+						"type": "StringType"
+					},
+					{
+						"name": "blue",
+						"value": "blue",
+						"type": "StringType"
+					}
+			],
+			"sets": [
+					{
+						"name": "colors",
+						"has": [
+								{
+									"name": "black",
+									"value": "black",
+									"type": "StringType"
+								},
+								{
+									"name": "yellow",
+									"value": "yellow",
+									"type": "StringType"
+								},
+								{
+									"name": "green",
+									"value": "green",
+									"type": "StringType"
+								},
+								{
+									"name": "blue",
+									"value": "blue",
+									"type": "StringType"
+								}
+						]
+					}
+			]
+		}
+	}
+}
