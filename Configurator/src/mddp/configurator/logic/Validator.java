@@ -156,9 +156,30 @@ public class Validator {
 			}
 		case SUBSET:
 			b.setValue(false);
-			if (right instanceof Set && left instanceof Value)
-				if (((Set) right).getHas().contains(left))
-					b.setValue(true);
+			if (right instanceof Set && left instanceof Value){
+				for (Value v : ((Set) right).getHas()) {
+					if(v instanceof IntegerValue && left instanceof IntegerValue){
+						IntegerValue iv = (IntegerValue) v;
+						IntegerValue lv = (IntegerValue) left;
+						
+						if(iv.getValue() == lv.getValue()){
+							b.setValue(true);
+						}
+					} else if(v instanceof StringValue && left instanceof StringValue){
+						StringValue sv = (StringValue) v;
+						StringValue lv = (StringValue) left;
+						if(sv.getValue().equals(lv.getValue())){
+							b.setValue(true);
+						}
+					} else if(v instanceof BooleanValue && left instanceof BooleanValue){
+						BooleanValue bv = (BooleanValue) v;
+						BooleanValue lv = (BooleanValue) left;
+						if(bv.isValue() == lv.isValue()){
+							b.setValue(true);
+						}
+					}
+				}
+			}	
 			return b;
 		case AND:
 			b.setValue(false);
