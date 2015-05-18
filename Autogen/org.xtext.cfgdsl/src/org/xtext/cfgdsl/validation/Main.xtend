@@ -44,8 +44,9 @@ class Main {
 		//val uri = URI::createURI("test-files/recurseunarybinarysatisfy.xmi")	//correct
 		
 //		val uri = URI::createURI("test-files/unsetproperties.xmi") //error
-		val uri = URI::createURI("test-files/checkrootsatisfy.xmi")	//correct
+//		val uri = URI::createURI("test-files/checkrootsatisfy.xmi")	//correct
 //		val uri = URI::createURI("test-files/checkrootnot.xmi")	//correct
+		val uri = URI::createURI("test-files/badlytypedvalues.xmi")
 		
 		
 		val resource = resourceSet.getResource(uri, true)					/* true means follow proxies */
