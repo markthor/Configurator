@@ -380,7 +380,7 @@ public class ExpressionHolder {
 		bc.setRoot(true);
 		
 		r = factory.createStringValue();
-		r.setName("racerDiameter");
+		r.setName("BMXFrame");
 		l = factory.createStringValue();
 		l.setName("isNotBMX");
 		

@@ -301,7 +301,7 @@ public class ExpressionHolder {
 		bc.setRoot(false);
 		
 		r = factory.createStringValue();
-		r.setName("metalDensity");
+		r.setName("stoneDensity");
 		l = factory.createStringValue();
 		l.setName("area");
 		

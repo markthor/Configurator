@@ -87,7 +87,7 @@
 						"name": "calculatedWeightStone",
 						"operator": "multiplication",
 						"left": "area",
-						"right": "metalDensity",
+						"right": "stoneDensity",
 						"root": "false"
 					},
 					{
