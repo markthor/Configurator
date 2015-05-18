@@ -40,7 +40,7 @@ bc true masterType isRacerTTCXOrTrack || isBMX
 
 bc true isNotTTOrIsNotSingleSpeed isNotTT || notSingleSpeed
 
-bc true BMXWithProperFrame isNotBMX || racerDiameter
+bc true BMXWithProperFrame isNotBMX || BMXFrame
 bc BMXFrame frameSize < BMXMaxFrameSizePlusOne
 
 bc true racerWithProperDiameter isNotRacer || racerDiameter

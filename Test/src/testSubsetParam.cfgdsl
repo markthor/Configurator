@@ -1,0 +1,9 @@
+string color
+string black = "black"
+string yellow = "yellow"
+string green = "green"
+string blue = "blue"
+
+set colors = [black, yellow, green, blue]
+
+bc true isAValidColor color subset colors
