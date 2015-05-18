@@ -374,6 +374,18 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueEBooleanParserRuleCall_3_0() { return cValueEBooleanParserRuleCall_3_0; }
 	}
 
+	public class IntegerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Integer");
+		private final RuleCall cStringValueParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//Integer returns Expression:
+		//	StringValue;
+		public ParserRule getRule() { return rule; }
+
+		//StringValue
+		public RuleCall getStringValueParserRuleCall() { return cStringValueParserRuleCall; }
+	}
+
 	public class EIntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EInt");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -838,6 +850,7 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	private StringValueElements pStringValue;
 	private IntegerValueElements pIntegerValue;
 	private BooleanValueElements pBooleanValue;
+	private IntegerElements pInteger;
 	private EIntElements pEInt;
 	private EBooleanElements pEBoolean;
 	private BinaryConstraintElements pBinaryConstraint;
@@ -992,6 +1005,16 @@ public class CfgDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getBooleanValueRule() {
 		return getBooleanValueAccess().getRule();
+	}
+
+	//Integer returns Expression:
+	//	StringValue;
+	public IntegerElements getIntegerAccess() {
+		return (pInteger != null) ? pInteger : (pInteger = new IntegerElements());
+	}
+	
+	public ParserRule getIntegerRule() {
+		return getIntegerAccess().getRule();
 	}
 
 	//EInt returns ecore::EInt:

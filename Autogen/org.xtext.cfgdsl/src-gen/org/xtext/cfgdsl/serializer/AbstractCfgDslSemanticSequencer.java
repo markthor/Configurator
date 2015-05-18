@@ -91,6 +91,7 @@ public abstract class AbstractCfgDslSemanticSequencer extends AbstractDelegating
 				else break;
 			case ConfiguratorPackagePackage.STRING_VALUE:
 				if(context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getIntegerRule() ||
 				   context == grammarAccess.getStringValueRule() ||
 				   context == grammarAccess.getValueRule()) {
 					sequence_StringValue(context, (StringValue) semanticObject); 

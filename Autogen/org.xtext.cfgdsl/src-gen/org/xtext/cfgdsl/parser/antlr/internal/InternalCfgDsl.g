@@ -679,6 +679,8 @@ ruleBooleanValue returns [EObject current=null]
 
 
 
+
+
 // Entry rule entryRuleEInt
 entryRuleEInt returns [String current=null] 
 	:
