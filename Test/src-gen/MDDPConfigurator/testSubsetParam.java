@@ -117,7 +117,7 @@ public class ExpressionHolder {
 		bc.setRoot(true);
 		
 		r = factory.createStringValue();
-		r.setName("colors");
+		r.setName("color");
 		l = factory.createStringValue();
 		l.setName("color");
 		

@@ -10,7 +10,6 @@ import ConfiguratorPackage.BooleanValue;
 import ConfiguratorPackage.Configuration;
 import ConfiguratorPackage.Expression;
 import ConfiguratorPackage.IntegerValue;
-import ConfiguratorPackage.NamedElement;
 import ConfiguratorPackage.Parameter;
 import ConfiguratorPackage.Root;
 import ConfiguratorPackage.Set;
@@ -42,21 +41,6 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
    */
   protected static boolean _constraint(final EObject it) {
     return true;
-  }
-  
-  protected static boolean _constraint(final NamedElement it) {
-    boolean _and = false;
-    String _name = it.getName();
-    boolean _notEquals = (!Objects.equal(_name, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      String _name_1 = it.getName();
-      boolean _isEmpty = _name_1.isEmpty();
-      boolean _not = (!_isEmpty);
-      _and = _not;
-    }
-    return _and;
   }
   
   protected static boolean _constraint(final Root it) {
@@ -100,21 +84,26 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
   }
   
   protected static boolean _constraint(final Parameter it) {
-    boolean _xblockexpression = false;
-    {
-      final NamedElement ne = ((NamedElement) it);
-      boolean _and = false;
-      boolean _constraint = CfgDslValidator.constraint(ne);
-      if (!_constraint) {
-        _and = false;
-      } else {
-        TypeEnum _type = it.getType();
-        boolean _notEquals = (!Objects.equal(_type, null));
-        _and = _notEquals;
-      }
-      _xblockexpression = _and;
+    boolean _and = false;
+    boolean _and_1 = false;
+    TypeEnum _type = it.getType();
+    boolean _notEquals = (!Objects.equal(_type, null));
+    if (!_notEquals) {
+      _and_1 = false;
+    } else {
+      String _name = it.getName();
+      boolean _notEquals_1 = (!Objects.equal(_name, null));
+      _and_1 = _notEquals_1;
     }
-    return _xblockexpression;
+    if (!_and_1) {
+      _and = false;
+    } else {
+      String _name_1 = it.getName();
+      boolean _isEmpty = _name_1.isEmpty();
+      boolean _not = (!_isEmpty);
+      _and = _not;
+    }
+    return _and;
   }
   
   /**
@@ -700,8 +689,6 @@ public class CfgDslValidator extends AbstractCfgDslValidator {
       return _constraint((Value)it);
     } else if (it instanceof Configuration) {
       return _constraint((Configuration)it);
-    } else if (it instanceof NamedElement) {
-      return _constraint((NamedElement)it);
     } else if (it instanceof Root) {
       return _constraint((Root)it);
     } else if (it != null) {

@@ -25,11 +25,15 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.xtext.cfgdsl.generator.JsonConverter;
+import org.xtext.cfgdsl.validation.CfgDslValidator;
 
 /**
  * Generates code from your model files on save.
@@ -608,12 +612,24 @@ public class CfgDslGenerator implements IGenerator {
   }
   
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+    TreeIterator<EObject> _allProperContents = EcoreUtil.<EObject>getAllProperContents(resource, false);
+    final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
+      public Boolean apply(final EObject it) {
+        return Boolean.valueOf(CfgDslValidator.constraint(it));
+      }
+    };
+    boolean _forall = IteratorExtensions.<EObject>forall(_allProperContents, _function);
+    if (_forall) {
+      InputOutput.<String>println("All constraints are satisfied!");
+    } else {
+      InputOutput.<String>println("Some constraint is violated");
+      return;
+    }
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
     Iterable<Root> _filter = Iterables.<Root>filter(_iterable, Root.class);
-    final Consumer<Root> _function = new Consumer<Root>() {
+    final Consumer<Root> _function_1 = new Consumer<Root>() {
       public void accept(final Root it) {
-        final String fname = "Mikkel";
         String _nameFromResource = CfgDslGenerator.getNameFromResource(resource);
         String _plus = ("MDDPConfigurator/" + _nameFromResource);
         String _plus_1 = (_plus + ".java");
@@ -626,7 +642,7 @@ public class CfgDslGenerator implements IGenerator {
         fsa.generateFile(_plus_3, _compileToJson);
       }
     };
-    _filter.forEach(_function);
+    _filter.forEach(_function_1);
   }
   
   public static String getNameFromResource(final Resource r) {

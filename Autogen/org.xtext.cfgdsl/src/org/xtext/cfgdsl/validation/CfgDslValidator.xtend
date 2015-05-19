@@ -31,24 +31,9 @@ import static ConfiguratorPackage.BinaryOperators.*
  */
 class CfgDslValidator extends AbstractCfgDslValidator {
 
-//  public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					MyDslPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-
 	/* Fall back for all types that are not constrained */
 	def static dispatch boolean constraint(EObject it) {
 		true
-	}
-
-	def static dispatch boolean constraint(NamedElement it) {
-		name != null && !name.isEmpty
 	}
 	
 	def static dispatch boolean constraint(Root it){
@@ -76,8 +61,7 @@ class CfgDslValidator extends AbstractCfgDslValidator {
 	}
 	
 	def static dispatch boolean constraint(Parameter it){
-		val ne = it as NamedElement
-		constraint(ne) && type != null
+		type != null && name != null && !name.isEmpty
 	}
 	
 	/**

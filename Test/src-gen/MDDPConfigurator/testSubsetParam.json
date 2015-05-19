@@ -12,7 +12,7 @@
 						"name": "isAValidColor",
 						"operator": "subset",
 						"left": "color",
-						"right": "colors",
+						"right": "color",
 						"root": "true"
 					}
 			],

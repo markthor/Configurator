@@ -13,8 +13,10 @@ import ConfiguratorPackage.StringValue
 import ConfiguratorPackage.UnaryConstraint
 import java.nio.file.Paths
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
+import org.xtext.cfgdsl.validation.CfgDslValidator
 
 /**
  * Generates code from your model files on save.
@@ -206,9 +208,14 @@ class CfgDslGenerator implements IGenerator {
 	}
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		if (EcoreUtil.getAllProperContents(resource, false).forall [  CfgDslValidator.constraint (it)])
+		   println ("All constraints are satisfied!")
+		else {
+		   println ("Some constraint is violated")
+		   return
+		}
 		resource.allContents.toIterable.filter(typeof(Root)).
 			forEach [ Root it | 
-				val fname = "Mikkel"
 				// generate Java implementation
 				fsa.generateFile("MDDPConfigurator/" + getNameFromResource(resource) + ".java", it.compileToJava)
 				fsa.generateFile("MDDPConfigurator/" + getNameFromResource(resource) + ".json", it.compileToJson)
