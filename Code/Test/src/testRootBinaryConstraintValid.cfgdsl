@@ -1,0 +1,5 @@
+boolean truth = true
+int one = 1
+int two = 2
+bc bc1 one == two
+bc true bc2 bc1 || truth

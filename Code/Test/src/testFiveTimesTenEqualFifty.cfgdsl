@@ -1,0 +1,6 @@
+int five = 5
+int ten = 10
+int fifty = 50
+
+bc fiveTimesTen five * ten
+bc true e fifty == fiveTimesTen

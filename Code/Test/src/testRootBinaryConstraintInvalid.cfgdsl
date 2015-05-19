@@ -1,0 +1,4 @@
+boolean fail = false
+int one = 1
+bc bc1 one == one
+bc true bc2 bc1 && fail
