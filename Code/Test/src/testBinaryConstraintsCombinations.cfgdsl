@@ -1,0 +1,25 @@
+int width
+int height
+int length
+string name
+boolean convex
+int maxVolume = 10000
+int two = 2
+string reservedName = "box"
+
+uc true nameIsNotReserved ! nameIsReserved
+bc nameIsReserved name == reservedName
+
+bc true masterVolumeConstraint standardVolumeIfNotConvex || increaseVolumeIfConvex
+bc standardVolumeIfNotConvex notConvex && volumeConstraint
+bc increaseVolumeIfConvex convex && doubleVolumeConstraint
+
+bc volumeConstraint volume < maxVolume
+bc doubleVolumeConstraint volume < doubleVolume
+
+bc doubleVolume maxVolume * two
+
+bc groundSurface width * length
+bc volume groundSurface * height
+
+uc notConvex ! convex

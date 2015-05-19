@@ -1,0 +1,73 @@
+{
+	"root": {
+		"expressions": {
+			"parameter": [
+					{
+						"name": "color",
+						"type": "StringType"
+					}
+			],
+			"binaryConstraints": [
+					{
+						"name": "isColorful",
+						"operator": "subset",
+						"left": "color",
+						"right": "colorful",
+						"root": "true"
+					}
+			],
+			"unaryConstraints": [
+					{
+						"name": "isBlack",
+						"operator": "not",
+						"expression": "isColorful",
+						"root": "false"
+					}
+			],
+			"values": [
+					{
+						"name": "red",
+						"value": "red",
+						"type": "StringType"
+					},
+					{
+						"name": "blue",
+						"value": "blue",
+						"type": "StringType"
+					},
+					{
+						"name": "green",
+						"value": "green",
+						"type": "StringType"
+					},
+					{
+						"name": "black",
+						"value": "black",
+						"type": "StringType"
+					}
+			],
+			"sets": [
+					{
+						"name": "colorful",
+						"has": [
+								{
+									"name": "red",
+									"value": "red",
+									"type": "StringType"
+								},
+								{
+									"name": "green",
+									"value": "green",
+									"type": "StringType"
+								},
+								{
+									"name": "blue",
+									"value": "blue",
+									"type": "StringType"
+								}
+						]
+					}
+			]
+		}
+	}
+}

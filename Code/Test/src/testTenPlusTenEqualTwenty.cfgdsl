@@ -1,0 +1,6 @@
+int ten = 10
+int anotherTen = 10
+int twenty = 20
+
+bc tenPlusTen ten + anotherTen
+bc true e twenty == tenPlusTen

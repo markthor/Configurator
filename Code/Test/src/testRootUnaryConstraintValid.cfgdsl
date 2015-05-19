@@ -1,0 +1,5 @@
+boolean truth = true
+int one = 1
+int two = 2
+uc uc1 ! truth
+bc true bc1 uc1 || truth

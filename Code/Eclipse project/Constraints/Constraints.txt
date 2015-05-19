@@ -1,0 +1,24 @@
+1. Assignments value type shall be equal to parameter type enum (exmaple: Assignment with value of type integer cant have parameter of typeEnum string)
+
+2. Binary constraints with:
+	multiplication shall have integer integer
+	addition shall have integer integer
+	and shall have type boolean boolean
+	subset shall have type anything and set
+	equals shall have the same type on each side
+	...
+
+Binary constraints trees must be validated recursively
+example:
+BC(BC(5 * 5) > BC(4 + 1));
+validate BC(5 * 5) and BC(4 + 1) and find out which return types they have. Then validate the last BC.
+For this we need some kind of map with BinaryOperator -> return type
+For this validation, parameters and values are the same. The only thing of interest is the TypeEnum of parameters and the type of values.
+
+3. Unary Operators is the same, except it only accepts booleans, because the only operator is not.
+
+4. Parameters cant have the same name as other parameters(with the same type?).
+
+5. Configurations cannot contain more than one assignment to one parameter.
+
+6. Mabye we want to restrict sets, such that they have to contain only one type.
