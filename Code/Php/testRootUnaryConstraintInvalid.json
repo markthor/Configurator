@@ -1,0 +1,40 @@
+{
+	"root": {
+		"expressions": {
+			"binaryConstraints": [
+					{
+						"name": "bc1",
+						"operator": "or",
+						"left": "uc1",
+						"right": "truth",
+						"root": "true"
+					}
+			],
+			"unaryConstraints": [
+					{
+						"name": "uc1",
+						"operator": "not",
+						"expression": "truth",
+						"root": "false"
+					}
+			],
+			"values": [
+					{
+						"name": "truth",
+						"value": "true",
+						"type": "BooleanType"
+					},
+					{
+						"name": "one",
+						"value": "1",
+						"type": "IntegerType"
+					},
+					{
+						"name": "two",
+						"value": "2",
+						"type": "IntegerType"
+					}
+			]
+		}
+	}
+}

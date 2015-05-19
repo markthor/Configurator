@@ -1,0 +1,70 @@
+int wheelSize
+int cassetteSpeed
+int frameSize
+string bikeType
+
+string racer = "racer"
+string tt = "tt"
+string cx = "cx"
+string track = "track"
+string bmx = "bmx"
+int racerDiameter1 = 650
+int racerDiameter2 = 700
+int BMXMaxFrameSizePlusOne = 50
+int frameSize48 = 48
+int frameSize50 = 50
+int frameSize52 = 52
+int frameSize54 = 54
+int frameSize55 = 55
+int frameSize56 = 56
+int frameSize58 = 58
+int frameSize60 = 60
+int frameSize62 = 62
+int cassetteSpeed1 = 1
+int cassetteSpeed6 = 6
+int cassetteSpeed7 = 7
+int cassetteSpeed8 = 8
+int cassetteSpeed9 = 9
+int cassetteSpeed10 = 10
+int cassetteSpeed11 = 11
+
+set cassetteSpeeds = [cassetteSpeed1, cassetteSpeed6, cassetteSpeed7, cassetteSpeed8, cassetteSpeed9, cassetteSpeed10, cassetteSpeed11]
+set frameSizes = [frameSize48, frameSize50, frameSize52, frameSize54, frameSize55
+	, frameSize56, frameSize58, frameSize60, frameSize62]
+
+
+bc true frameSizeAndCassetteSpeedValid frameSizeIsValid && cassetteSpeedIsValid
+bc frameSizeIsValid frameSize subset frameSizes
+bc cassetteSpeedIsValid cassetteSpeed subset cassetteSpeeds
+bc true masterType isRacerTTCXOrTrack || isBMX
+
+bc true isNotTTOrIsNotSingleSpeed isNotTT || notSingleSpeed
+
+bc true BMXWithProperFrame isNotBMX || BMXFrame
+bc BMXFrame frameSize < BMXMaxFrameSizePlusOne
+
+bc true racerWithProperDiameter isNotRacer || racerDiameter
+bc racerDiameter racerDiameterBC1 || racerDiameterBC2
+bc racerDiameterBC1 wheelSize == racerDiameter1
+bc racerDiameterBC2 wheelSize == racerDiameter2
+
+bc true singleSpeedTrackOrBMX singleSpeedComposition || isNotBMXOrTrack
+bc singleSpeedBMX isBMX && singleSpeed
+bc singleSpeedTrack isTrack && singleSpeed
+bc singleSpeedComposition singleSpeedBMX || singleSpeedTrack
+bc singleSpeed cassetteSpeed == cassetteSpeed1
+uc notSingleSpeed ! singleSpeed
+
+bc isRacerTTCXOrTrack isRacerOrTT || isCXOrTrack
+bc isRacerOrTT isRacer || isTT
+bc isCXOrTrack isCX || isTrack
+bc isBMXOrTrack isBMX || isTrack
+bc isRacer bikeType == racer
+bc isTT bikeType == tt
+bc isCX bikeType == cx
+bc isTrack bikeType == track
+bc isBMX bikeType == bmx
+uc isNotBMXOrTrack ! isBMXOrTrack
+uc isNotRacer ! isRacer
+uc isNotBMX ! isBMX
+uc isNotTT ! isTT

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ASCII"?>
+<github.com:Root
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:github.com="https://github.com/markthor/Configurator"
+    xsi:schemaLocation="https://github.com/markthor/Configurator ../../MDDP%20Configurator/model/Configurator.ecore">
+  <expressions
+      xsi:type="github.com:BinaryConstraint"
+      name="and"
+      operator="and"
+      left="//@expressions.7"
+      right="//@expressions.3"/>
+  <expressions
+      xsi:type="github.com:BinaryConstraint"
+      name="or"
+      operator="or"
+      left="//@expressions.2"
+      right="//@expressions.8"/>
+  <expressions
+      xsi:type="github.com:BooleanValue"
+      type="BooleanType"
+      name="BooleanValue1"/>
+  <expressions
+      xsi:type="github.com:BooleanValue"
+      name="BooleanValue2"
+      type="BooleanType"
+      value="true"/>
+  <expressions
+      xsi:type="github.com:BinaryConstraint"
+      name="RootBinary"
+      operator="and"
+      left="//@expressions.5"
+      right="//@expressions.6"/>
+  <expressions
+      xsi:type="github.com:BinaryConstraint"
+      name="left"
+      operator="or"
+      left="//@expressions.0"
+      right="//@expressions.8"/>
+  <expressions
+      xsi:type="github.com:BinaryConstraint"
+      name="right"
+      operator="equal"
+      left="//@expressions.1"
+      right="//@expressions.7"/>
+  <expressions
+      xsi:type="github.com:UnaryConstraint"
+      name="1"
+      expression="//@expressions.2"/>
+  <expressions
+      xsi:type="github.com:UnaryConstraint"
+      name="2"
+      expression="//@expressions.3"/>
+</github.com:Root>

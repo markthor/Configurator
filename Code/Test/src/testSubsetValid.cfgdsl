@@ -1,0 +1,7 @@
+string red = red
+string blue = blue
+string green = green
+string black = black
+set colorful = [red, green, blue]
+
+bc true isColorful red subset colorful
